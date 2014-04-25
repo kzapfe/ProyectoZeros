@@ -1,0 +1,431 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ Wigner Function Approximations for Chaotic Systems}
+\author{\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+
+The Center or Wigner Function is used as a quasi-distribution in 
+phase space analysis
+of Quantum Mechanics. Its Fourier Symplectic Transform, 
+the Chord or Weyl Function, 
+acts as the generator of momenta of the former 
+classical quasi-distribution. It is
+assumed that a good approximation for the former is a Dirac delta over
+the Classical Energy Surface. This approximation is essentially wrong,
+even if it catches some adequate results.
+In this work we search for a better uniform approximation, which
+should respects the old results in the limit $\hbar\rightarrow 0$.
+The essential prerequisite for this seems to be the ergodicity of
+the classical system underneath the QM.
+
+\end{abstract}
+
+\section{Preliminary Stuff}
+
+\subsection{Notation}
+
+We will adopt Alfredo Ozorio de Almeida notation throughout this work. 
+In particular, a point in phase space has the 
+following ordering  $\xfase:=(p,q)$, and its units are $[\sqrt{\hbar}]$.
+The number $d$ is the number of degrees of freedom. A capital $N$ shall
+be used for indicating the Energy Level in which we are interested.
+We shall denote random  variables with a superscript asterisk, e.g.
+$\xfase^*$.
+
+\section{A ``Chaotic'' Wigner Function}
+
+The usual assumption is that if we have an ergodic, mixing and hyperbolic
+classical Hamiltonian system (henceforth a \emph{chaotic system}), the
+Center Function will be a Dirac delta distribution localized over the
+energy eigensurface, provided that we study  a large 
+energy state \cite{Voros76}:
+
+\begin{equation}
+W_N(\xfase)=\delta (H(x)-E_N)
+\end{equation}
+
+This corresponds to the notion that ergodic systems tend to 
+homogenize themselves and that eigenstates of energy are
+stationary states.
+
+This assumption is essentially wrong, as it fails to account
+for important quantum features of pure states. An important example would
+be the so called ``blind spots'' \cite{Zambrano09} 
+of the auto-correlation function.  The autocorrelation can be 
+expresed either by the Center or Chord functions:
+
+\begin{equation}
+C(\xifase)=(2\pi\hbar)^d \int W(\xfase)W(\xfase-\xifase) d\xfase
+=\frac{1}{(2\pi\hbar)^d}\int |\chi(\mufase)|^2 e^{i\mufase\wedge\xifase/\hbar}
+d\mufase
+\end{equation}
+
+If the Center function, $W(\xfase)$ where really a Dirac delta,
+then that Correlation would be zero everywhere except for 
+the trivial translation,  $\xifase=0$. This is completely
+inadequate for delicate interference effects \cite{Zambrano08}.
+The only necessary postulation involved in that
+last reference  is that the
+State is ``highly excited'' (high value of the eigenenergy) 
+and is ``large'' (its Center Function spreads over a significant 
+area in
+the classical phase space).
+
+\section{The Work}
+
+We shall start with a very crude assumption.
+ The Wigner Function can be very roughly approximated
+by a random distribution of points near the energy surface. 
+The spread of the points should not occupy a volume larger than
+$\hbar$, and the volume surrounded by the energy surface
+should be from the order of $N\hbar$, $N$ being a number
+of the order of the hundreds or thousands.  In this cruddiest
+approximation the points will be over a spherical shell of
+radius of the order $\sqrt{N\hbar}$. In order to have
+a chaotic system we need at least two degrees of freedom, so
+this assumption can be stated as follows. Let
+$\xfase_1=(p_1,q_1), \xfase_2=(p_2,q_2) $ be the 
+symplectic coordinates
+of the simplest case ($d=2$);  
+\begin{equation}
+N\hbar< q_1^2+p_1^2+q_2^2+p_2^2<(N+1)\hbar,
+\end{equation}
+so that these points are between two three dimensional
+spherical shells in a volume of the order of $\hbar$. 
+The diference in the radius is of the order of
+$(\sqrt{N+1}-\sqrt{N})\hbar=\Delta\hbar$.
+If we choose spherical coordinates to represent
+the point $\xfase^*=(\xfase_1, \xfase_2)$, and an 
+asterisk to represent random variables we get:
+\begin{equation}
+\begin{split}
+p_1&=(R+l^*)\sqrt{\hbar}\cos \phi_1^* \\
+q_1&=(R+l^*)\sqrt{\hbar}\sin \phi_1^* \cos\phi_2^*\\
+p_2&=(R+l^*)\sqrt{\hbar}\cos \phi_1^*\sin\phi_2^*\cos\phi_3^* \\
+q_2&=(R+l^*)\sqrt{\hbar}\cos \phi_1^* \sin\phi_2^*\sin\phi_3^* \\
+\end{split}
+\end{equation}
+
+$R$ must be the radius
+The $l^*$ should be distributed in the interval
+$(0, \Delta)$, and the angular variables should 
+be taken so as to make the distribution equiprobable in
+the volume element
+\begin{equation}
+dV=r^3 \sin^2\phi_1\sin\phi_2 d\phi_1 d\phi_2 d\phi_3.
+\end{equation}
+
+The sample size for the
+random points  will be of the order of $5 \cdot 10^5=M$.
+Lesser values for the distribution gave variations in
+the result.
+With all these conventions our Center Function appears
+as:
+
+\begin{equation}\label{AproxCruda}
+W(\xfase)=\frac{1}{M}\sum_{\xfase^*} \delta (\xfase - \xfase^*)
+\end{equation}
+The Chord function would then be a random superposition
+of plane waves. The wave vectors of these components are
+the centers of the Dirac Deltas:
+\begin{equation}\label{chordfun}
+\chi(\xifase)=\frac{1}{M}\sum_{\xfase^*} \exp \left( \ihb \xifase\wedge\xfase^* \right).
+\end{equation}
+
+It is clear that for large enough $M$ this expresion should become
+isotropical, i.e., not depend on the direction of $\xifase$ but
+only in its magnitude. As $N$ becomes larger, in a
+way  that the volume
+between the spherical shells becomes negligible, we should recover
+the results of Berry \cite{BerryRIR}, namely, a 
+Bessel Function only dependent on the magnitude of $\xifase$.
+A look on the next pictures (figures \ref{XiFunction01},
+\ref{XiFunction02},\ref{XiFunction03},\ref{XiFunction04})
+reveal that this may be the case. These pictures where
+obtained by following simplification.
+We assume that a proper Poincaré or Stroboscopyc map
+reduces a 2 degrees of freedom system to a chaotic
+$1+\frac{1}{2}$ d. o. f. map, which has its own 
+Wigner function, as any mechanical system has. 
+So we have reduces the plot of the chords function
+to a two dimensional $\xifase$ space. The original 
+Wigner function looks like the figure
+\ref{WigExample}.
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{CondiniExemplo01.png}
+\caption{ A realization of the Wigner
+function in eq. \ref{AproxCruda}}\label{WigExample}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.4\textwidth]{300_Chords_Real.png}
+\label{xireal01}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.4\textwidth]{300_Chords_Imag.png}
+\label{xiimag01}
+}
+\subfigure[Chord Function, Amplitude]{
+\includegraphics[width=0.4\textwidth]{300_Chords_Ampli.png}
+\label{xiampl01}
+}
+\subfigure[Chord Function, Phase]{
+\includegraphics[width=0.4\textwidth]{300_Chords_Fase.png}
+\label{xifase01}
+}
+\caption{The Chord Function for the random distribution of deltas. 
+Here the energy is $300$ arbitrary units. Note the difference between
+the scales in the real and imaginary part. The latter has a structure much
+closer to zero, while the former is highly (and suspiciously) regular.}
+\label{XiFunction01}
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.4\textwidth]{500_Chords_Real.png}
+\label{xireal02}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.4\textwidth]{500_Chords_Imag.png}
+\label{xiimag02}
+}
+\subfigure[Chord Function, Amplitude]{
+\includegraphics[width=0.4\textwidth]{500_Chords_Ampli.png}
+\label{xiampl02}
+}
+\subfigure[Chord Function, Phase]{
+\includegraphics[width=0.4\textwidth]{500_Chords_Fase.png}
+\label{xifase02}
+}
+\caption{The Chord Function for the random distribution of deltas. 
+Here the energy is $300$ arbitrary units. Note the difference between
+the scales in the real and imaginary part. The latter has a structure much
+closer to zero, while the former is highly (and suspiciously) regular.}
+\label{XiFunction02}
+\end{center}
+\end{figure}
+
+
+
+
+\begin{figure}
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.4\textwidth]{750_Chords_Real.png}
+\label{xireal03}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.4\textwidth]{750_Chords_Imag.png}
+\label{xiimag03}
+}
+\subfigure[Chord Function, Amplitude]{
+\includegraphics[width=0.4\textwidth]{750_Chords_Ampli.png}
+\label{xiampl03}
+}
+\subfigure[Chord Function, Phase]{
+\includegraphics[width=0.4\textwidth]{750_Chords_Fase.png}
+\label{xifase03}
+}
+\caption{The Chord Function for the random distribution of deltas. 
+Here the energy is $7500$ arbitrary units. Note the difference between
+the scales in the real and imaginary part. The latter has a structure much
+closer to zero, while the former is highly (and suspiciously) regular.}
+\label{XiFunction03}
+\end{center}
+\end{figure}
+
+
+
+
+\begin{figure}
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.4\textwidth]{1000_Chords_Real.png}
+\label{xireal04}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.4\textwidth]{1000_Chords_Imag.png}
+\label{xiimag04}
+}
+\subfigure[Chord Function, Amplitude]{
+\includegraphics[width=0.4\textwidth]{1000_Chords_Ampli.png}
+\label{xiampl04}
+}
+\subfigure[Chord Function, Phase]{
+\includegraphics[width=0.4\textwidth]{1000_Chords_Fase.png}
+\label{xifase04}
+}
+\caption{The Chord Function for the random distribution of deltas. 
+Here the energy is $1000$ arbitrary units. Note the difference between
+the scales in the real and imaginary part. The latter has a structure much
+closer to zero, while the former is highly (and suspiciously) regular.}
+\label{XiFunction04}
+\end{center}
+\end{figure}
+
+\section{Some horrible mathematics and geometry}.
+
+We will try to make a semi-analytical tackle to obtain a good
+comprehension of this chord function. 
+Then we can easily distribute points uniformly between the 
+$N$th and $N=1$th energy shell, using Marsaglia's Algorithm \cite{Mar72}.
+We simply choose $2d$ random real numbers, divide the resulting
+vector by its euclidian magnitude, multiply it by 
+$\sqrt[2d]{(u^*)\hbar^d}\Delta$
+and sum $\sqrt{(N)\hbar}$, where $u^* \in [0,1)$. 
+For $d=1$ we obtain something
+ which looks like figure \ref{WigExample}. 
+
+For every element in the sum of the chord function, 
+eq. \ref{chordfun}, we have a random wave whose argument
+is the symplectic area delimited by the paralelogram 
+with sides $\xfase^*, \xifase$. This is just the sum
+of the directed areas of the paralelograms defined
+by each degree of freedom. Then we can approximate an
+argument of symmetry: given that the $\xfase^*$ is
+randomly distributed with no preference for
+direction whatsoever, the odd part of the wave
+(the imaginary component) goes to zero, because
+it is allmost a center-symmetric state \cite{Zambrano09},
+and the figures \ref{XiFunction01} to \ref{XiFunction04}
+point in that direction. Notice the different scales
+between the real and imaginary parts. 
+
+That said, the real and even part of each summand for the
+chord function is of the form:
+
+\begin{equation}
+\cos(\xifase_1\wedge\xfase_1^*/\hbar)\cos(\xifase_2\wedge\xfase_2^*/\hbar)
+\end{equation}
+
+Either one of the functions oscilates very fast, or the other,
+or both of them oscilate at more or less the same frequency. 
+A good way to deal this is to use Hopf fibration coordinates
+\cite{ArnoldDiff, Meyer}. In $d=2$ they would be:
+
+\begin{equation}\label{TorSphere}
+\begin{split}
+p_1&=r \cos\psi \cos \alpha_1\\
+q_1&=r \cos\psi \sin \alpha_1\\
+p_2&=r \sin\psi \cos \alpha_2\\
+q_2&=r \sin\psi \sin \alpha_2
+\end{split}
+\end{equation}
+
+In such manner $r\cos\psi= \|\xfase_1\|$ and $r\sin\psi= \|\xfase_2\|$.
+The function is symmetric in the indices $1$ and $2$, so we can just
+take the contribution from $\psi \in [0, \pi)$ and multiply it by two.
+
+Our first take then, will be to approximate the sum  by an integral,
+assuming $M$ to be very large (which it is).
+
+\begin{equation}
+\chi(\xifase)=\frac{1}{M}\sum_{\xfase^*} \exp \left( \ihb \xifase\wedge\xfase^* \right)
+\rightarrow\int dV(\xfase) \cos \left( \xifase_1\wedge\xfase_1 \right/\hbar)
+\cos \left( \xifase_2\wedge\xfase_2 \right/\hbar)
+\end{equation}
+
+Here the cumbersome part is to calculate the volume element $dV(\xfase)$. 
+The Jacobian of the parametrization in eqs. \ref{TorSphere} is
+as follows:
+
+\begin{equation}
+\begin{split}
+Jac&=
+\left|
+\begin{array}{cccc}
+\cos\psi\cos\alpha_1 & -r\sin\psi\cos\alpha_1 & r\cos\psi\sin\alpha_1 & 0 \\
+\cos\psi\sin\alpha_1 & -r\sin\psi\sin\alpha_1 & r\cos\psi\cos\alpha_1 & 0 \\
+\sin\psi\cos\alpha_1 & r\cos\psi\cos\alpha_1 & 0 & -r\sin\psi\sin\alpha_2 \\
+\sin\psi\sin\alpha_1 & r\cos\psi\sin\alpha_1 & 0 & r\sin\psi\cos\alpha_2 
+\end{array}
+\right|\\
+&=r^3 \sin^3\psi\cos\psi
+(\cos^2\alpha_1\sin^2\alpha_1 +\cos^2\alpha_2\sin^2\alpha_2)
+\end{split}  
+\end{equation}
+
+
+But there is a problem using this system of coordinates.
+They induce a separability in the index $1$ and $2$ set
+of coordinates: the energy will be either concentrated
+in one or the other degree of freedom, as with two 
+weakly or uncoupled harmonic oscillators. In a strong
+chaotic system this is a unjustified discrete symmetry. 
+Energy can  be split among different coordinates
+without regards of the degree of freedom they belong, that
+is, can be concentrated evenly among the momenta, without
+leaving anything in the positions or viceversa.
+In order not to fall in these, we shall pick cleverly 
+our integration limits. 
+
+
+
+The integral comes out easily in the cartesian system:
+\begin{multline}
+\int dp_1 dq_1 dp_2 dq_2 \cos \left( \xifase_1\wedge\xfase_1 \right/\hbar)
+\cos \left( \xifase_2\wedge\xfase_2 \right/\hbar)\\
+=\frac{\hbar^4}{\xi_{1,p}\xi_{1,q}\xi_{2,p}\xi_{2,q}}
+\cos \left( \xifase_1\wedge\xfase_1 \right/\hbar)
+\cos \left( \xifase_2\wedge\xfase_2 \right/\hbar),
+but in order to evaluate we should use either the 
+3-spherical or the toroidal-spherical systems.
+
+
+\end{multline}
+
+\bibliography{ziegos}
+
+\end{document}

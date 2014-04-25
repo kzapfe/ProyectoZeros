@@ -1,0 +1,182 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+\usepackage{float}
+
+%Este paquete le pone una barrera a los floats
+% al final de cada seccion
+\usepackage[section]{placeins}
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+\newcommand{\rd}{\, \mathrm{d}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+\DeclareMathOperator*{\sinc}{sinc}
+
+
+\title{Setting the signs straight. }
+\author{Zapfe}
+
+
+\begin{document}
+
+\maketitle
+
+\section{General things}
+
+I will use the article ``The Weyl Representation in Classical and Quantum
+Mechanics'' \cite{Ozorio98} as the guideline for the conventions. I shall cite other
+articles by the groups as examples about the sign conventions. 
+I must say that this matter is not fundamentally important for the
+search of the zeros, as the only effect it produces is a change of
+sign in the imaginary part of the Chord Function or an inversion
+of the odd part of the centre function. 
+
+The wedge product (symplectic product) follows Arnol'd Convention or left
+hand rule:
+\begin{equation}\label{wedgeleft}
+\xifase\wedge\xfase=\xi_p q_x - \xi_q p_x
+\end{equation}
+In the last equation we also set the convention for the
+sub-indexes and the order of the product shall always be 
+``chord wedge centre'', regardless of either operand
+being taken as a coordinate or as operator (eq. 1.10 in \cite{Ozorio98}).
+
+The quantum translation operator by a chord (vector) $\xifase$ is 
+formally
+\begin{equation}\label{transdef}
+\hat{T}_\xifase=\exp (\ihb \xifase\wedge\xfase),
+\end{equation}
+according to the eq. 4.22 of the mentioned document, or in
+the first equation of ``Semiclassical Theory for small displacements''
+\cite{Zambrano10}, also in the eq. 9 of ``Gaussian representation of 
+extended Quantum States'' \cite{Ozorio11}.
+
+We \emph{define} the chord or Weyl function as the expected
+value for the \emph{negative or backwards} translation:
+\begin{equation}\label{chidef}
+\chi(\xifase):=\langle \hat{T}_{-\xifase} \rangle
+\end{equation}
+There are plenty of interesting ways to get an expected
+value from an operator. Semiclassicaly, our most popular
+strategy is to use the centre (Wigner) function. We \emph{define}
+the Wigner function as follows:
+\begin{equation}\label{wigdef}
+W(\xfase)=\frac{1}{(2\pi\hbar)^2}
+\int \rd \xi_q
+\bra{q_x+\xi_q/2} \hat{\rho}\ket{q_x-\xi_q/2} \exp(-\ihb p_x \xi_q).
+\end{equation} 
+This is the definition found in our canonical
+reference \cite{Ozorio98},
+and also in \cite{Ozorio11} Here $d$ is the number of 
+degrees of freedom. This quasi-distribution in a space
+which can be thought of classical phase space
+can be used for obtaining expected values just as if where a
+probability density function:
+\begin{equation}
+\langle \hat{A} \rangle =
+\int \rd \xfase W(\xfase) A(\xfase)
+\end{equation}
+The tricky part here is that $A(x)$ is a function
+on this space, not a quantum operator. The ``of course'' statement
+is that this function should be an adequate representation of
+that $\hat{A}$ operator. The recipe for obtaining this
+symbol is fairly straightforward:
+\begin{equation}\label{opcendef}
+A(\xfase)=
+\int \rd \xi_q
+\bra{q_x+\xi_q/2} \hat{A}\ket{q_x-\xi_q/2} \exp(-\ihb p_x \xi_q).
+\end{equation} 
+As stated in eq. 5.13. Then we see that the Wigner function
+is simply the normalised representation of the density operator.
+
+\section{Now for the chord function}
+
+To calculate the $T_{\xifase}(x)$ symbol for the translation 
+operator $\hat{T}_{\xifase}$ we shall proceed carefully step by step.
+First thing first, we need to see what happens when we use
+the operator on a position eigenstate:
+\begin{equation}
+\hat{T}_{\xifase}\ket{q_x}=
+\exp(\ihb \xi_p\xi_q/2 + \xi_p q_x)\ket{q_x+\xi_q}
+\end{equation}
+Obtained by using 4.22, 4.17, 4.20 and 4.33 of \cite{Ozorio98}.
+This should be equivalent to 
+\begin{equation}
+\hat{T}_{-\xifase}\ket{q_x}=
+\exp(\ihb \xi_p\xi_q/2 - \xi_p q_x)\ket{q_x-\xi_q}.
+\end{equation}
+So that the integrated in \ref{opcendef} has the following aspect:
+\begin{align}
+T_{-\xifase}(\xfase)&= 
+\int \rd \mu \bra{q+\mu/2}\hat{T}_{-\xifase}\ket{q-\mu/2}
+\exp(-\ihb p \mu)\\
+&=\exp (\ihb [\xifase_p\xifase_q/2-\xifase_p q_x])
+\int \rd \mu \braket{q_x +\mu/2}{q_x -\mu/2-\xifase_q}
+\exp  (-\ihb \mu p_x)\\
+&=\exp (\ihb [\xifase_p\xifase_q/2-\xifase_p q_x])
+\int \rd \mu \delta(q_x-\mu-\xifase_q-q_x-\mu/2) 
+\exp  (-\ihb \mu p_x)\\
+&=\exp\big[\ihb(\xifase_p\xifase_q/2-\xifase_p q_x)\big]
+\exp\big[-\ihb(p_x (-\xifase_q))\big]\\
+&=\exp\big[\ihb(-\xifase\wedge\xfase+\xifase_p\xifase_q/2))\big]
+\end{align}
+And here begins my bewilderment: why does it appear on almost all of the
+groups papers the expression 
+$\int \rd \xfase W(\xfase) \exp (\ihb \xifase\wedge\xfase)$ ?
+I know that the phase $\xifase_p\xifase_q/2$ can be safely be
+ignored, but the sign convention seems plainly wrong to me. An
+exception can be seen on ``Pure State Correlations: chords in phase
+space'' \cite{Ozorio05}, in eq. 32 and 33. Also by applying
+the definition for the translation operator in the same paper 
+(eq. 15) to a $q$ eigenket, we end with the same result. 
+
+There is also another way to achieve that result, which of course
+is following the reasoning in \cite{Ozorio98}, and chequing if
+the result of combining equation 4.26 and  5.6 gives what appears there.
+It is right, and it is the same: 
+$T_\xifase(\xfase)=\exp(\ihb\xifase\wedge\xfase)$. In that paper the
+ordering of the product is different, so a minus sign appears, but that poses
+absolutely no problem.
+
+So, I think my confusion arose because there are some papers which lack a minus
+sign in the symplectic Fourier Transform. Also to notice, there are
+factors missing from the expansion of the exponential, but that was already
+tackled. 
+
+\bibliography{/home/karel/proyectozeros/firsttries/ziegos}
+
+
+
+\end{document}

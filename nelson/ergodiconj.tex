@@ -1,0 +1,603 @@
+\documentclass[12pt]{iopart}
+
+\def\II{\mathcal{I}}
+\font\amsb=msbm10
+
+\newcommand{\parcial}[2]{\ensuremath{\frac{\partial#1}{\partial #2}}}
+\newcommand{\parcialn}[3]{\ensuremath{\frac{\partial^{#1}#2}{\partial#3^{#1}}}}
+\newcommand{\dparcial}[3]{\ensuremath{\frac{\partial^{2}#1}{\partial#2\partial#3}}}
+\newcommand{\braket}[2]{\ensuremath{\left\langle#1\big|#2\right\rangle}}
+\def\hslash{\mbox{\amsb\char'176}}
+\def\p{{\bm{p}}}
+\def\q{{\bm{q}}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\smeq}{\! = \!}
+\newcommand{\smneq}{\! \neq \!}
+\newcommand{\smpl}{\! + \!}
+\newcommand{\smmi}{\! - \!}
+\newcommand{\disp}{\displaystyle}
+\newcommand{\vecp}{{\mathbf p}}
+\newcommand{\vecq}{{\mathbf q}}
+\newcommand{\vecI}{{\mathbf I}}
+
+\newcommand{\vxi}{{\mathbf \xi}}
+\newcommand{\x}{{\mathbf x}}
+\newcommand{\tx}{\tilde{\mathbf x}}
+\newcommand{\X}{{\mathbf X}}
+\newcommand{\Xb}{\bar{\mathbf X}}
+\newcommand{\dX}{\delta{\mathbf X}}
+\newcommand{\y}{{\mathbf y}}
+\newcommand{\Y}{{\mathbf Y}}
+\newcommand{\varu}{{\mathbf u}}
+\newcommand{\vl}{{\mathbf l}}	
+\newcommand{\vecth}{{\mathbf \theta}}
+\newcommand{\J}{{\mathbf J}}
+%
+\newcommand{\R}{{\mathbf R}}
+\newcommand{\C}{{\mathbf C}}
+\newcommand{\K}{{\mathbf K}}
+\newcommand{\vP}{{\mathbf P}}
+\newcommand{\vQ}{{\mathbf Q}}
+\newcommand{\ve}{{\mathbf e}}
+\newcommand{\W}{{W}}
+\newcommand{\A}{{\hat{A}}}
+\newcommand{\tA}{{\widetilde{A}}}
+\newcommand{\B}{{\hat{B}}}
+\newcommand{\tB}{{\widetilde{B}}}
+\newcommand{\opA}{{\hat{A}}}
+\newcommand{\opB}{{\hat{B}}}
+\newcommand{\opC}{{\hat{C}}}
+\newcommand{\opR}{{\hat{R}}}
+\newcommand{\opT}{{\hat{T}}}
+\newcommand{\oprho}{{\hat{\rho}}}
+\newcommand{\oprhot}{{\hat{\rho_t}}}
+\newcommand{\trho}{{\widetilde{\rho}}}
+\newcommand{\mH}{{\mathbf H}}
+\newcommand{\opH}{\hat{H}}
+\newcommand{\opU}{\hat{U}}
+\newcommand{\opI}{\hat{I}}
+\newcommand{\tH}{{\widetilde{H}}}
+\newcommand{\tS}{{\widetilde{S}}}
+\newcommand{\opL}{\hat{L}}
+\newcommand{\opLd}{\hat{L}^{\dagger}}
+\newcommand{\oq}{\hat{q}}
+\newcommand{\op}{\hat{p}}
+\newcommand{\oqt}{\hat{q}^{\dagger}}
+\newcommand{\opt}{\hat{p}^{\dagger}}
+\newcommand{\oa}{\hat{a}}
+\newcommand{\oat}{\hat{a}^{\dagger}}
+\newcommand{\opx}{\hat{\mathbf x}}
+\newcommand{\mA}{{\mathbf A}}
+\newcommand{\M}{{\mathbf M}}
+\newcommand{\F}{{\mathbf F}}
+\newcommand{\vD}{{\mathbf \Delta}}
+\newcommand{\zero}{{\mathbf 0}}
+\newcommand{\RR}{{\mathbb R}}
+\newcommand{\tw}{\widetilde{w}}
+\newcommand{\tW}{\widetilde{W}}
+\newcommand{\chf}{\chi}
+\newcommand{\tV}{\widetilde{V}}
+\newcommand{\Id}{{\mathbf I}}
+\newcommand{\sh}{\mathop{sh}}
+\newcommand{\vleqsim}{ {\scriptstyle {< \atop ^\sim}} }
+\newcommand{\geqsim}{ {\scriptstyle {> \atop ^\sim}} }
+\newcommand{\der}{\partial}
+\newcommand{\scal}{\centerdot}
+\newcommand{\GO}{{\mathcal O}}
+\newcommand{\vlc}{\left\{}
+\newcommand{\rc}{\right\}}
+
+\renewcommand{\Im}{{\rm Im}}
+\newcommand{\vct}[1]{\ensuremath\mbox{\boldmath$ #1 $}}
+\newcommand{\Vxi}{\vct \xi}
+\newcommand{\Veta}{\vct \eta}
+\newcommand{\Vl}{\vct l}
+\def\ro{\hat{\rho}}
+\begin{document}
+\title{Weak quantum ergodic conjecture: blind spots}
+\author {Karel Zapfe, Fabricio Toscano and Alfredo M. Ozorio de Almeida\footnote{ozorio@cbpf.br}}
+\address{Centro Brasileiro de Pesquisas Fisicas,
+Rua Xavier Sigaud 150, 22290-180, Rio de Janeiro, R.J., Brazil}
+\date{\today}
+\date{13/10/2010}
+\begin{abstract}
+
+\end{abstract}
+
+
+
+\maketitle
+\section{Introduction}
+
+The time average of any observable evolved by an ergodic classical Hamiltonian,
+$H(\x)= H(p,q)$, is determined by the probability distribution, $N_E \delta(H(\x)-E)$,
+where $\delta$ is the Dirac delta-function, E is the energy and $N_E$ 
+is the normalization constant. The quantum ergodic conjecture of Voros \cite{Voros76} and Berry \cite{Berry77b}
+is that this same distribution can be reinterpreted as the semiclassical limit 
+of the Wigner fuction \cite{Wigner}, $W(\x)$, for an eigenstate of the corresponding quantum Hamiltonian 
+that has the same eigenenergy E. 
+
+The immediate consequence of this conjecture concerns the expectation value of quantum observables.
+The Weyl representation, $A(\x)$, of an operator, $\opA$, is,
+in the case of an observable, semiclassically close to the corresponding classical function.
+Since the expectation value is given by
+\begin{equation}
+\langle \opA \rangle = \int d\x \;W(\x)\;A(\x) \ ,
+\label{expectation}
+\end{equation}
+it follows that the conjecture leads to the same expectation value that would be obtained classically.
+This is, indeed, confirmed by Shnirelman's theorem \cite{Shnirelman, Verdiere, Zelditch} for a majority of eigenstates, 
+albeit with severe restrictions for the allowed classes both of the observables and of the ergodic systems.
+
+It is important to note that, while the Shnirelman theorem concerns individual states 
+and expectation values, it is not formulated directly in terms of Wigner functions.
+Conversely, Wigner functions that are peaked on the classical energy shell
+have been derived semiclassically, but for mixed states within a narrow energy window.
+Even so, the appropriate form is given in terms of highly oscillatory Airy functions, 
+rather than delta functions.
+Further Wigner oscillations arise if one reduces the width of the energy window, 
+so that one may presume individual pure Wigner functions to have complex detailed pattern,
+full of negative regions and interferences, that is far removed from the original quantum ergodic conjecture.
+
+There are at least three reasons which confirm the need to modify this conjecture.
+First, there is the theorem by Hudson \cite{Hudson} that the only non-negative Wigner function for a pure state
+is the Gaussian representation of  a coherent state. A second important result is the proof by Balazs \cite{Balazs}
+that a delta function on a curved manifold does not represent a positive operator.
+\footnote{The construction of a positive operator that would otherwise have a negative expectation
+is only given for one degree of freedom, but it can easily be generalized.}
+Last but not least, there is the fact that correlations 
+of a true Wigner function for an individual pure state are invariant 
+with respect to Fourier transformation \cite{Chountasis, OVS}. 
+Thus, a large scale structure (the energy shell itself) must be accompanied 
+by oscillations with large spatial wave vectors,
+that is, at very fine scales. It follows that
+expectation values that mimmick those of classical mechanics
+can only arise because the smooth functions corresponding to typical observables
+average out fine Wigner oscillations in (\ref{expectation}).
+The conclusion is that the original quantum ergodic conjecture of Voros and Berry 
+is too strong because it relies on a complete description of the quantum state,
+which cannot be correct.
+
+One might then question the value of aiming a conjecture at a full representation
+of a quantum ergodic state, such as the Wigner function, 
+if all it did were to determine good expectation values. 
+However, one also obtains predictions that are much more subtle than the gross
+correspondence of expectations to their classical values. Most notable, so far, is the use 
+of the ergodic conjecture by Berry to obtain local satistical correlations of wave functions.
+Eventually, the ever increasing experimental refinement in manipulating quantum states
+may allow one to access other delicate properties, such as interference phenomena,
+for ergodic eigenstates.
+
+How can one maintain the higher predictive power of the Wigner function mode 
+of the ergodic conjecure, without stumbling on its shortcomings? The most promissing alternative
+is to focus on the expectation values of the unitary {\it translation operator}
+\begin{equation}
+\hat{T}_{\Vxi} = \exp{\left[\frac{i}{\hbar}(\Vxi\wedge \hat{\x})\right]}=
+\exp{\left[\frac{i}{\hbar}(\Vxi_p\cdot \hat{q}-\Vxi_q\cdot \hat{p})\right]} \ ,
+\end{equation}
+which acts on the state $|\psi\rangle$ to produce the new state
+$|\psi_{\Vxi}\rangle=\hat{T}_{\Vxi}|\psi\rangle$ in strict
+correspondence to the classical translation, $\x \mapsto \x + \Vxi$,
+by the {\it chord}, $\Vxi$.
+%
+\footnote{ In the optical context $\hat{T}_{\Vxi}$ is
+usually referred to as the {\it displacement operator} and is
+expressed in terms of creation and annihilation operators for the
+harmonic oscillator.}
+The expectation of the translation operator in (\ref{expectation}) 
+is just the Fourier transform of the Wigner function:
+\begin{equation}
+\langle\hat{T}_{-\Vxi}\rangle = 
+\int d\x \;W(\x)\; \exp\left\{\frac{i}{\hbar}(\Vxi\wedge \x)\right\} = \chi(\Vxi) .
+\label{chift}
+\end{equation}
+This is known as the {\it chord function} \cite{OzReport}, 
+as one of the {\it quantum characteristic functions} of quantum optics \cite{Leonhardt}
+(or the {\it Weyl function} as in \cite{Chountasis}); 
+it is a full representation of the quantum state.
+Evidently, both the real and the imaginary parts of 
+$\exp{\left\{\frac{i}{\hbar}(\Vxi\wedge \x)\right\}}$
+are smooth functions of $\x$, so that the chord function is insensitive to the high
+frequency oscillations of $W(\x)$ if $\Vxi$ is small, 
+just as one finds for the expectations of typical observables.
+
+Expectation values in the full chord representation are given by a similar formula to (\ref{expectation}), i.e.,
+\begin{equation}
+\langle \opA \rangle = \int d\x \;\chi(-\Vxi)\;\tilde{A}(\Vxi) \ ,
+\label{chordexpect}
+\end{equation}
+in which the {\it chord symbol}, $\tilde{A}(\Vxi)$, is the Fourier transform of $A(\x)$. 
+So, any power of products of position or momentum operators has its chord symbol given
+by derivatives of delta functions at the origin. For example, we obtain explicitly
+the moments
+\be
+\langle\hat\p^n\rangle=(-i\hbar)^{n}\left.\frac{\partial^n\chi}{\partial\xi_q^n}\right|_{\Vxi=0}
+\quad\quad\textrm{ and }\quad\quad
+\langle\hat\q^n\rangle=(i\hbar)^{n}\left.\frac{\partial^n\chi}{\partial\xi_p^n}\right|_{\Vxi=0}.
+\label{deri-moment}
+\ee
+Hence, full knowledge of the chord function is not required in order to obtain
+the expectation value of a smooth observable, only its behaviour near the origin.
+It thus turns out that we obtain the same predictions in the case of quantum ergodicity 
+from the {\it weak quantum ergodic conjecture}, namely
+\be
+\chi_E(\Vxi) \rightarrow N_E \int d\x \; \exp\left\{\frac{i}{\hbar}(\Vxi\wedge \x)\right\} \; \delta(H(\x)-E).
+\label{weakhyp}
+\ee
+Here, both 'limits', $\Vxi\rightarrow 0$ and $\hbar\rightarrow 0$, should be interpreted 
+in a heuristic sense. This is familiar in the use of the 'semiclassical limit', in which
+good approximations may follow from the extrapolation to finite values of Planck's constant
+of results derived in the strict asymptotic limit, $\hbar \rightarrow 0$.
+Just so, with the short chord limit: It will be shown here how 
+the strict limit $\Vxi \rightarrow 0$ can be extended to a finite neighbourhood of the origin,
+so as to rederive the previous conjecture for local correlations of quantum ergodic eigenfunctions.
+
+Better still, one finds that this reasonable extension leads to the prediction of new delicate
+features concerning the orthogonality of a state with its translation, which, nonetheless, 
+depend entirely on the classical backbone of the state. The pattern for these special orthogonal 
+translations, refered to as {\it blind spots}, have indeed been found to be determined by the underlying
+classical structure in the case of superpositions of coherent or squeezed states and also for the analogous
+approximation to (\ref{weakhyp}) for a single degree of freedom, for which ergodicity is trivial.
+For integrable systems with higher degrees of freedom, states of similar energy will have different
+patterns of blind spots, whereas the weak ergodic conjecture leads to nearly identical patterns
+(near the chord origin) for all ergodic eigenstates lying within a narrow energy window. 
+
+.................................................................................................
+
+\cite{Wigner}:
+The latter can be redefined, following Royer \cite{OzReport,Royer}, as
+\be
+W(\x)=\frac{1}{(\pi\hbar)}\langle\psi|\hat{R}_{\x}|\psi\rangle,
+\label{Wrefl}
+\ee
+where $\hat{R}_{\x}$, the Fourier transform of the translation operators,
+corresponds classically to the phase space reflection through the {\it reflection centre} $\x$,
+i. e. $\x_0 \mapsto 2\x - \x_0$.
+ 
+
+
+
+
+
+
+
+\section{Small chords and moments of position and momentum}
+
+
+
+
+The definition of the chord function (\ref{chift}) allows us to calculate the distribution moments, or statistical moments, of $\hat\p$ and $\hat\q$ in the form of the derivatives of the chord function, i.e. explicitly
+Conversely, if we know all the moments, then we know the chord function, 
+because the expansion in a Taylor series of the chord function is
+\be
+\chi(\Vxi)=
+\sum_{n=0}^{\infty}\frac1{n!}\sum_{k=0}^{n}\frac{(-1)^{k}}{(i\hbar)^n}\left(\hspace{-.2cm}\begin{array}{c}n\\n-k\end{array}\hspace{-.2cm}\right)%\\\times
+\left\langle\mathcal{M}\left(\hat\q^{n-k}\hat\p^{k}\right)\right\rangle\hspace{.1cm}\xi_q^k\xi_p^{n-k},
+\label{X-exp-momentdis}
+\ee
+where,
+\be
+\mathcal{M}\left(\hat\q^{n}\hat\p^{k}\right)=
+\frac{1}{n+k}\sum_{P_{nk}}\hat\q^{n}\hat\p^{k}
+\label{permutations}
+\ee
+and $P_{nk}$ all possible permutations of products of $q^n$ and $p^k$. 
+The equation \eref{permutations} corresponds to the symmetrization of the product $\q^n\p^k$, 
+being the important feature of the Weyl symbols, which guarantees the symplectic invariance of the chord function.
+\par
+Thus, it is clear that knowledge of the chord function in an infinitesimal neighbourhood of the origin
+is equivalent to information on the expectation for all observables in the form of polynomials in position and momenta.
+Of course, the asumption of knowledge for all statistical moments and of analiticity for the chord function
+would then determine it everywhere in the phase space of chords. Our conjecture is that (\ref{weakhyp})
+remains a good approximation for large enough chords to provide none-obvious information. 
+
+(deduction of Berry correlations from chord function)
+
+
+
+
+
+
+
+
+\section{ Global correlations, nodal surfaces and blind spots}
+
+The local correlation function obtained above describes statistical properties of a particular,
+though important representation, i.e. the wave function. In contrast, the overlap of a density operator, $\ro$,
+with its translation, $\ro_{\Vxi} = \hat T_{\Vxi}\ro\hat T^\dag_{\Vxi}$,
+\begin{equation}
+C(\Vxi)\equiv\tr [\ro \; \ro_{\Vxi}]=\frac{1}{(2\pi\hbar)^L}\int |\chi(\Veta)|^2 \; e^{-i\Vxi\wedge\Veta/\hbar}d\Veta
+= |\chi(\Vxi)|^2,
+\label{correlchi}
+\end{equation}
+is independent of any representation, even if we have here given two expressions in terms of the chord function.
+The convenience of this particular representation is that simply:
+\be
+\chi_{\Vxi}(\Veta)= e^{-i\Vxi\wedge\Veta/\hbar} \; \chi(\Veta).
+\label{transchord}
+\ee
+The last equation in (\ref{correlchi}) shows that the zeros of this global correlation function are just those of the chord function itself.
+Some basic facts about correlations and the chord function that were discussed in \cite{ZOA10} 
+will be generalized now for more than one degree of freedom, 
+because of their relevance to the weak quantum ergodic conjecture.
+
+The chord function \eref{chift} is the Fourier transform of the real Wigner function and is in general complex.
+Indeed, the fact that it represents a Hermitian operator, only implies the constraint, 
+$\chi(-\Vxi) = \chi(\Vxi)^*$, where the asterix denotes complex conjugation.
+On the other hand, the cosine and the sine transforms, $c(\Vxi)$ and $s(\Vxi)$ of the Wigner function are real, 
+i.e. the real and imaginary part of $\chi(\Vxi)$, respectively. 
+We now construct the hermitian operators 
+\begin{equation}
+\hat c_{\Vxi} = \frac{\hat{T}_{\Vxi} + \hat{T}_{-\Vxi}}2
+\quad\textrm{ and }\quad
+\hat s_{\Vxi} = \frac{\hat{T}_{\Vxi} - \hat{T}_{-\Vxi})}{2i},
+\end{equation} so that 
+$c(\Vxi) = \langle\psi|\hat c_{\Vxi}|\psi\rangle$  and
+$s(\Vxi) = \langle\psi|\hat s_{\Vxi}|\psi\rangle$.
+\footnote{ An alternative interpretation is to consider $c(\Vxi)$ and $s(\Vxi)$
+to be the chord functions for appropriately symmetrized states \cite{Blind}.} 
+In the case when the state $|\psi\rangle$ has a centre of symmetry
+(i.e. there exists a centre, $\x$, such that $\R_{\x}|\psi\rangle = \pm |\psi\rangle$)
+then $s(\Vxi)=0$, so that $\chi(\Vxi)=c(\Vxi)$ \cite{OVS, Blind}. 
+
+The real functions $c(\Vxi)$ and $s(\Vxi)$ will generically have nodal surfaces of codimension-1
+in the $2L$-dimensional phase space of chords.
+In the general case where there is no reflection symmetry, an intersection of a nodal surface
+of $c(\Vxi)$ with a nodal surface of $s(\Vxi)$ defines a codimension-2 surface, 
+the locus of translations for which the translated state, $|\psi_{\Vxi}\rangle$, 
+becomes orthogonal to $|\psi\rangle$. This is strictly only a {\it blind spot} \cite{Blind,ZOA10}
+in the case where $L=1$, but it remains true that these remarkable translations will appear as
+isolated points on general 2-dimensional sections of the chord space, where they intersect
+the codimension-2 {\it blind manifold}. 
+Because $\chi(0)= 1$, the origin lies on a nodal surface of $s(\Vxi)$.
+In a neighborhood of the origin, the chord function may be approximated by
+\begin{eqnarray}
+%\fl
+\chi(\Vxi)&=&\langle\hat T_{-\Vxi}\rangle
+\simeq
+\left\langle1-\frac{i}{\hbar}\Vxi\wedge\hat \x-\frac{1}{\hbar^2}(\Vxi\wedge\hat \x)^2+\cdots\right\rangle
+\\&=&
+1-\frac{i}\hbar\Vxi\wedge\langle\hat \x\rangle-\frac{1}{\hbar^2}\langle(\Vxi\wedge\hat \x)^2\rangle+\cdots
+\label{aproxto2}
+\end{eqnarray}
+At first sight, it appears that the nodal surface of $s(\Vxi)$ crossing the origin is locally parallel 
+to the direction of $\langle\hat\x\rangle$, because the behaviour of the chord function at the origin 
+is dominated by the first moment. However, this is an error in \cite{ZOA10}, where it was overlooked
+that $\langle\hat\x\rangle$ only determines the overall phase of the chord function, because of (\ref{transchord}).
+Thus, it will be the third moments that determine the direction of the nodal surface of $s(\Vxi)$ at the origin.
+ 
+On the other hand, because the origin is a local maximum of the chord function, 
+the nodal surfaces of $c(\Vxi)$ for small chords avoid the origin. 
+It follows from \eref{aproxto2} that the  closest nodal surface surrounding the origin is given approximately by
+\begin{equation}
+\langle(\Vxi\wedge\hat \x)^2\rangle =  \Vxi \mathbf K \Vxi = \hbar^2,
+\label{ellipse}
+\end{equation} 
+if we neglect higher order terms. This positive quadratic form is defined in terms of 
+the Schr\"odinger covariance matrix 
+\cite{Schr}, $\mathbf K$, which establishes the extent of the state in phase space.
+The nodal line of $c(\Vxi)$ is thus approximated by the ellipsoid \eref{ellipse} and the closest blind spots 
+lie along the intersection of this ellipsoid with the nodal surface of $s(\Vxi)$ that contains the origin. 
+It is important to note that the present estimate for the pair of {\it closest blind spots}
+depends only on the first moments.
+
+The highly excited Bohr-quantized states for $L=1$ have a covariance matrix that is well described 
+by the classical averages discussed in the previous section, i.e. $\det \mathbf K \gg (2\pi\hbar)^2$. 
+Thus, the ellipse \eref{ellipse} lies in the deep interior of a neighbourhood of the origin 
+with $\sqrt{\hbar}$ linear dimensions. The same behaviour is here predicted for the blind
+spots resulting from the intersection of the approximate ellipsoidal nodal surface of $c(\Vxi)$
+with the nodal surface of $s(\Vxi)$ that contains the origin, in the case of quantum ergodic states.
+This is in line with the discussion in \cite{Blind}: Notwithstanding the delicate quantum nature
+of blind spots, they can be found in the `classical' neighbourhood of the origin and they
+are precisely determined by classical features. This apparent paradox is resolved by
+the reciprocal relation between large and small scales of pure states in phase space
+that follows from the universal invariance of the intensity of the chord function for pure states
+with respect to Fourier transformation \cite{Chountasis, OVS}, that appears in (\ref{correlchi}).
+So far, we have only estimated the closest blind spots to the origin. It is hopeless to pursue the Taylor
+expansion \eref{aproxto2} any further to find further orthogonalities. On the other hand, 
+the real and imaginary parts of the chord function (\ref{weakhyp})
+have many nodal surfaces in the region where it may approximately hold.
+  
+
+
+
+
+
+
+\section{Characteristic function for classical energy shells}
+
+The Fourier transform of a Dirac delta-function on an energy shell can be obtained analytically
+in the case of the harmonic oscillator. A linear canonical transformation (which leaves the chord function
+invariant) simplifies the Hamiltonian to
+\be
+H(\x) = \sum_l {\frac{\omega_l}{2}({p_l}^2 + {q_l}^2)}. 
+\ee
+Thus, the Fourier transform of a classical probability density that is just a delta function on the energy shell,
+inserted in (\ref{weakhyp}), becomes
+\be
+\chi_E(\Vxi)= \frac{2^L N_E}{\sqrt{\omega_1...\omega_L}}\int dpdq \; 
+\exp\left\{\sum\frac{2i}{\hbar\omega_l} \Vxi_l\wedge \x_l\right\}\; \delta(\sum ({p_l}^2 +{q_l}^2)-E) = J(|\Vxi|)
+\label{HOchi}
+\ee
+This is a real function, as it should be, because the energy shell is symmetric around the origin,
+and it is isotropic. Also one verifies that the nodal surfaces, concentric spheres, 
+pack in closer to the origin with increasing energy.
+
+In the case of a single degree of freedom, we have $\chi = J_0$ with circular nodal lines.
+This is the approximation for the harmonic oscillator eigenstates, obtained in \cite{OVS}
+for short chords. The eigenstates of higher dimensional harmonic oscillators correspond
+to separable tori, so the classical distribution will be a product of delta functions
+over the quantized circles in each of the conjugate phase space planes.  
+From this, one immediately obtains the short chord approximation for the eigenstates
+as products of Bessel functions with nodal lines along the cylinders, $J_0(|\xi|)=0$,
+which is far removed from the characteristic function for a full energy shell.
+
+In the absence of a full semiclassical theory for chaotic eigenstates,
+we resort to numerical calculations of the classical characteristic function for a particular system,
+so as to compare it with the quantum chord function in the following section.
+The classical {\it Nelson Hamiltonian} is defined as \cite{BarDav},
+\begin{equation}
+\label{hamilnelson}
+\mbox{H}({\bf x}_1,{\bf x}_2)=
+\frac{p_1^2+p_2^2}{2} + \frac{\omega_1^2\,q_1^2}{2}+\omega_2(q_2-\frac{q_1^2}{2})^2
+\;,
+\end{equation} 
+where ${\omega_1}^2= .1$ and $\omega_2= 1$,
+and its quantum counterpart results from the replacement: 
+${\bf x}_1\equiv(q_1,p_1)\rightarrow (\hat{q}_1,\hat{p}_1)$ and
+${\bf x}_2\equiv(q_2,p_2)\rightarrow (\hat{q}_2,\hat{p}_2)$ in (\ref{hamilnelson}).
+The restriction of the  classical Hamiltonian (\ref{hamilnelson}) 
+to the 2-D $\X'$-planes $q_1=Q^{'}$ and $p_1=P^{'}$
+defines harmonic oscillators in the $\x_2$ variables: 
+$h_2(\x_2)=\mbox{H}(\X',{\bf x}_2)$. 
+The classical trajectories of this harmonic oscillator
+coincide with the intersection of the energy shell of the full Hamiltonian 
+with the planes $q_1=Q^{'}$ and $p_1=P^{'}$.
+The alternative classical sections $\x_2=\X'$ on (\ref{hamilnelson}) defines
+anharmonic oscillators, $h_1(\x_1)=\mbox{H}({\bf x}_1,\X')$, 
+whose closed trajectories are not ellipses.  
+
+The classical dynamics of this system has been studied in considerable depth.
+Instead of merely relying on the Poincar\'e section for a few typical trajectories
+(exhibited in \cite{BarDav, RibAg}
+(see \cite{PradAg} and references therein)
+made extensive studies of a large number of the periodic orbits 
+with relatively low period and their elaborate bifurcation trees as a function of energy. 
+It was possible to follow these families of periodic orbits as they
+become unstable in an energy range above $E=0.3$, though a few recover 
+stability at $E\approx 10$. All quantum states here depicted were calculated
+in an energy window  $0. 81< E < 0.84$, 
+where it can be guaranteed that only orbits of very high period
+may be stable. Hence, the knowledge of the general pattern 
+for the dynamics from the skeleton of periodic orbits,
+precludes any stability islands that are not very thin, so that
+the system is nearly ergodic. 
+The choice of $\hbar=0.05$ allows us to compute the eigenstates
+in the energy range corresponding to (quasi-)chaotic motion for this classical Hamiltonian.
+
+The Nelson Hamiltonian has no centre of symmetry, so that the immaginary part of the chord function
+is not identically zero. Hence there will be intersections of the real and the immaginary
+nodal surfaces. The Fourier transform of the energy shell was calculated numerically,
+by averaging $\exp\left\{\frac{i}{\hbar}(\Vxi\wedge \x)\right\}$ for discrete points 
+placed randomly in a narrow neighbourhood of the energy shell. This method was callibrated
+by calculating the exact Bessel functions for the harmonic oscillator.
+
+
+
+
+\section{Comparison of ergodic and direct numerical chord functions}
+
+It would be natural to use a harmonic oscillator basis 
+for calculating those of the Nelson Hamiltonian,
+but it is more efficient to use a basis of {\it distorted oscillators} \cite{TosOa99}.
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+\section{Discussion}
+
+
+
+
+
+The chord function portrays a pure state by exhibiting its overlap with all its possible translations.
+There are cases where such a state has a clear classical correspondence: the superposition of well
+separated coherent or squeezed states treated in \cite{ZO}, Bohr-quantized states analyzed in \cite{ZOA10}
+and their integrable generalization to higher degrees of freedom. In all these cases, it has been found
+that the chord function is determined by a purely classical average in a nontrivial neighbourhood of short chords.
+Our conjecture here merely extends this scenario to quantum ergodic states.
+Contrary to naive considerations, the decay in the square modulus of the overlap is not smooth 
+and classical like, within this neighbourhood with roughly a volume of $\hbar^L$. 
+We have here verified computationally that blind spots, denoting zero overlap, 
+arise deep within this classically small neighbourhood.
+This feature depends basically on the Schr\"odinger covariance matrix: The greater its determinant,
+the closer to the origin will the blind spots lie.  
+
+To obtain complete information about a quantum state, one must specify the chord function
+everywhere. It is certain that sufficiently large translations, 
+for there to be no longer a classical overlap with the original energy shell,
+lie in an evanescent region of the chord function, just as occurs for one degree of freedom \cite{ZOA10}.
+No prediction is here made about the rich structures that lie in between this outer region and
+the neighbourhood of the origin for quantum ergodic states. Indeed, the essence of our conjecture
+is to specify the chord function only in a small but relevant region. Thus one avoids the
+pitfalls of overspecifying the Wigner function in the original form of the conjecture.
+
+One possibility for future investigation is to substitute the delta-function over the
+energy shell in the definition of the chord function for the quantum ergodic conjecture
+by an Airy function. This is the correct form for the Wigner function for a mixture of
+eigenstates in a narrow energy window [Berry, Toscano...]. Thus, even if it gives the same
+chord function in the limit of short chords, it may be a better approximation for longer chords.
+
+
+
+
+\ack{We thank Rodolfo Jalabert and Raul Vallejos for interesting discussions. Financial support by...
+is gratefully acknowledged.} 
+
+
+
+\section*{References}
+\begin{thebibliography}{99}
+\bibitem{Voros76} Voros A 1976 Ann. Inst. Henri Poincare $\bm{26}$ 31
+\bibitem{Berry77b} Berry M. V. 1977 Regular and irregular semiclassical wavefunctions,
+J. Phys. A {\bf 10}, 2083-2092.
+\bibitem{Wigner} Wigner E P 1932 \emph{Phys Rev} $\bm{40}$ 749-759
+\bibitem{Shnirelman} Shnirelman A. 1974 Ergodic properties of eigenfunctions, Uspekhi Mat. Nauk. {\bf 29}, 181-182.
+\bibitem{Verdiere}  Colin de Verdi\`ere Y. 1985 Ergodicit� et fonctions propres du laplacien, 
+Comm. Math. Phys. {\bf 102}, 497-502.
+\bibitem{Zelditch} Zelditch S Math Encyclopedia
+\bibitem{Hudson} Hudson R L 1974 Rep. Math Phys. $\bm{6}$ 249
+\bibitem{Balazs} Balazs N Physica A
+\bibitem{Chountasis} Chountasis S and Vourdas A 1998
+         \emph{Phys. Rev. A} $\bm{58}$ 848 - 855 
+\bibitem{OVS} Ozorio de Almeida A M, Vallejos R and Saraceno M 2005
+        \emph{J. Phys. A: Math. Gen} $\bm{38}$ 1473-1490 
+\bibitem{OzReport} Ozorio de Almeida A M 1998
+        \emph{Phys. Rep.} $\bm{295}$ 265
+\bibitem{ZOA10} Zambrano E and Ozorio de Almeida A M 2010 \emph{J. Phys. A} $\bm{43}$ 000000 
+\bibitem{Blind} Zambrano E and Ozorio de Almeida A M 2009 
+        to appear in \emph{New J Phys}
+\bibitem{BarDav} Baranger M. \& Davies K. T. R. 1987 Periodic trajectories for a two-dimensional nonintegrable
+Hamiltonian,  Ann. Phys. (N.Y.) {\bf 177}, 330.
+\bibitem{RibAg} Ribeiro A.D., de Aguiar M.A.M. and Baranger M. 
+Semiclassical Approximations Based on Complex Trajectories, Phys. Rev. E69 (2004) 66204.
+\bibitem{PradAg} Prado S. P. and de Aguiar M. A. M. 1994 Effects of Symmetry Breakdown 
+in the Bifurcations of Periodic Orbits of a Nonintegrable Hamiltonian System, 
+Ann. Phys. (N.Y.) {\bf 231},  290-310.
+\bibitem{TosOa99}  Toscano F. \& Ozorio de Almeida, A. M. 1999
+Geometrical approach to the distribution of the zeros for the Husimi function,
+J. Phys. A {\bf 32}, 6321-6346.
+\bibitem{Berry77} Berry M V 1977
+             \emph{Phil. Trans. R. Soc.} $\bm{287}$, 237
+\bibitem{VanVleck} Van Vleck J H 1928
+        \emph{Proc. Math. Acad. Sci.} U.S.A $\bm{14}$, 178 - 188
+\bibitem{Maslov} Maslov V P and Fedoriuk M V 1981
+        \emph{Semiclassical Approximation in Quantum Mechanics}(Reidel, Dordrecht)
+        (translated from original russian edition, 1965).
+\bibitem{Littlejohn} Littlejohn R G 1995 
+             in: \emph{Quantum Chaos} (Cambridge Univ. Press: Cambridge)  Casati G, \emph{et al} (Eds)
+\bibitem{OzLivro} Ozorio de Almeida A M 1988
+            \emph{Hamiltonian systems: Chaos and quantization} (Cambridge: Cambridge Univ. Press)
+\bibitem{Royer} Royer A 1977 \emph{Phys Rev A} $\bm{15}$ 449
+%\bibitem{Ozorio83} Ozorio de Almeida 1983
+%             \emph{Ann Phys} 
+\bibitem{ZO} Zambrano E and Ozorio de Almeida A M  2008
+        \emph{Nonlinearity} $\bm{21}$ 783-802 
+\bibitem{Leonhardt} Leonhardt U 1997
+        \emph{Measuring the quantum state of light} (Cambridge: Cambridge Univ. Press)
+\bibitem{Berry76} Berry M V
+        \emph{Adv. in Phys.} $\bm{25}$ 1, 1-26
+\bibitem{abramowitz} Abramowitz M e Stegun I,
+        \emph{Handbook of Mathematical Functions} (New York: Dover)
+        (1964)
+        (1973)
+\bibitem{Schr} Schr\"odinger E 1930 
+        \emph{Proc Pruss Soc Acad Sci} {\bf 19} 296
+\end{thebibliography}
+\end{document}

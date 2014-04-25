@@ -1,0 +1,307 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+%Este paquete le pone una barrera a los floats
+% al final de cada seccion
+\usepackage[section]{placeins}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ Weyl Functions for the Nelson Potential:\\ some numerical computations.}
+\author{\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Here I present various different computations for the Weyl or Chord 
+function of the Nelson Potential Problem. The values of Energy
+and Planck's constant are equal to  those used on
+Toscanos et all \cite{Toscano01}.
+\end{abstract}
+
+\section{Classical Chaos}
+
+The Nelson potential problem is part of a a family of problems which
+have certain applications in nuclear physics. The Hamiltonian function 
+for the problem is:
+
+\begin{equation}
+H(\xfase,\yfase)=(p_x^2+p_y^2)/2+\omega_1 q_x^2+
+\omega_2(q_y-q_x^2/2)^2
+\end{equation}
+
+We choose $\omega_1=0.05$ and $\omega_2=1$, and explore the volume
+between the Energy surfaces corresponding to $E=0.821$ 
+and $E=0.826$. We will denote this volume by $V$. The system
+appears to be ``visually''  ergodic, meaning that any non-hyperbolic
+subsets are of inappreciable size in relation to the whole
+energy hypersurface in phase space for the energies chosen. 
+A sample of the trajectories in physical space is shown below, in
+figure \ref{ClassicalTrayec}. The corresponding Poincaré 
+Section is shown in figure \ref{ClassicalPoin}. 
+
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{SampleTrayectories01.png}
+\caption{Classical Trajectories in position space. The trajectories
+begin to fill up the space delimited by the equipotential curve 
+for $E=0.821$, indicating at least some form of chaos. For this sample
+all trajectories have starting point in the symmetry axis $q_x=0$,
+which we also use for the Poincare Section below.}
+\label{ClassicalTrayec}
+\end{center}
+\end{figure}
+
+
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{PoincareSample01.png}
+\caption{The first two iterations of a straight line of initial conditions
+in the Poincaré Map of the classical system.  The fold-and-stretch
+effect is extreme for these parameters. Black is the original line, red
+the first iteration, yellow the second.}
+\label{ClassicalPoin}
+\end{center}
+\end{figure}
+
+ 
+\section{Quantum Ergodic Hypothesis}
+
+The Quantum Ergodic Hypothesis  states that, intuitively, a representation
+of a quantum state for a chaotic system would cover more or less uniformly
+the Energy Surface. The most extreme version of this statement is
+that the Wigner Function of the state would be a Dirac Delta distribution
+over exactly over the Energy Surface \cite{BerryRIR}. However we know
+that this could not be true on the general case \cite{Ozorio98}. We know
+that a lot of chaotic systems show ``scars'' in the position
+representation eigenstates \cite{haake}.
+ 
+As a compromise we try various calculations for a ``simulated'' Wigner
+function, and obtain its symplectic Fourier Transform, the
+Weyl function. 
+
+
+\section{Almost Ergodic, brute force approach.}
+
+I shall present two solutions for the ``all-most ergodic'' quantum
+hypothesis. This is the first one. It is a compromise between the 
+perfectly uniform distribution on the energy surface and the
+necessity for correlations between different eigenstates. Some very general
+requirements lead to the existence of isolated zeros in the
+Weyl function representation of a large quantum state \cite{Zambrano09}.
+To represent this ``large'' quantum state we sample a big number 
+points in the phase
+space between two energy surfaces and suppose the Wigner Function
+is absolutely concentrated in those points, that is, it is a sum
+of Dirac Deltas over a small energy range. We shall call it
+the grained approach. The energy interval is
+$E\in [0.821,0.836]$ in agreement with \cite{Toscano01}. The lower
+bound corresponds roughly to the 11th Bohr-quantized eigenstate. 
+The following set of pictures (figures \ref{WeylFunctioncomplete} and 
+\ref{WeylNodalcomplete}) show the Weyl Function obtained after this
+distributions.
+
+
+\begin{figure}
+\begin{center}
+\subfigure[Real Part]{\includegraphics[width=0.45\textwidth]
+{EFabrizio_0821_WeylMedio-Real.png}
+\label{RealWeyl}}
+\subfigure[Imaginary Part]{\includegraphics[width=0.45\textwidth]
+{EFabrizio_0821_WeylMedio-Imag.png}
+\label{ImagWeyl}}
+\caption{Real and Imaginary parts for the Weyl function, the section
+corresponds to $\xifase=(0,0)$. The color range has been reduced in
+order to enhance contrast. After $\|\mufase\|\approx 5$ the structure
+begins to appear too noisy.}
+\label{WeylFunctioncomplete}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]
+                  {EFabrizio_0821_Weylmedio0-0-Countour.png} %
+\caption{The nodal lines for the function depicted in the previous figure 
+(\ref{WeylFunctioncomplete}). The intersection of both red and black lines is
+a true blind spot, a chord such that a state and its displacement are orthogonal.}
+\label{WeylNodalcomplete}
+\end{center}
+\end{figure}
+
+
+
+
+\section{Almost Ergodic, Cumulant approach}
+
+The expansion of the Weyl function representation for  
+small chords reveals that the function depends on the cumulants of
+the Wigner Function, understood as a quasi-probability. In this
+approach it is clear that this is a representation of the geometric
+features of the eigenstate in a phase space representation. 
+We calculated numerically the first three cumulants for the grained
+approach and calculated the Weyl function approximation. Although
+it gives a nice qualitative idea of the first nodal lines, it is only
+``topologically'' accurate. The calculation is much faster than the 
+brute approach, anyway, and it could serve to weakly locate the 
+nodal hypersurfaces in a 4 or 6 dimensional problem. The only inconvenience
+of this approach is that the higher the moment of the cumulant, the more
+cumbersome is to deal with it. In 2 degrees of freedom the third
+cumulant is a third degree tensor with a very anti-intuitive 
+symplectic symmetry. In the following equation $V$ represents the
+volume between the energy eigensurfaces.  
+The result is shown in figure \ref{CrudaAprox}
+
+
+\begin{equation}\label{expansion}
+\chi(\xifase,\mufase)\approx 
+1-\ihb (\xifase,\mufase) \wedge \Prom{\hat{\xfase},\hat{\yfase}}{V}
+-\frac{1}{\hbar^2}
+\Prom{((\xifase,\mufase)\wedge(\hat{\xfase},\hat{\yfase}))^2}{V}
++\frac{i}{\hbar^3}
+\Prom{((\xifase,\mufase)\wedge(\hat{\xfase},\hat{\yfase}))^3}{V}+
+\cdots
+\end{equation}
+
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]
+{SFabrizio_0821_WeylAprox3grado-0-0-Countour.pdf}
+\caption{The nodal lines obtained by taking the expansion in eq. 
+\ref{expansion} until the third degree term. Notice the difference
+in the vertical scale with previous figures. Only in the crudest
+topological approximation can this be considered convenient. At least,
+it respects the adequate symmetries and the size is approximately correct,
+but the effort of obtaining the tensorial expression for a 2 d.o.f. system
+is to big without the help of an algebraic software and very careful 
+programming.}
+\label{CrudaAprox}
+\end{center}
+\end{figure}
+
+
+
+\section{The Scar approach}
+
+
+Lastly, I present a very ``scared'' approach. We concentrate all
+the Wigner function in the shortest periodic orbit 
+(figure \ref{OneScar})
+or in the smallest three (figure \ref{ThreeScars}). The
+former is exactly the same as the Weyl Function for an harmonic
+oscillator with that energy and period, as it is only
+dependant on the shape of the Wigner quasi-distribution, even
+with our noisy approach. Thus, the imaginary part
+disappears for a good enough sample.
+ The Three Scars approach seems more
+adequate. The periodic orbits chosen as scars are shown in the figure 
+\ref{TresDiagram}. Roughly, each scar has an intensity inversely
+proportional to its period, so we have taken a sampling in such
+fashion for the  figures \ref{ThreeScars} and \ref{ThreeScarsNodal}.
+   
+
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{TresScars_0821_Diagram.png}
+\caption{The three shortest periodic orbits (all them unstable) for
+the energy value $E=0.821$. The vertical one is simply harmonic with 
+period $2 \pi$. The one that starts at $q_y=0.48854$ has period
+$11.66$ and the other $6.48$. }
+\label{TresDiagram}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{EScarNoizy_0821_Real-Weyl.png}
+\caption{The One Scar Weyl function, in all regards exactly the
+same that one would obtain for an harmonic oscillator. Nodal lines for
+the real part are approximately well located in comparison with figure 
+\ref{RealWeyl}.}
+\label{OneScar}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}
+\begin{center}
+\subfigure[Real Part]{\includegraphics[width=0.45\textwidth]
+{TresScars_0821_Real_Weyl.png}
+\label{tresRealWeyl}}
+\subfigure[Imaginary Part]{\includegraphics[width=0.45\textwidth]
+{TresScars_0821_Imag_Weyl.png}
+\label{tresImagWeyl}}
+\caption{Real and Imaginary parts for the Weyl function for
+the Three Scars approach. }
+\label{ThreeScars}
+\end{center}
+\end{figure}
+
+
+
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{TresScars_0821_Weyl0-0-Countour.pdf}
+\caption{Nodal line intersections for the same function as the 
+previous figure.}
+\label{ThreeScarsNodal}
+\end{center}
+\end{figure}
+
+
+
+\bibliography{ziegos}
+
+\end{document}

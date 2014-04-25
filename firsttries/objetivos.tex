@@ -1,0 +1,142 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+
+
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{Objetivo del Proyecto de los Puntos Ciegos}
+\author{ W. P. Karel Zapfe\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+Después de hablar como por tercera vez sobre los objetivos,
+ya comienzas a tener clara una idea de por donde va el trabajo.
+
+\end{abstract}
+
+\section{Preeliminares}
+
+El supuesto ergódico cúantico se formula así. En el límite de alta energía,
+o, equivalentemente, de $\hbar$ pequeñísimo, hacemos de cuenta
+que el valor esperado de un operador hermitiano descente (es decir,
+con una variable clásica bien asociada) corresponde con el promedio
+sobre la camada de energía. Al parecer hay resultados serios sobre esa
+conjetura \cite{Zeldtich}. Esto se expresa en el lenguaje que nos gusta
+como
+\begin{equation}
+  \bra{n}f_c(\hat{p},\hat{q}) \ket{n}\approx \int d\xfase 
+\delta(H(\xfase)-E_n) f_c(p,q),
+\end{equation}
+para $n$ suficientemente grande. 
+
+Dado que la función de Wigner actúa como una cuasi distribución,
+la gente asume que en este caso 
+
+\begin{equation}
+W(\xfase)\approx \delta(H(\xfase)-E_n)
+\end{equation}
+
+Esto parece ser una aceptable aproximación,, e inclusive otorga 
+una seríe de resultados correctos, como en \cite{Berry78}.
+Sin embargo no hay manera de que está aproximación sea correcta.
+Existen momentos de las distribuciones que resultan 
+francamente errados. A pesar de eso, M. Berry obtiene resultados 
+aceptables para las funciones de correlación.
+Una expresión más descente (una \emph{aproximación uniforme}) sería
+la siguiente:
+
+\begin{equation}
+\begin{split}
+W(\xfase)&=\sum_n \exp((-E_n -E)/d^2) \int d\xfase \delta(H(\xfase)-E_n)\\
+&\approx Ai(H(\xfase)-E).
+\end{split}
+\end{equation}
+
+Ahora bien, el supuesto incorrecto tiene una implicación maluca
+en las correlaciones locales, digamos de orden $\epsilon$
+\begin{equation}
+\psi^*(q+\epsilon)\psi(q-\epsilon)=\int dp W(q,p)e^{-ip\epsilon/\hbar}
+\end{equation}
+y
+\begin{equation}
+C_q(\epsilon)=\int_{local} dq \psi^*(q+\epsilon)\psi(q-\epsilon)
+\end{equation}
+
+La función de correlación utilizando las deltas no da parte de la
+estructura cuántica, por ejemplo, faltan los puntos ciegos. Por
+ende, la delta de Dirac es una función de Wigner escencialmente 
+incorrecta. 
+
+
+\section{Objetivos}
+
+Vamos a pensar que en sistemas ergódicos (y probablemente mezclantes)
+que la función de cuerdas \emph{se parece} a la transformada de
+Fourier de una delta, siempre y cuando las cuerdas sean suficientemente
+pequeñas (es decir, correlaciones cercanas):
+
+\begin{equation}
+\chi(\xifase)\xrightarrow{\xifase\rightarrow 0}
+\int d\xfase \delta(H(\xfase)-E_n) e^{i\xifase\wedge\xfase/\hbar}
+\end{equation}
+
+Con está aproximación surfen las siguientes preguntas:
+Qué tan largas cuerdas podemos usar? Necesitamos llegar al primer
+punto ciego al menos. Estas estructuras subplanckianas no
+resultan si usamos la Wigner como delta. 
+Es posible extraer las oscilaciones de la función de cuerdas?
+
+
+Sabemos que la función de cuerdas funciona como una función 
+generadora de momentos estadísticos. Vamos a ver que tal funciona eso:
+
+\begin{equation}
+\bra{n}\hat{p}^l\ket{n}=\frac{i^l \partial ^l}{\hbar^l \partial q^l}
+\chi(\xifase) \lvert_{q=0}
+\end{equation}
+
+
+Usaremos esto para calcular las correlaciones $C_q(\epsilon)$.
+La función de cuerdas como representación del estado cuántico
+funciona, la que esta errada desde el principio es la de Wigner.
+Susutituiremos la suposición ergódica por lo que Alfredo llama
+hipótisis ergódiga débil. 
+Finalmente calcularemos los puntos ciegos cerca del origen.
+
+
+\bibliography{ziegos}
+
+\end{document}

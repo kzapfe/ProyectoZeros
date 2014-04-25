@@ -1,0 +1,426 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ Wigner Function Approximations for Chaotic Systems}
+\author{\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+
+The Center or Wigner Function is used as a quasi-distribution in 
+the phase space analysis
+of Quantum Mechanics. Its Fourier Symplectic Transform, 
+the Chord or Weyl Function, 
+acts as the generator of momenta of the former 
+ quasi-distribution. It is
+assumed that a good approximation for the Center Function
+ is a Dirac delta over
+the Classical Energy Surface. This approximation is essentially wrong,
+even if it catches some general results.
+In this work we search for a better approximation, which
+should respects the old results in the limit $\hbar\rightarrow 0$.
+The essential prerequisite for this seems to be the ergodicity of
+the classical system underneath the QM.
+Our very coarse approximation is based on a 
+numeric argument: Dirac Delta sums imitate the discretitation
+used internaly by computers, and Montecarlo random 
+selection of such discretization works better than the 
+homogeneous one. 
+
+\end{abstract}
+
+\section{Preliminary Stuff}
+
+\subsection{Notation}
+
+We shall adopt Alfredo Ozorio de Almeida notation throughout this work. 
+In particular, a point in phase space has the 
+following ordering  $\xfase:=(p,q)$, and its units are $[\sqrt{\hbar}]$.
+The number $d$ is the number of degrees of freedom. A capital $N$ shall
+be used for indicating the Energy Level in which we are interested.
+We shall denote random  variables with a superscript asterisk, e.g.
+$\xfase^*$. When using polar coordinates on a symplectic plane
+the convention is $\xfase=(p,q)=(|x|\sin\theta, |x|\cos\theta)$.
+
+\section{A ``Chaotic'' Wigner Function}
+
+The usual assumption is that if we have an ergodic, mixing and hyperbolic
+classical Hamiltonian system (henceforth a \emph{chaotic system}), the
+Center Function will be a Dirac delta distribution localized over the
+energy eigensurface, provided that we study  a large 
+energy state \cite{Voros76}:
+
+\begin{equation}
+W_N(\xfase)=\delta (H(x)-E_N)
+\end{equation}
+
+This corresponds to the notion that ergodic systems tend to 
+homogenize themselves and that eigenstates of energy are
+stationary states.
+
+This assumption is essentially wrong, as it fails to account
+for important quantum features of pure states. An important example would
+be the so called ``blind spots'' \cite{Zambrano09} 
+of the auto-correlation function.  This autocorrelation can be 
+expressed by either the Center or The Chord function:
+
+\begin{equation}
+C(\xifase)=(2\pi\hbar)^d \int W(\xfase)W(\xfase-\xifase) d\xfase
+=\frac{1}{(2\pi\hbar)^d}\int |\chi(\mufase)|^2 e^{i\mufase\wedge\xifase/\hbar}
+d\mufase
+\end{equation}
+
+If the Center function, $W(\xfase)$ where really a 
+one dimensional Dirac delta whose argument is
+the value of the Hamilton Function, 
+then that Correlation would be zero everywhere except for 
+the trivial translation,  $\xifase=0$. This is completely
+inadequate for delicate interference effects 
+like the ones seen on \cite{Zambrano08}.
+The only necessary postulation involved in those
+interesting wave-like effectos  is that the
+state is ``highly excited'' (high value of the eigenenergy) 
+and is ``large'' (its Center Function spreads over a significant 
+area in
+the classical phase space).
+
+\section{The Work}
+
+We shall start with a very crude assumption.
+ The Wigner Function can be very roughly approximated
+by a random distribution of points near the energy surface. 
+If we have $M$ such points, then
+he spread of the points should not occupy a volume larger than
+$\hbar/M$, and the volume surrounded by the energy surface
+should be from the order of $N\hbar$, $N$ being 
+the energy level, 
+a number
+of the order of the hundreds or thousands.  In this rawest
+approximation the points will be over a spherical shell of
+radius of the order $\sqrt{N\hbar}$. In order to have
+a chaotic system we need at least two degrees of freedom.
+But we can make tests for a single degree of freedom,
+corresponding to a Poincaré or Stroboscopic 
+symplectic map. 
+
+
+The points, distributed among energy shells for
+a crude spherical approximation, will be between
+two energy shells:
+\begin{equation}
+N\hbar< \|\xfase\|^2<(N+1)\hbar,
+\end{equation}
+The difference in the radius is then
+$(\sqrt{N+1}-\sqrt{N})\hbar=\Delta\hbar$.
+
+
+\subsection{Crude 1 d.o.f. test}
+
+We shall test the Berry Dirac Delta result \cite{BerryRIR} 
+against our 
+small volume approach. Our criteria will be the lowest
+(nearer to the origin) nodal lines. We will compare
+the completely isotropic Bessel Function with the
+chord function obtained. The center function would be then:
+\begin{equation}\label{AproxCruda}
+W(\xfase)=\frac{1}{M}\sum_{\xfase^*} \delta (\xfase - \xfase^*)
+\end{equation}
+Then the corresponding Chord functions is a random superposition
+of plane waves. The wave vectors of these components are
+the centers of the Dirac Deltas:
+\begin{equation}\label{chordfun}
+\chi(\xifase)=\frac{1}{M}\sum_{\xfase^*} \exp \left( \ihb \xifase\wedge\xfase^* \right).
+\end{equation}
+If this approach would made any sense,
+then, in the limit of large $M$ and small $\hbar$
+the last expression would converge to:
+\begin{equation}\label{BerryApproach}
+\chi(\xifase)=J_0(|\xifase|m(E)^{1/2}/\hbar),
+\end{equation}
+where $J_0(x)$ is the standard Bessel function of the first kind.  
+It is clear that for large enough $M$ the expression 
+in eq. \ref{chordfun} should become
+isotropical, i.e., not depend on the direction of $\xifase$ but
+only in its magnitude. 
+
+A look on the next pictures (figures \ref{XiFunction01},
+\ref{BesselCompare01})
+reveal that this may be the case. 
+We reduce  the chords function
+to a two dimensional $\xifase$ space. The original 
+Wigner function looks like the figure \ref{WigExample}.
+For the nodal line comparison, due to
+the asymptotic central symmetry, we shall use only the 
+real part of $\chi(\xifase)$.
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{CondiniExemplo01.png}
+\caption{ A realization of the Wigner
+function in eq. \ref{AproxCruda}}\label{WigExample}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.4\textwidth]{300_Chords_Real.png}
+\label{xireal01}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.4\textwidth]{300_Chords_Imag.png}
+\label{xiimag01}
+}
+\subfigure[Chord Function, Amplitude]{
+\includegraphics[width=0.4\textwidth]{300_Chords_Ampli.png}
+\label{xiampl01}
+}
+\subfigure[Chord Function, Phase]{
+\includegraphics[width=0.4\textwidth]{300_Chords_Fase.png}
+\label{xifase01}
+}
+\caption{The Chord Function for the random distribution of deltas. 
+Here the energy is $300$ arbitrary units. Note the difference between
+the scales in the real and imaginary part. The latter has a structure much
+closer to zero, while the former is highly (and suspiciously) regular.}
+\label{XiFunction01}
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\subfigure[Radial Bessel Function, exact]{
+\includegraphics[width=0.4\textwidth]{BesselRadial01.png}
+\label{xibessel}
+}
+\subfigure[Chord Function for 500 random points]{
+\includegraphics[width=0.4\textwidth]{CuerdaspaceZerosLowData.png}
+\label{xi500}
+}
+\subfigure[Chord Function for 5000 random points]{
+\includegraphics[width=0.4\textwidth]{CuerdaspaceZeroMediumData.png}
+\label{xi5000}
+}
+\subfigure[Chord Function for 50'000 random points]{
+\includegraphics[width=0.4\textwidth]{CuerdaspaceZeroHighData.png}
+\label{xi50000}
+}
+\caption{The Bessel function of equation \ref{BerryApproach},
+and different numerical realizations of the
+Chord Function for the random distribution of Dirac deltas.
+Here the energy level is $300$. It is clear that  
+after 5000 random points in the expression \ref{AproxCruda},
+we have at least the two first nodal lines within the correct
+order. Black corresponds to zero values (nodal lines). 
+The contrast has been greatly exaggerated in these figures.}
+\label{BesselCompare01}
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\subfigure[$M=200$]{
+\includegraphics[width=0.4\textwidth]{200_ZerosBandN.pdf}
+\label{zero200}
+}
+\subfigure[$M=2000$]{
+\includegraphics[width=0.4\textwidth]{2000_ZerosBandN.pdf}
+\label{zero2000}
+}
+\subfigure[$M=20000$]{
+\includegraphics[width=0.4\textwidth]{20000_ZerosBandN.pdf}
+\label{zero20000}
+}
+\subfigure[$M=200000$]{
+\includegraphics[width=0.4\textwidth]{200000_ZerosBandN.pdf}
+\label{zero200000}
+}
+\caption{The location of the nodal lines for the Bessel
+function in red, fine line, and for diverse 
+Dirac Delta realizations in blue thick points. We see a good
+agreement between all the ``blind lines'' presented.
+The slight offset of the first one could account for the
+width of the center function Distribution.}
+\label{BesselCompareZeros}
+\end{center}
+\end{figure}
+
+\subsection{2 d.o.f. Spherical Shell}
+
+Most of the previous reasoning works well for 
+the 2 d.o.f. spherical shell. An important 
+change is that the Bessel Function in the formula
+\ref{BerryApproach} changes to the Bessel-1 instead
+of the Bessel-0 function. 
+For the numerics we have used the following
+set of coordinates for the Volume between two 
+3-spheres: 
+\begin{equation}\label{4ballcordinates1}
+\begin{split}
+p_1&=(R+l^*)\sqrt{\hbar}\cos \phi_1^* \\
+q_1&=(R+l^*)\sqrt{\hbar}\sin \phi_1^* \cos\phi_2^*\\
+p_2&=(R+l^*)\sqrt{\hbar}\cos \phi_1^*\sin\phi_2^*\cos\phi_3^* \\
+q_2&=(R+l^*)\sqrt{\hbar}\cos \phi_1^* \sin\phi_2^*\sin\phi_3^* \\,
+\end{split}
+\end{equation}
+in center space, and 
+\begin{equation}\label{4ballcordinates2}
+\begin{split}
+\xifase_{p,1}&= \rho\sqrt{\hbar}\cos \theta_1 \\
+\xifase_{q,1}&= \rho\sqrt{\hbar}\sin \theta_1 \cos\theta_2\\
+\xifase_{p,2}&= \rho\sqrt{\hbar}\cos \theta_1\sin\theta_2\cos\theta_3 \\
+\xifase_{p,2}&= \rho\sqrt{\hbar}\cos \theta_1 \sin\theta_2\sin\theta_3 \\,
+\end{split}
+\end{equation}
+in the chord space.
+
+We present here the zeros found for many sizes of
+the Dirac Delta sum. In the figure \ref{ZerosContraPrecision}
+we show that the first zero can be trustfully found with an
+ensemble of 2000 or more Dirac Deltas in Center space.
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{Zero1Bessel1.pdf}
+\caption{The First Zero of the $J_1(\rho)$ Function (black line),
+  against the ones obtained for $N=20,200,2000, 20'000$. The
+value for the various $\theta_i$ coordinates is fixed. }
+\label{ZerosContraPrecision}.
+\end{center}
+\end{figure}
+
+Then in figures \ref{Zeros2000} and \ref{Zeros20000} 
+we proceed to show the irregularities due to the
+not completely symmetric distribution, compared with 
+the first zero of the Bessel Function.
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{2000_Deltas3Sphere.pdf}
+\caption{The First Zero of the $J_1(\rho)$ Function (black line),
+  against the ones obtained for $N=2000$, in various 
+sections for the $\theta_1$ (indicated by color) and $\theta_2$ 
+(projected).}
+\label{Zeros2000}
+\end{center}
+\end{figure}
+ 
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{20000_Deltas3Sphere.pdf}
+\caption{The First Zero of the $J_1(\rho)$ Function (black line),
+  against the ones obtained for $N=20000$, in various 
+sections for the $\theta_1$ (indicated by color) and $\theta_2$ 
+(projected).}
+\label{Zeros20000}
+\end{center}
+\end{figure}
+ 
+Finally, we check the heavier simulation against the first six
+zeros of $J_q(x)$, in the figure \ref{SeisZeros}.
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.9\textwidth]{20000_Deltas3Sphere6Zeros.pdf}
+\caption{The first six Zeros of the $J_1(\rho)$ Function (black lines),
+  against the ones obtained for $N=20000$, in various 
+sections for the $\theta_1$ (indicated by color) and $\theta_2$ 
+(projected).}
+\label{SeisZeros}
+\end{center}
+\end{figure}
+
+
+\subsection{The Nelson Potential}
+
+Finally, we tackle the problem which we are interested in solving.
+The Hamiltonian Function for this system is sometimes called the Nelson
+Hamiltonian \cite{Toscano01}.
+It is a two degree of freedom system which for large
+values of the energy appers to be ergodic. The Hamiltonian is
+as follows:
+
+\begin{equation}
+H(\xfase,\yfase)=(p_x^2+p_y^2)/2+\omega_1 q_x^2+
+\omega_2(q_y-q_x^2/2)^2
+\end{equation}
+
+We choose $\omega_1=0.05$ and $\omega_2=1$, and explore the volume
+between the Energy surfaces corresponding to $E=300\hbar\omega_1$ 
+and $E=301\hbar\omega1$. We will denote this volume by $V$.
+ 
+
+The volume between the surfaces is reminder in certain proyections
+of a banana (it is not convex in 4d space). Once that we populate
+this volume with random points acting as Dirac Delta centers, we
+perform the Fourier Transform and get a numerical Center Function. 
+
+We should know a litte what to expect beforehand, using eqs. 15 and 16
+from  \cite{Zambrano10} and an idea of the geometry for the
+energy surface. The lowest order aproximation for the 
+chord function depends on the first moments of the phase space
+coordinates:
+
+\begin{equation}
+\chi(\xifase,\mufase)\approx 
+1-\ihb (\xifase,\mufase) \wedge \Prom{\hat{\xfase},\hat{\yfase}}{V}
+-\frac{1}{\hbar^2}
+\Prom{((\xifase,\mufase)\wedge(\hat{\xfase},\hat{\yfase}))^2}{V}+\cdots
+\end{equation}
+
+
+By the shape of the energy surfaces, the only classical
+average wich  is different from zero is $\Prom{q_x}{V}\approx 65$.
+Then the nodal surface for the imaginary part of the Center Function
+must be, at the origin, tangent to the surface $\xifase_p=0$.
+
+
+\bibliography{ziegos}
+
+\end{document}

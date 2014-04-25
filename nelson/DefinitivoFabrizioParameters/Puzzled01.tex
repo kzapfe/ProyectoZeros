@@ -1,0 +1,206 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+%Este paquete le pone una barrera a los floats
+% al final de cada seccion
+\usepackage[section]{placeins}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ Weyl Functions for the Nelson Potential:\\ some puzzling comparitions}
+\author{\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Here I present various different computations for the Weyl or Chord 
+function of the Nelson Potential Problem. The values of Energy
+and Planck's constant are equal to  those used on
+Toscanos et all \cite{Toscano01}, detailed as follows: 
+$\hbar=0.05, E=0.813840071, n=294.$
+All of these parameters are in dimensionless reduced units, 
+the $n$ parameter is the quantum level of the energy value.
+\end{abstract}
+
+\section{Classical Chaos}
+
+The Nelson potential problem is part of a a family of problems which
+have applications in nuclear physics. The Hamiltonian function 
+for the problem is:
+
+\begin{equation}
+H(\xfase,\yfase)=(p_x^2+p_y^2)/2+\omega_1 q_x^2/2+
+\omega_2(q_y-q_x^2/2)^2
+\end{equation}
+
+We choose $\omega_1=0.1$ and $\omega_2=1$, and explore the volume
+between the Energy surfaces corresponding to $E=0.81384007$
+and $E+\hbar\omega_1$. 
+We will denote this volume by $V_E$. The system
+appears to be ``visually''  ergodic, meaning that any non-hyperbolic
+subsets are of inappreciable size in relation to the whole
+energy hyper-surface in phase space for the energies chosen. 
+
+ 
+\section{Quantum Ergodic Hypothesis}
+
+The Quantum Ergodic Hypothesis  intuitively states that a representation
+of a quantum state for a chaotic system would cover more or less uniformly
+the Energy Surface. The most extreme version of this statement is
+that the Wigner Function of the state would be a Dirac Delta distribution
+ exactly over the Energy Surface \cite{BerryRIR}. However we know
+that this could not be true on the general case \cite{Ozorio98}. We know
+that a lot of chaotic systems show ``scars'' in the position
+or momenta
+representation of  eigenstates \cite{haake}.
+ 
+
+
+
+\section{The coarse grained function and the quantum exact result.}
+
+As we have discussed, we will sample points around the energy 
+surface in the phase space
+of the problem.  Those would be treated as 
+the centre of a set of Dirac Deltas, the sum of them being
+the Wigner Function of the State. In previous calculations
+I was sampling to many points for this, on hopes of obtaining
+a better resolution. This was a mistake, as I shall explain.
+
+The Dirac Centres would represent a coarse grained
+approximation to a semiclassical Wigner function. The scale which
+imposes the finesse of the grain is $\hbar$, the
+only quantum parameter that sets  a scale here.
+On average, every centre should occupy a volume of 
+$\hbar^2$, which would set a sort of resolution
+for micro-scars of a highly chaotic state, in which
+the Wigner function is not strictly positive everywhere. 
+After a little tedious integration, for the parameters
+chosen, the volume inside the energy shell is 
+around $29.2326$ dimensionless units, in terms of our
+value for Planck's Constant this will give space
+for at most $N=11 696$ centres.  
+
+
+In the first figure (fig. \ref{FabQuant}) 
+I show the nodal lines in the 
+discussed section of the phase space obtained from
+Fabricio's exact quantum calculation. I concentrate
+my attention in  a vicinity of radius $0.2$ around 
+the origin. The curve described by the nodal line
+over the origin is an effect of the 
+plotting routine, it should appear as a closed
+oval shape with a straight line across it. 
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]
+                  {zoom-quantum-niv294-ZerosContour.pdf} %
+\caption{Real and Imaginary nodal lines from
+Fabricio's Quantum data. The level of the state
+is $n=294$, corresponding to 
+$E=0.813840071, \hbar=0.05$. }
+\label{FabQuant}
+\end{center}
+\end{figure}
+
+The second figure (fig. \ref{Cumulant}) has been obtained
+from the cumulant expansion for the chord function. 
+We expand the chord function up to the third order terms;
+
+\begin{equation}\label{expansion}\chi(\xifase,\mufase)\approx 
+1-\ihb (\xifase,\mufase) \wedge \Prom{\hat{\xfase},\hat{\yfase}}{V}
+-\frac{1}{\hbar^2}
+\Prom{((\xifase,\mufase)\wedge(\hat{\xfase},\hat{\yfase}))^2}{V}
++\frac{i}{\hbar^3}
+\Prom{((\xifase,\mufase)\wedge(\hat{\xfase},\hat{\yfase}))^3}{V}+
+\cdots
+\end{equation}
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]
+                  {ExactoN_0821_WeylAprox3grado-0-0-ZerosContour.pdf} %
+\caption{The nodal lines for the cumulant expansion of the chord
+function, up to third order terms.}
+\label{Cumulant}
+\end{center}
+\end{figure}
+ 
+Until the second figure, both methods seem to give
+reasonable similar results for the ``blind manifold'', the set of
+intersections for zeros of the real and imaginary parts of
+the chord function. 
+
+Now I present the puzzling figure. If I make the ``point by point''
+Fourier Transform of the Dirac Centres, every member of the
+sum would contribute with the trigonometric expression:
+
+\begin{equation}\label{contri}
+FT[\delta(\xfase-\xfase_c)](\xifase)=\exp(-\ihb \xfase \wedge \xifase)
+/\sqrt{\hbar \pi N}
+\end{equation}
+
+One would expect that summing over all $N$ such contributions, one would
+obtain an even better approximation to the result shown in the
+figure \ref{Cumulant}, but it turns out worse. It appears as if the
+$\xifase_p$ axis has been expanded by a factor of eight, as seen
+on the last figure,\ref{Complete}. 
+
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=0.8\textwidth]
+                  {ExactNCompleto.pdf} %
+\caption{Real and Imaginary nodal lines for the sum of all
+terms of the form of equation \ref{contri}. It is evident that
+something is off. }
+\label{Complete}
+\end{center}
+\end{figure}
+
+It must be stated that the second and third figures where
+calculated using the same set of points as centres for
+the Wigner function, so the cumulant are those which
+come from the same whole set. 
+
+\bibliography{../../ziegos}
+
+\end{document}

@@ -1,0 +1,157 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\KovM}{\mathbf{K}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{The Cumulants in Semiclassical Representations of a 2 d.o.f. System.}
+\author{\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+Here I present the expansion of the chord function for
+a 2 degrees of freedom hamiltonian system. The expresion
+has a lot of confortable symmetries, which makes them
+quite suitable for quick implementation in numerical simulation
+that take advantage of linear algebra libraries. 
+
+\end{abstract}
+
+\section{Preliminary Stuff}
+
+\subsection{Notation}
+
+We shall adopt Alfredo Ozorio de Almeida notation throughout this work. 
+In particular, a point in 2 d.o.f. phase space has the 
+following ordering  $(\xfase,\yfase):=(x_p,x_q,y_p,y_q)$.
+The Fourier transformed variables (chords) will be $\xifase, \mufase$,
+same ordering. We will identify the Center space with the usual
+classical phase space and with the values of the corresponding
+quantum operators. 
+
+
+
+\section{The 2 d.o.f. Chord Function}
+
+
+The Chord Function is the expected value of the 
+translation operator for the additive inverse of each chord.
+In our case this is 
+
+\begin{equation}
+\chi(\xifase,\mufase)=\langle T_{-\xifase,-\mufase}\rangle.
+\end{equation}
+
+As it turns out, this is simply the Symplectic Fourier Transform of
+the Center Function.
+
+\begin{equation}
+\chi(\xifase,\mufase)=\int d\xfase d \yfase W(\xfase,\yfase)
+\exp\left(\ihb (\xfase\wedge \xifase +\mufase\wedge\yfase)\right).
+\end{equation}
+
+Our Center Function (The Wigner quasi-distribution) is a random
+cloud of points between two neighbouring energy surfaces, evenly
+distributed. The Chord function is also the
+a Characteristic Function in the statistical sense, so the
+expansion of it contains the information of the geometry of
+the Weyl quasi-distribution. In a power expansion around zero,
+its coefficients are the cumulants of said
+pseudodistribution. The expansion, up to third
+order, looks as follows:
+
+\begin{equation}
+\chi(\xifase,\mufase)\approx 
+\langle 1-\ihb (\xifase\wedge\xfase+\mufase\wedge\yfase)
++\left(\ihb\right)^2(\xifase\wedge\xfase+\mufase\wedge\yfase)^2
+-\left(\ihb\right)^3(\xifase\wedge\xfase+\mufase\wedge\yfase)^3
++\cdots\rangle
+\end{equation}
+
+The first order term coefficients are simply the average values for
+the cloud of points in center space. The second order terms can
+identified with the Schr\"odinger Covariancie Matrix, after
+taking the expected value. We will abuse the notation a little
+and denote by $\KovM$ the matrix of the operators and by
+$\langle \KovM \rangle$ the covariancie matrix.
+
+\begin{equation}
+\KovM=\left( 
+\begin{array}{cccc}
+x_p^2   & -x_qx_p & x_qy_q & -x_qy_p \\
+-x_px_q & x_q^2 & -x_py_q&  x_py_p \\
+x_qy_q & x_py_q & y_p^2    & -y_py_p  \\
+-x_qy_q & x_py_q & y_py_q  & y_q^2
+ \end{array} 
+\right)
+\end{equation}
+
+Notice that in the diagonal two by two blocks the individual
+operators wich would give
+the covarance matrices for $\xfase$ and $\yfase$ are present. We
+will denote them $K_x, K_y$. 
+
+The third order terms are not as ugly as they could be. As I will
+later identify the expected value of well ordered permutations
+of the operators with classical expected values, I will ignore
+the different permutations. Still abusing the notation, it 
+will look like this:
+
+\begin{equation}
+\begin{split}
+(\xifase\wedge\xfase+\mufase\wedge\yfase)^3 &=
+\xi_p^3x_q^3-3\xi_p^2x_q^2\xi_qx_p +3\xi_q^2x_p^2\xi_px_q-\xi_q^3x_p^3\\
+&+\mu_p^3y_q^3-3\mu_p^2y_q^2\mu_qy_p +3\mu_q^2y_p^2\mu_py_q-\mu_q^3y_p^3\\
+&+(\xifase K_x\xifase) (\mufase\wedge \yfase)\\
+&+(\mufase K_y\mufase) (\xifase\wedge \xfase)
+\end{split}
+\end{equation}
+
+For $\mu=(0,0)$, only the first line matters. For $\xifase=(0,0)$ only
+the second one. 
+
+The only thing which makes this expression cumbersome to implement
+are the signs. 
+
+\bibliography{ziegos}
+
+\end{document}

@@ -1,0 +1,158 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+\usepackage{float}
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{Blind Spots in the Nelson Potential}
+\author{\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\section{General Idea}
+
+The so called Nelson potential represents a possible collective
+degree of freedom in nuclear physics. It has been studied and shows
+chaotic behavior under classical mechanics \cite{Barang87}. 
+Although the Hamiltonian system is not proved to be absolutely
+chaotic (ergodic, mixing, hyperbolic) 
+the integrable regions may be too
+small to be detected in a wavelike approach. In the paper 
+\cite{Zambrano09} it was shown that  under very 
+general assumptions a large quantum state is orthogonal to some
+small displacement of itself. In a semiclassical phase space
+representation this appears as an isolated zero in the
+Weyl Function. Here we present some possible locations for  this zeroes
+in the case of the Nelson Potential. 
+
+The technique is based on the realization that the
+quantum chaotic state is not homogeneously spread over
+the energy surfaces, but it presents structure as
+scars, and it pours outside the classical
+allowed region (see the figures in \cite{Barang93}).
+
+We have populated the space between two 
+energy shells with random points identified with
+Dirac Deltas in a Center (Wigner) representation of
+a quantum state. This gives a rough approximation
+to a state which has structure but statistically 
+fills the energy surface. 
+
+\section{A preliminary estimation}
+
+We are comparing the extent of a state to the relevant
+unit of area in phase space, which is $\hbar$. This is 
+more or less the size of the structures which should be,
+at least in principle, discernible in Quantum Mechanics.
+
+Along this
+work our units are chosen so that $\hbar=1$ in the numerical
+experiments.
+We are taking energy surfaces which should be large
+in comparison with this unit. In the following
+set of figures we use the values $E=10$ a.u. and
+$E=10.05$ a.u. which correspond to a difference of
+$\hbar \omega_1$ in the eigenenergy.
+An estimate for the volume between the two shells
+is obtained and is around $30 \hbar^2$. The volume
+inside the lower shell is of the order of $3000 \hbar^2$,
+the relation is slightly higher than what we need.
+
+\pagebreak
+
+\section{Some Blind Spots}
+
+\begin{figure}[H]
+\begin{center}
+\subfigure[Small sampling]{
+\includegraphics[width=0.4\textwidth]{80000_10_NelsonW0-0-Countour.pdf}
+\label{lowres}
+}
+\subfigure[$\xifase_1=(0,0)$]{
+\includegraphics[width=0.4\textwidth]{500000_10_NelsonW0-0-Countour.pdf}
+\label{hires00}
+}
+\subfigure[$\xifase_1=(0,0.5)$]{
+\includegraphics[width=0.4\textwidth]{500000_10_NelsonW05-0-Countour.pdf}
+\label{hires50}
+}
+\subfigure[$\xifase_1=(0.5,0.0)$]{
+\includegraphics[width=0.4\textwidth]{500000_10_NelsonW0-05-Countour.pdf}
+\label{hires05}
+}
+\caption{The nodal lines in the chord
+function for the Nelson Problem, in various planes. First,
+in the figure \ref{lowres} we present the $\xifase_1=(0,0)$ section
+with a relative low sampling of points ($N=80000$)
+in the center function. In the next three figures a larger sampling was
+used ($N=500'000$), and three different planes are shown.
+The red line is the nodal line in the imaginary part, and the red in the
+real part. Outside the $\xifase_1=(0,0)$ is difficult to locate 
+with precision the blind spots.}
+\label{BlindSpots}
+\end{center}
+\end{figure}
+
+
+
+\begin{thebibliography}{9}
+
+\bibitem[EZ09]{Zambrano09}
+A.~M. Ozorio de~Almeida E.~Zambrano.
+\newblock Blind spots between quantum states.
+\newblock {\em NJP}, page 113044, 2009.
+
+\bibitem[Bar87]{Barang87}
+M. Baranger and D.K.T.  Davies
+\newblock Periodic Trajectories for a Two-Dimensional Nonintegrable Hamiltonian
+\newblock {\em Ann. Phys.}, page 330, 1987.
+
+\bibitem[Bar93]{Barang93}
+M. Baranger and D. Provost
+\newblock Semiclassical Calculation of Scars for a Smooth Potential
+\newblock {\em PRL}, page 662, 1993.
+
+\end{thebibliography}
+
+\end{document}

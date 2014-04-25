@@ -1,0 +1,211 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{Better Wigner Function for Chaotic Systems}
+\author{ W. P. Karel Zapfe\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+The Wigner Function is used as a cuasi-distribution in phase space analysis
+of Quantum Mechanics. Its Fourier Symplectic Transform, the Weyl Function, 
+acts as a generator of momenta of a cuasi classical distribution. It is
+assumed that a good aproximation for the former is a Dirac delta over
+the Classical Energy Surface. This approximation is essentially wrong,
+nevertheless it gives some correct results.
+In this work we search for a better uniform approximation, which
+should respects the old results in the limit $\hbar\rightarrow 0$.
+The essential prerequisite for this seems to be the ergodicity of
+the classical system underneath the QM.
+
+\end{abstract}
+
+\section{Preeliminary Stuff}
+
+\subsection{Notation}
+
+We will adopt Alfredo Ozorio de Almeida notation throughout this work. 
+In particular, a point in phase space has the 
+following ordering  $\xfase:=(p,q)$, and its units are $[\sqrt{\hbar}]$.
+The number $d$ is the number of degrees of freedom.
+
+\subsection{Wigner and Weyl Representations}
+
+The Wigner or center Function, $W(\xfase)$ is the representation
+of a QM  state on classical phase space. One of its
+most important features is the fact that it acts allmost as a 
+probability function, in the sense that it  can be used to 
+obtain the expected values of Hermitian operators. That is expressed
+in the following manner: if $g(\xfase)$ is the Wigner representation
+of a well ordered operator $\hat{G}$ 
+(so called \emph{``Weyl ordering''}) , 
+then:
+
+
+\begin{equation}
+\Prom{\hat{G}}{}=\int d\xfase W(\xfase) g(\xfase)
+\end{equation}
+
+over the energy surface. As such, the form
+
+\begin{equation}
+ d\xfase W(\xfase) = d \mu
+\end{equation}
+
+acts as a integration measure over the phase space \cite{Moyal49}.
+
+It is often assumed that a good aproximation for
+a Quantum Ergodic System would be:
+\begin{equation}
+  \bra{n}f_c(\hat{p},\hat{q}) \ket{n}\approx \int d\xfase 
+\delta(H(\xfase)-E_n) f_c(p,q).
+\end{equation}
+
+This makes sense in the limit of high energy or small $\hbar$ 
+\cite{Berry77}. For a classicaly ergodic, mixing, 
+hyperbollic subsystem of the phase space this seems to make
+sense, after all, ergodicity means that in a dynamicall system
+
+\begin{equation}
+ \lim_{T\rightarrow \infty} \frac{1}{T}\int_0^T f(\xfase(t)) dt =
+ \int_\Var f(\xfase) d\mu.
+\end{equation}
+
+for every well behaved phase space funcion $f$. Mixing would mean
+that every measurable subset of classical initial conditions would
+be evenly spread over all the phase space ( or the energy surface
+for conservative systems), so, any propierty of these subset is
+``spread out'' for the whole Lagrangian surface. 
+Three observations come to mind: 
+\begin{enumerate}
+\item In conservative systems energy surfaces do not mix between each other.
+Every one is a separate dynamical system. When  we speak of ergodicity,
+we mean ergodicity restricted to each folia of the system. 
+In very sharp contrast, in QM the different energy eigenstates
+can affect each other. This is the reason for the ``Dirac
+Delta assumption'' to be wrong. 
+\item Ergodicity is only well defined for compact phase spaces. 
+Trully chaotic (hyperbollic, ergodic, mixing) Hamiltonian 
+systems are rare.
+To my mind come only two examples: geodesic flow on a two dimensional
+surface of negative curvature \cite{Anosov} and 
+Bunimovich-type billiards \cite{Bunim90}. The second
+one is a very crazy example: altough it corresponds to a non-generic,
+non-continious potential function, is the one who has been more
+studied experimentally. The other experimental setups which are used
+for dealing with
+Quantum Chaos are the phase space of non trivial molecules.
+ 
+\end{enumerate}
+
+
+
+para $n$ suficientemente grande. 
+
+Dado que la función de Wigner actúa como una cuasi distribución,
+la gente asume que en este caso 
+
+\begin{equation}
+W(\xfase)\approx \delta(H(\xfase)-E_n)
+\end{equation}
+
+Esto parece ser una aceptable aproximación,, e inclusive otorga 
+una seríe de resultados correctos, como en \cite{Berry78}.
+Sin embargo no hay manera de que está aproximación sea correcta.
+Existen momentos de las distribuciones que resultan 
+francamente errados. A pesar de eso, M. Berry obtiene resultados 
+aceptables para las funciones de correlación.
+Una expresión más descente (una \emph{aproximación uniforme}) sería
+la siguiente:
+
+\begin{equation}
+\begin{split}
+W(\xfase)&=\sum_n \exp((-E_n -E)/d^2) \int d\xfase \delta(H(\xfase)-E_n)\\
+&\approx Ai(H(\xfase)-E).
+\end{split}
+\end{equation}
+
+Ahora bien, el supuesto incorrecto tiene una implicación maluca
+en las correlaciones locales, digamos de orden $\epsilon$
+\begin{equation}
+\psi^*(q+\epsilon)\psi(q-\epsilon)=\int dp W(q,p)e^{-ip\epsilon/\hbar}
+\end{equation}
+y
+\begin{equation}
+C_q(\epsilon)=\int_{local} dq \psi^*(q+\epsilon)\psi(q-\epsilon)
+\end{equation}
+
+Ahora bien, el hecho de que la transformada de una función kernel
+en el espacio fase clásico realmente corresponda a un
+operador Hermitiano cuántico depende del orden de sus
+elementos, en lo que se conoce como el ordenamiento de Weyl.
+Típicamente esto hace referencia a que los elementos de la
+función como serie de potencias deben tomar en cuenta el orden, ya 
+que el conmutador afecta las cuentitas.
+
+
+\section{Objetivos}
+
+Vamos a pensar que en sistemas ergódicos (y probablemente mezclantes)
+La aproximación de la delta no es tan mala, pero olvida parte
+de las relaciones cuánticas importantes. Esto es, vamos a suponer
+que la función de cuerdas \emph{se parece} a la transformada de
+Fourier de una delta, siempre y cuando las cuerdas sean suficientemente
+pequeñas (es decir, correlaciones cercanas):
+
+\begin{equation}
+\chi(\xifase)\xrightarrow{\xifase\rightarrow 0}
+\int d\xfase \delta(H(\xfase)-E_n) e^{i\xifase\wedge\xfase/\hbar}
+\end{equation}
+
+Sabemos que la función de cuerdas funciona como una función 
+generadora de momentos estadísticos. Vamos a ver que tal funciona eso:
+
+\begin{equation}
+\bra{n}\hat{f}^l\ket{n}=\frac{i^l \partial ^l}{\hbar^l \partial q^l}
+\chi(\xifase) \lvert_{q=0}
+\end{equation}
+
+Usaremos esto para calcular las correlaciones $C_q(\epsilon)$.
+Finalmente calcularemos los puntos ciegos cerca del origen.
+
+
+\bibliography{ziegos}
+
+\end{document}

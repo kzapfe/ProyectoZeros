@@ -1,0 +1,378 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\bibliographystyle{alpha}
+
+
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+
+
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{Convenciones y notas varias}
+\author{ W. P. Karel Zapfe\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+Pongamos en claro todas las convenciones de notación, signo
+y unidades para el trabajo en semiclásica.
+
+\end{abstract}
+
+\section{Unidades}
+
+En este trabajo las posiciones y los momentos cartesianos
+tienen todos unidades de $\sqrt{\hbar}$, de forma
+que la métrica en un plano fase sea homogenea. Las unidades
+de raiz de acción corresponden a las siguientes combinaciónes:
+
+\begin{equation}
+\begin{split}
+U[\sqrt \hbar] &= U[\sqrt L] \\
+&=U[l \sqrt{m/t} ] \\
+&=U[\sqrt{E t}]
+\end{split}
+\end{equation}
+
+Nota que para tus estados coherentes y tus operadores
+estás usando unidades tales que $m, \omega =1$. 
+
+\section{Espacio Fase Clásico}
+
+Usaremos la convención de Alfredo O. de A. para el espacio fase,
+es decir, $\xfase=(p,q)$.  Siguiendo esa convención la matriz simpléctica
+$\Jsimp$ queda dada por:
+\begin{equation}
+\Jsimp=\left( \begin{array}{cc}
+0 & -1 \\
+1 & 0
+\end{array} \right)
+\end{equation}
+Entonces el producto antisimétrico o simpléctico quedará dado por:
+\begin{equation}
+\xifase\wedge\xfase:=\xifase_p \xfase_q -\xifase_q \xfase_p.
+\end{equation}
+
+
+\section{Transformada de Fourier}
+La convención para la transformada de Fourier que he utilizado es
+no normalizada, y la frecuencia positiva es en contra de las manecillas
+del reloj.
+\begin{equation}
+F(k)=\int dx f(x)e^{-ikx}
+\end{equation}
+Con esta convención, la relación entre la representación de posición
+y momento queda asi:
+\begin{equation}
+\phi(p)=\frac{1}{\sqrt{2\pi\hbar}^n} \int dq \psi(q)e^{-i\frac{pq}{\hbar}}.
+\end{equation}
+dado asi que $k=p/\hbar$. La relación inversa es:
+\begin{equation}
+\psi(q)=\frac{1}{\sqrt{2\pi\hbar}^n} \int dp \phi(q)e^{+i\frac{pq}{\hbar}}.
+\end{equation}
+
+Esta es la convención del Messiah \cite{Messiah}.
+En esta convención, la transformada de una Gaussiana fuera del origen es así:
+\begin{equation}
+\begin{split}
+ f(x)&=\frac{\exp(-(x-\mu)^2/\sigma^2)}
+ {\sigma\sqrt \pi}\\
+ \hat{f}(k)&=\exp(-(k\sigma)^2/4)\exp(i\mu k)
+\end{split}
+\end{equation}
+
+
+\section{Transformada de Wigner y de Weyl}
+
+Si tenemos un estado en la representación de posición o de momento, 
+su representación
+como función de Wigner queda definida por
+\begin{equation}
+\begin{split}
+\pi \hbar W(\xfase) &=\int dy \psi^*(q+y)\psi(q-y)e^{2ipy/\hbar}\\
+&=\int dy \phi^*(p+y)\phi(p-y)e^{-2iqy/\hbar}
+\end{split}
+\end{equation}.
+
+Más abstractamente esto es:
+\begin{equation}
+W(\xfase)= \frac{1}{\pi\hbar}\int d \xifase 
+\bra{\xfase+\xifase} \hat{\rho} \ket{\xfase-\xifase}
+\exp(2i/\hbar \xfase\wedge\xifase) 
+\end{equation}
+
+Aún más abstractamente esto es:
+\begin{equation}
+W(\xfase)= \frac{1}{\pi\hbar}\bra{\psi}\hat{R_\xfase}\ket{\psi}
+=\traza \hat{R_\xfase}\hat{\rho}
+\end{equation}
+Donde $\hat{R}_\xfase$ es el operador de reflexión
+respecto al punto $\xfase$ del espacio fase clásico.
+
+La transformada de Weyl invierte la transformada
+de Wigner, mandando una pseudo distribución en el
+espacio fase a un operador cuántico en la representación 
+de posiciones:
+\begin{equation}
+\bra{x}\hat{G}\ket{y}=\frac{2 \pi}{\hbar} \int 
+g\left(\frac{x+y}{2},p\right) \exp(i(x-y)p/\hbar) dp .
+\end{equation}
+
+\section{Algebra de Reflexión y Traslación}
+
+Los operadores cuánticos de reflexión y traslación forman un
+álgebra muy divertida. Aquí las propiedades más importantes.
+
+\subsection{Convenciones}
+\begin{equation}
+ \begin{split}
+\hat{T}_\xifase &:= \exp(i/\hbar (\xifase\wedge\hat{\xfase}))\\
+\hat{R}_\xfase &:= \int \frac{d\xifase}{(4 \pi \hbar)^2}
+\exp((i/\hbar) \xfase \wedge \xifase)\hat{T}_\xifase
+ \end{split}
+\end{equation}
+ El operador de reflexión se define como la transformada
+de Fourier Antisimétrica (entre $2^d$) del operador
+de traslación.
+
+\subsection{Algebra Elemental}
+
+Las reglas más simples de éste ál-gebar.
+
+\begin{equation}
+\begin{split}
+\hat{T}_\xifase^{-1}&=\hat{T}_\xifase^\dagger=\hat{T}_{-\xifase}\\
+\hat{R}_\xfase^{-1}&=\hat{R}_\xfase^\dagger=\hat{R}_{-\xfase}\\
+\hat{T}_\xifase\hat{T}_\mufase &=e^{i/\hbar(\xifase\wedge\mufase)} 
+\hat{T}_{\xifase+\mufase}\\
+\hat{R}_\xfase \hat{R}_\yfase &=e^{-2i/\hbar(\xfase\wedge\yfase)} 
+\hat{T}_{2(\xfase-\yfase)}\\
+\hat{T}_\xifase\hat{R}_\xfase &=e^{-i/\hbar(\xfase\wedge\xifase)} 
+\hat{R}_{\xfase+\xifase/2}\\
+ \hat{R}_\xfase\hat{T}_\xifase &=e^{-i/\hbar(\xfase\wedge\xifase)} 
+\hat{R}_{\xfase-\xifase/2}\\
+\end{split}
+\end{equation}
+
+\subsection{Emparedados}
+
+\begin{equation}
+\begin{split}
+\hat{R}_\xfase \hat{T}_\xifase \hat{R}_\xfase 
+&=e^{-2i/\hbar(\xfase\wedge\xifase)} \hat{T}_{-\xifase}\\
+\hat{T}_{-\xifase}\hat{R}_\xfase \hat{T}_\xifase &=
+\hat{R}_{\xfase-\xifase}\\
+ \hat{R}_{\xfase}\hat{R}_\yfase \hat{R}_\xfase &=
+\hat{R}_{2\xfase-\yfase}\\
+ \hat{T}_{-\xifase}\hat{T}_\mufase \hat{T}_\xifase &=
+e^{2i/\hbar (\mufase\wedge\xifase)}\hat{T}_{\mufase}
+\end{split}
+\end{equation}
+
+\subsection{Conmutadores}
+
+
+\begin{equation}
+\begin{split}
+[\hat{R}_\xfase ,\hat{R}_\yfase ]&=
+[\hat{T}_{2\yfase} ,\hat{T}_{-2\xfase} ],\\
+[\hat{R}_\xfase ,\hat{T}_\xifase ]&=
+e^{-i/\hbar(\xfase\wedge\xifase)}
+(\hat{R}_{\xfase-\xifase/2}-\hat{R}_{\xfase+\xifase/2}).
+\end{split}
+\end{equation}
+
+
+\section{Estado Coherente y Desplazamientos}
+
+Un estado coherente es un estado de mínima incertidumbre 
+que se mantiene coherente en el tiempo. En la aproximación
+armónica esto es un estado base desplazado fuera del punto de
+equilibrio. Estos son \emph{estados gaussianos}o 
+\emph{ coherentes canónicos}. En la literatura convencional
+se usa el operador de desplazamiento
+
+\begin{equation}
+\hat{D}_z:= \exp(z\hat{a}^\dagger-z^*\hat{a}),
+\end{equation}
+
+donde $\hat{a}, \hat{a}^\dagger$ son operadores de bajar y subir,
+en unidades de $\sqrt{\hbar}$, 
+y $z$ es un número complejo con unidades de $\sqrt\hbar^{-1}$.
+El estado coherente queda entonces definido por:
+
+\begin{equation}
+\ket{z}=\hat{D}_z \ket{0}
+\end{equation}
+y es un eigenket del operador de bajada:
+\begin{equation}
+\hat{a}\ket{z}=z \ket{z}.
+\end{equation}
+
+En la convención de Alfredo nos conviene usar mejor el 
+operador de traslación:
+
+\begin{equation}
+\hat{T}_\xifase := \exp(i/\hbar (\xifase_p\hat{q}-\xifase_q\hat{p}))
+=\exp(i/\hbar (\xifase\wedge\hat{\xfase})),
+\end{equation}
+
+Aquí $\xifase$ es miembro del espacio de cuerdas y tiene las 
+mismas unidades que el espacio fase, asi que el producto
+simpléctico tiene unidades de $\hbar$. La relación entre
+el operador de desplazamiento y el de traslación está dada si esogemos
+$z=1/(2\hbar)(\xifase_q + i \xifase_p)$. En realidad no te queda tan claro
+de donde sale el $2$, pero eso es lo que ocurre.
+Siguendo esa notación y mandando a volar la dependencia temporal, 
+tenemos que: 
+
+\begin{equation}
+\bra{q}\hat{T}_\xifase\ket{0}=\frac{1}{(\pi\hbar)^{1/4}}
+\exp\left(\frac{-(q-\xifase_q)^2}{\hbar}+
+\frac{i\xifase_p (q-\xifase_q/2)}{\hbar}\right).
+\end{equation}
+
+Observa la fase (semi irrelevante) $\xifase_p \xifase_q/2\hbar$.
+Simplifica mucho los posteriores cálculos.
+
+Su representación en momento es la transformada de Fourier usual.
+
+\begin{equation}
+\bra{p}\hat{T}_\xifase\ket{0}=\frac{1}{(4\pi\hbar)^{1/4}}
+\exp\left(\frac{-(p-\xifase_p)^2}{4\hbar}-
+\frac{i(p-\xifase_p/2)\xifase_q}{\hbar}\right).
+\end{equation}
+
+Observese el cambió de signo en la fase. 
+
+Siguiendo esa convención, la función de Wigner para el estado
+coherente fuera del origen queda de la siguiente forma:
+
+\begin{equation}
+\begin{split}
+W_\xifase(\xfase)&=\frac{1}{\sqrt{\pi\hbar}}
+  \exp\left(\frac{-1}{\hbar}
+\left((q-\xifase_q)^2+(p-\xifase_p)^2\right)\right)\\
+&=\frac{1}{\sqrt{\pi\hbar}}
+\exp\left(\frac{-1}{\hbar}
+\|\xfase-\xifase\|^2\right).
+\end{split}
+\end{equation}
+
+Ahora la función de cuerdas o de Weyl: ésta esta dada por la 
+transformada de Fourier de centros a cuerdas:
+\begin{equation}
+\chi(\xifase)=\frac{1}{2\pi\hbar}\int d \xfase W(\xfase)
+\exp\left(\frac{i}{ \hbar}(\xifase\wedge\xfase)\right).
+\end{equation}
+
+La función de cuerdas para un estado coherente se ve así, entonces:
+ 
+
+\begin{equation}
+\begin{split}
+\chi(\xifase) & = \frac{1}{2\pi\hbar}\int d \xfase W_\mufase(\xfase)
+\exp\left(\frac{i}{\hbar}(\xifase\wedge\xfase)\right)\\
+ & = \frac{1}{2\sqrt{\pi\hbar}}
+  \exp\left(\frac{1}{\hbar}(i\mufase\wedge\xifase - \|\xifase\|^2/4)\right)
+\end{split}
+\end{equation}
+
+Esos 2 se están volviendo extraños. Pero no grites hasta no saber.
+
+\section{Superposición de estados coherentes}
+
+La superposición de estados coherentes está dada en la representación
+de momentos o posiciones simplemente por la suma compleja de sus
+varias partes, con su amplitud correspondiente.
+
+
+\begin{equation}
+\ket{\psi}=\sum_i a_i \ket{\xifase_i}
+\end{equation}
+
+Por supuestoq que esto está muy fácil. Para ejemplos consideremos
+el caso de dos estados sumados.
+La matriz de densidad será en este caso:
+
+\begin{equation}
+\hat{\rho}=\sum_{i,j} a_i a_j^* \ket{\xifase_i}\bra{\xifase_j}
+\end{equation}
+
+Ahora bien: usando un poco el coco se puede ver que
+la función de Wigner es real (como tiene que ser, por el eigenvalor
+de $\hat{R}_\xfase$).
+La transformada de Wigner es lineal. Entonces se pueden separar
+las partes de la suma.  Los elementos diagonales son simplemente
+las funciones de Wigner centradas en los $\xifase_i$, por el 
+peso correspondiente:
+
+\begin{equation}
+  \sqrt{\pi\hbar}W_{ii}(\xfase)=|a_i|^2 W_{\xifase_i}(\xfase).
+\end{equation}
+
+Cada elemento no diagonal es como sigue:
+
+\begin{equation}\label{offdiagonal0}
+ \sqrt{\pi\hbar} W_{ij}(\xfase)=a_i a_j^* \int dy \psi_{\xifase_j}^*(q+y)
+\psi_{\xifase_i}(q-y)e^{2ipy/\hbar}
+\end{equation}
+
+Siguiendo a E. Zambrano \cite{tesiseduardo},
+la parte no diagonal está dada por (\emph{after a little algebra}):
+Se entiende cuando $i$ es un índice y cuando no, verdad?
+
+\begin{equation}\label{offdiagonal1}
+ \sqrt{\pi\hbar} W_{ij}(\xfase)=a_i a_j^*\exp\left(
+\frac{\|(\xifase_i+\xifase_j)/2-\xfase\|^2}{\hbar}+
+\frac{i}{\hbar}(\xifase_i-\xifase_j)\wedge \xfase-
+\frac{i}{2\hbar}\xifase_i\wedge \xifase_k
+\right)
+\end{equation}
+
+La función de cuerdas también la podemos tomar de Zambrano, 
+corrigiendo los factores. Igualmente la parte diagonal
+no tiene problemas, y la parte no diagonal está dada por:
+
+\begin{equation}\label{chioffdiagonal1}
+ 2\sqrt{\pi\hbar} \chi_{ij}(\xifase)=a_i a_j^*\exp\left(
+\frac{\|(\xifase_i-\xifase_j)-\xfase\|^2}{4\hbar}+
+\frac{i}{2\hbar}[(\xifase_i+\xifase_j)\wedge \xifase+
+\xifase_i\wedge \xifase_k]
+\right)
+\end{equation}
+
+Una vez más, atento al cambio de signo al final.
+
+\end{document}
+
+

@@ -1,0 +1,350 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+%\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+\usepackage{float}
+
+%Este paquete le pone una barrera a los floats
+% al final de cada seccion
+\usepackage[section]{placeins}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ Weyl Functions for the Nelson Potential:\\ some puzzling comparisions}
+\author{\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Continuing from ``troubleshooting01'', here I present a
+possible reason for the appearence of the dissimil chord nodal
+lines between Fabricio's computation and mine. 
+\end{abstract}
+
+
+
+
+\section{An example from image processing}
+
+I am presenting all the images with the same scale factor
+here. The images in the ``frequency domain'' are presented showing
+only their amplitude in logarithmic scale, for simplicity 
+(they are, in general, complex numbers).
+
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{Original.png}
+                \caption{A tyger}
+                \label{tigre01}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{Trans_Original.png}
+                \caption{The Fourier Transform of a tyger.}
+                \label{ftigre01}
+  \end{subfigure}
+\\
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{FFT_Padding_4x4.png}
+                \caption{The Fourier transform with black padding.}
+                \label{ftigreynegro01}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{Inv_FFT_Padding_4x4.png}
+                \caption{The inverse transform of the previous picture.}
+                \label{ftigreynegro01}
+  \end{subfigure} 
+\caption{ A simple trick for rendering on screen or on paper
+an enlargement of a digital image. The original photo is Fourier transformed,
+then padded with black areas, and transformed back. This technique 
+avoids the forming of ``big pixel'' effects, but it appears to have less
+quality. In reality, the ``quality'' is spread over a larger area.
+ }\label{ZoomTrick}
+\end{figure}
+
+In the figure \ref{tigre01}, the trick is explained.
+This is one of the techniques that are used for enlarging
+an image without making it look to ``pixelated''. 
+It works precisely by the inverse relation between large and small
+scales in Fourier Transforms. In discrete Fourier Transforms (DFT),
+this derives from an important propierty: the Fourier Transform of
+a discrete set of numbers has the same number of elements in the image
+(is a one-to-one function).
+Take the transform as a function of a discrete index, and it can be stated that
+both the function and its inverse have the same period.
+Interpreting this
+periodicity as a toroidal domain, it defines the size of the domain.
+
+Of course, if this trick is well defined it should work both ways.
+I present that  on the figure \ref{ZoomTrick02}. We can
+expand the tyger image with black padding, and obtain an enlarged image
+of the frequencies domain. Again, the information on the
+small scale is the tyger, wich spreads over the whole domain, and
+the ``blackness'' gets evenly distributed. 
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{Zero_Padding_4x4.png}
+                \caption{A tyger with padding}
+                \label{tigreynegro02}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{Trans_Pad_4x4.png}
+                \caption{The Fourier Transform of the image to the left.}
+                \label{ftigreynegro02}
+  \end{subfigure}
+\caption{ The trick works both ways, we can use it also for enlarging
+the picture of the frecuency domain.
+ }\label{ZoomTrick02}
+\end{figure}
+
+Of course, as the trick works independently on each axis, we can
+make it only in one direction, shown in the figures \ref{ZoomTrick03}. 
+I am very slowly driving the point home here,
+so I begg you patience.
+I want you to think of the tyger as a Wigner function now, or
+as a discrete sampling of it, and its transform as a chord function.
+  
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{Zero_Padding_3x1.png}
+                \caption{A tyger with vertical padding, centered.}
+                \label{tigrevert01}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{Trans_Pad_3x1.png}
+                \caption{Its Fourier transform.}
+                \label{ftigrevert01}
+  \end{subfigure}
+\\
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{Zero_Padding_1x4.png}
+                \caption{A tyger with horizontal padding.}
+                \label{ftigrehor01}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.48\textwidth}
+    \centering
+          \includegraphics[scale=0.40]{Trans_Pad_1x4.png}
+                \caption{And its Fourier Transform.}
+                \label{ftigrehor01}
+  \end{subfigure} 
+\caption{ The trick works independently on each axis and
+disregards of centering or origin. The photo of the tyger
+could be any real valued function on the plane, including,
+conveniently, a Wigner quasi distribution.
+ }\label{ZoomTrick03}
+\end{figure}
+
+
+\section{ There are Fourier Transforms and then, there are Fourier Transforms}
+
+\subsection{A Symplectic, continous, exact, bidimensional Fourier Transform}
+
+The transform that goes from Wigner representation to Weyl representation
+of the density matrix is this one:
+
+\begin{equation}
+\chi(\xifase, \mufase)=\int d\xfase d \yfase
+W(\xfase,\yfase)\exp \big(-\ihb (\xfase\wedge \xifase+\yfase\wedge \mufase) \big).
+\end{equation}
+
+We are interested on the section $\xifase=0$, so this reduces to tracing over
+the $\xfase$ and performing the symplectic Fourier transform on the 
+$\yfase$ degree of freedom. Let us call this reduced function simply $W(y)$:
+
+\begin{align}
+W(\yfase) &=\int d\xfase
+W(\xfase,\yfase)\exp \big(-\ihb \xfase\wedge \xifase \big) \rvert_{\xifase=0} \\ 
+&=\int d\xfase 
+W(\xfase,\yfase).
+\end{align}
+
+Then we need only a continuous Fourier transform in the plane.
+It turns out, we are not really doing that --- 
+each one of us is doing a different,
+but related, Fourier Transform.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{CentrosTraceOverx01.png}
+\caption{The $W(\yfase)$ distribution made with Dirac Deltas.}
+\label{karelwignerfun}
+\end{figure}
+
+My Wigner function is a large set of Dirac Deltas on the Wigner phase space, which 
+once traced over reduce to a set of Dirac Deltas on the $\yfase$ plane distributed
+as in the figure \ref{karelwignerfun}. Until now I realize that
+if I am not interested on any other section of the
+chord function, the $\xfase$ variable is completely irrelevant.
+ The expression is:
+\begin{equation}
+W(\yfase)=\frac{1}{N}\sum_{\yfase_k} \delta(\yfase-\yfase_k)
+\end{equation}
+The nice thing is that I know the analitical expresion of the Fourier transform of
+this summatory of Dirac Deltas, so I have only to calculate this sum,
+point for point, in a sensible region of the $\mufase$ chord space:
+\begin{equation}
+\chi(\xifase=0, \mufase)=\frac{1}{N}\sum_{\yfase_k} \exp (-\ihb (\yfase_k\wedge\mufase))
+\end{equation}
+The discretization of this Fourier Transform  has to do with the minimum commun
+denominator of al the $\yfase_k$ up to machine precission. We can take it as trully
+continuous.
+
+\subsection{An image processing Fourier Transform}
+
+Now, Fabricio has worked a problem much more similar to the discrete Fourier Transform, and to
+the tyger image example above. 
+Let me show this in small steps.
+The Discrete Fourier Transform for a finite secuence of real or complex numbers
+can be defined as:
+\begin{equation}
+X_j=\sum_{k=0}^{N-1}x_k \exp(-i 2\pi \frac{j k}{N})
+\end{equation}
+From the definition it can be seen that, in order for the
+relation to be invertible, we need at least as many $X_j$ as
+$x_k$ and that the $X_j$ repeat themselves after a period of $N$. That means,
+both sequences have the same length. 
+If we make the same transform with a bidimensional array of numbers, the same
+reasoning applies:
+\begin{equation}
+X_{\alpha, \beta}=\sum_{j,k=0}^{N-1}x_{j,k} \exp(-i 2\pi \frac{j \alpha + k\beta}{N})
+\end{equation}
+Notice that in this very simple scheme, the array has no ``length'' in the continuous
+dimensional sense, only a length defined by number of elements. 
+
+Of course they could be differently sized in each dimension, but for simplicity let
+us keep them squared. Now, remember our tyger. Every member of the grid is a pixel,
+and its grey hue is the value of the function. The $\alpha, \beta$ domain
+is a frecuency domain, the ``whiteness'' of the original photograph
+being the value of $x_{\alpha, \beta}$. 
+This kind of black and white photos of animals have
+similar looking Fourier Transforms, and most of the large structure
+which makes one recognize the animal is 
+\emph{close to the origin in the frequency domain}. I have put the
+origin of the transformed space in the center of the picture by a phase
+shift, as we customarly
+use. 
+
+If we augment the array by a group of zeros away from the origin, as done the figures
+\ref{ZoomTrick}, we change the $N$ number by a larger one without changing
+the information in the picture. When we perform the inverse transform, this will appear
+in the divisor of the argument of the trigonometric functions, effectively making the
+frequencies smaller, and thus, spreading the image over a larger scale. Stated as an
+afforism: we have enlarged the period of the image, its large structure encoded
+in the origin of the $\alpha, \beta$ space, still untouched. 
+
+\subsection{A simple discretization in the plane}
+
+In the case that we have not an array of deltas, but a numeric representation
+of a function whose Fourier Transform we cannot obtain by analytical means, our
+only hope is to perform a discretization and sums. We can do this in a lot
+of clever ways, but the idea is always essentialy the same. Here I will
+translate Fabricio's email and expand it.
+
+We take a rectangle in the phase space which contains the
+effective support of the function. Outside this, the functions has allmost zero
+values. Sometimes a good sense of what is not relevant is needed to define
+the right rectangle. The rectangle has to be larger than this effective support.
+We should also make an educated guess about the effective support of the
+transform, and define a rectangle there. Then we make a grid $\mathbb{G}$, 
+let us say,
+$N$ by $N$, and perform the Riemann sum 
+\begin{equation}
+\chi(\mu)=\sum_{y_k \in \mathbb{G}} W(y_k) \exp(-\ihb  (y_k \mu)) \Delta y
+\end{equation}
+For clarity I use one dimensional notation.
+In a na\"ive sampling, we have
+\begin{equation}
+y_k=y_{min}+\frac{(y_{max} -y_{min})k}{N} \text{ and } 
+\Delta y = \frac{(y_{max} -y_{min})}{N}.
+\end{equation}
+We make the pertinent substitution in the the expression for the 
+Riemann sum,
+\begin{equation}
+\chi(\mu)=\sum_{0\leq k \le N} W(y_k) 
+\exp \Big(-\ihb \mu
+\big(\frac{y_{max}-y_{min} k }{N} +y_{min}\big) \Big) 
+\Delta y
+\end{equation}
+
+That last expression begins to look clearly similar to the discrete Fourier Transform,
+with some annoying factors and an extra phase trown in. How differently
+would it behave, specially regarding data density?
+
+This is exactly what Fabricio addresed in his response. I copy verbatim:
+\begin{verbatim}
+Agora defino dois retangulos: dominio e imagem. 
+O retangulo dominio deve ser maior que o 
+"suporte efetivo de f(x,y)"(ou seja para valores (x,y) 
+perto da borda ou fora do retangulo dominio 
+f(x,y) é praticamente zero!). O retangulo 
+imagem deve incluir o suporte efetivo de F(X,Y).
+Agora o negocio é que para fazer o calculo 
+numerico você precisa definir uma grade 
+bidimensional tanto no retangulo dominio como no retangulo imagem!
+O segredo da questão é que a granulosidade da grade no espaço 
+imagem esta controlada pelo tamanho 
+do retangulo dominio isso quer dizer que se aumento 
+o retangulo dominio diminuo a granulosidade no retangulo imagem. 
+Para a transformada inversa é ou contrario!
+Conclusao você: se você brinca com o 
+tamanho dos retangulos (existem limites para isto!)
+em essencia o que muda é a nitidez com que você 
+vai ver a imagem das respeitivas transformadas 
+nao o tamanho!
+\end{verbatim}
+
+
+
+\end{document}

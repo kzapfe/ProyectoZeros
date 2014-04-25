@@ -1,0 +1,670 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+%\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+\usepackage{float}
+
+%Este paquete le pone una barrera a los floats
+% al final de cada seccion
+\usepackage[section]{placeins}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ Troubleshooting: Fourth Part\\ The Cumulants of the pointillist centre function}
+\author{Karel}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The chord function evaluated at $\xifase$ is equivalent to the
+expected value of the traslation operator $T_{-\xifase}$. This implies
+that the first nodal manifolds have to depend on the expansion of this
+last quantity for very small chords. The expansion turns out to be
+a polinomial expression where the coefficients are the 
+cumulants of the centre function. We shall present details here. 
+\end{abstract}
+
+
+\section{The cumulants and the small chord expantion for $\chi(\xfase) $}
+
+The symplectic product follows the Ozorio de Almeida order. We usually
+write it ``chord wedge centre'' for consistency:
+\begin{equation}
+\xifase\wedge\xfase=\xi_p p_x -  \xi_q q_x.
+\end{equation}
+
+The chord function is expressed as:
+
+\begin{align}\label{chidef}
+\chi(\xifase) & = \langle \hat{T}_{ -\xifase } \rangle \\ 
+& = \int d\xfase  W(\xfase) \exp( \ihb \xifase \wedge \xfase).
+\end{align}
+
+The centre function is a quasi-distribution, in the sense
+that one can obtain expected values for operators that
+are polinomial combinations of $\hat{q}, \hat{p}$. Suposse that
+we label (arbitrarly) the centre functions by $E$, corresponding to
+some state equally labeled, so the expected value for such operators
+can be obtained by 
+
+\begin{equation}\label{expectedqp}
+\Prom{ \mathcal {M} (\hat{q}^k\hat{p}^m)}{E}=\int W(\xfase) q^k p^m d \xfase
+\end{equation}
+
+Care must be taken on the right side of this expression: where the
+classical variables conmute, the corresponding 
+quantum mechanical operator has to be an apropiatelly symetrized expression
+of the factors, here represented by an $\mathcal{M}$. If we expand the
+exponent in \ref{chidef}:
+
+\begin{align} \label{chitruncada}
+\chi(\xifase) &=\int d \xfase W(\xfase) \exp( \ihb \xifase \wedge \xfase) \\
+= &\int d \xfase W(\xfase) \Big( \sum_{n=0}^{\infty} 
+\frac{(\ihb \xifase \wedge \xfase)^n }{n!} \Big)\\
+& \approx 1+ \int W(\xfase) \ihb \xifase\wedge\xfase d\xfase 
++ \frac{1}{2} \int W(\xfase) (\ihb \xifase\wedge\xfase)^2 d\xfase 
++ \frac{1}{6} \int W(\xfase) (\ihb \xifase\wedge\xfase)^3 d\xfase 
++\cdots\\
+&\approx 1+  \ihb \langle \xifase\wedge\xfase \rangle 
++ \frac{1}{2} \langle (\ihb \xifase\wedge\xfase)^2 \rangle 
++ \frac{1}{6} \langle  (\ihb \xifase\wedge\xfase)^3 \rangle 
++\cdots
+\end{align}
+
+The polinomials inside the expected value brakets have exactly the
+form required by the equation \ref{expectedqp}, as all the
+combination in all orders appear (this can be checked by expanding it
+and taking no shortcuts). So the $n$-th order expantion contains all the
+cumulants of the $p,q$ quantities up to $n$-th order. The approximation
+for the nodal lines close to the origin in the chord space then should
+depend primordialy on the lowest order cumulants, as noted on
+the work with E. Zambrano.
+
+
+The ``pointillist'' centre function is a cloud of points (Dirac Deltas)
+on the phase space close to the energy surface of interest. 
+To be close here means to be less than a distance of $\sqrt{\hbar}$ from
+the exact location of the surface. The density of the cloud to be
+relevant as a crude approximation for the quantum mechanical state
+is to have each point to ocuppy a volume of $hbar^2$, more or less. 
+This gives us for the value of energy $E=0.8138\ldots$ and $\hbar=0.05$
+a population of ``centre samples'' of $N=116'992$. 
+This makes the expression for the pointillist center function very simplistic:
+
+\begin{equation}
+ W(\xfase)=1/N\sum_j \delta (x-x_j); \text{ where } H(x_j) \approx E.  
+\end{equation}
+
+The corresponding chord function should be simply:
+\begin{equation}
+ \chi(\xifase)=1/N\sum_j \exp (\ihb \xifase \wedge x_j).
+\end{equation}
+
+This is the expression that numerically is giving the strange behavior for
+which we have been discusing over a year, namelly, it is to wide the first nodal
+manifold in the $\xi_{2p}$ direction, as can be seen in the figures 
+\ref{ComparacionVieja}. In the old troubleshoting examples, we had a slightly better
+behaviour expanding the function up to third order, as can be seen from the
+last of the figures mentioned. I propose to check carefully all the other cumulants.
+
+
+
+
+\section{The $\xifase_1=0$ section}
+
+Our research has tested the \emph{weak ergodic hypothesis} in 
+a section of the chord space for the four dimensional problem
+posed by the Nelson Potential.
+
+Again, we rewrite the potential to make sure we are all
+using the same terminology:
+
+
+\begin{equation}\label{classicalhamiltonian}
+H(\xfase)=(p_{x1}^2+p_{x2}^2)/2+\omega_1 q_{x1}^2/2+
+\omega_2(q_{x2}-q_{x1}^2/2)^2.
+\end{equation}
+
+The classical parameters are as follows:
+\begin{itemize}
+\item  $\omega_1=0.1$ 
+\item $\omega_2=1$,
+\item and the value for the energy, $E=0.81384007$.
+\end{itemize}
+
+Plank's constant shall have the value  $\hbar=0.05$.
+
+Our chord space consists on the four-dimensional chord
+$\xifase=(\xi_1, \xi_2)$, the first being the result of
+transforming the centre symbols with respect to the
+first degree of freedom (denoted, as in the classical
+Hamiltonian function, by $x_1$), and the second
+to the $x_2$ degree of freedom.
+
+Our particular interest is in the $\xi_1=0$ section. Taking
+this into account the cumulants in expression
+\ref{chitruncada} can be obtained by 
+judicious application of the binomial expansion:
+
+\begin{align}
+\langle (\xifase\wedge \xfase )^n \rangle & =
+\langle (\xi_1\wedge x_1 + \xi_2\wedge x_2   )^n \rangle = \\
+\langle (0+ \xi_2\wedge x_2 )^n \rangle & = 
+\Big\langle \sum_{j=0}^n 
+\binom{n}{j} (\xi_{2p} q_{x2})^{n-j}(-\xi_{2q} p_{x2})^{j} \Big\rangle \\
+ &= \sum_{j=0}^n \binom{n}{j} (-1)^j\xi_{2p}^{n-j}\xi_{2q}^j 
+\langle (q_{x2}^{n-j} p_{x2}^j) \rangle
+\end{align}
+
+This quantities should be easy to obtain numerically from
+the pointillist centre function:
+
+\begin{equation}
+
+\end{equation}
+
+
+\begin{align}
+\chi(0,\mufase) & = \int d\xfase d\yfase
+W(\xfase,\yfase )
+\exp \big(-\ihb (\xfase\wedge 0+\yfase\wedge\mufase) \big) \\
+ & =  \int d \yfase \Biggl( \int W(\xfase, \yfase) d \xfase \Biggr) 
+\exp  \bigl(-\ihb (\yfase\wedge\mufase) \bigr) 
+\end{align}
+
+
+This last expression is the one which is effectively implemented in the
+code that I wrote, although more simplified due to the nature
+of the \emph{``pointillist''} Wigner Function approximation.
+
+\subsection{A section from the section}
+
+If one compares in the same scale the nodal lines due to 
+Fabricio and mine calculations in chord space,
+the most notable difference is the scale of
+separation in the vertical directions, which corresponds
+to the $\mu_p$ coordinate, as shown in the next figure,
+\ref{comparacionzeros01}. 
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{FabricioWeyl02-ZerosContour.pdf}
+                \caption{Fabricio's Nodal Lines.}
+                \label{FabZeros}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{KarelWeyl-ZerosContour.pdf}
+                \caption{Karel's Nodal Lines.}
+                \label{KarelZeros}
+  \end{subfigure}%
+\caption{The Nodal Lines for both calculations. }\label{comparacionzeros01}
+\end{figure}
+
+Their is other big difference between these two images, and is
+the number of blind spots. The quantum version shows only two
+blind spots closer to the origin, while the pointillist
+shows six. We will attack each of the discrepancies at a time.
+
+First, the question of the scale in the $\mu_p$ axis.
+It can be noted that the chord function can be obtained over
+a section along this axis by further tracing over
+the $p_y$ variable. We notice that in our pointillist
+approximation, this is equivalently as to protecting
+the cloud of points on the $q_y$ axis. 
+
+
+\begin{equation}
+\chi(\xi_q=0, \xi_p=0, \mu_q=0, \mu_p)  = 
+  =  \int   \Biggl( \int W(q_x, p_x, q_y, q_p) dq_x dq_y dp_y \Biggr) 
+\exp  \bigl(+\ihb (y_q \mu_p ) \bigr) d y_p.
+\end{equation}
+
+The fact that our Wigner function looks like a cloud
+of points in the four dimensional centre space is due 
+to its functional form:
+
+\begin{equation}
+W(\xfase, \yfase)= 
+=\frac{1}{N}\sum_{(\xfase^*, \yfase^*)_k} \delta (\xfase - \xfase_k^*)
+\delta (\yfase - \yfase_k^*)
+\end{equation}
+
+Here it is understood that the stared quantities are
+\emph{very close} to the surface of energy in question,
+this means
+
+\begin{equation}
+H(\xfase^*, \yfase^*)  \approx E_{294} = 0.8384007.
+\end{equation}
+
+
+The inner integrated, in our case turns simply to be a projection:
+\begin{align}
+\int W(q_x, p_x, q_y, q_p) dq_x dq_y dp_y & =
+\int 
+\frac{1}{N}\sum_{(\xfase^*, \yfase^*)_k}
+\delta (\xfase - \xfase_k^*)\delta (\yfase - \yfase_k^*) 
+dq_x dq_y dp_y \\
+& = \frac{1}{N}\sum_{q_{y,k}^*} 
+ \delta(q_y - q_{y,k}^*) 
+\end{align}
+
+And the restricted SFT of this expression would simply be:
+
+\begin{equation}\label{chirestricta}
+\chi(\xi_q=0, \xi_p=0, \mu_q=0, \mu_p)  = 
+\frac{1}{N}\sum_{q_{y,k}^*} \exp(+\ihb q_{y,k}^* \mu_p)
+\end{equation}
+
+So, after Fabricio's suggestion, we will first check what
+happens in a very coarse approximation to this expression.
+We shall think that the $q_{y,k}^*$ are evenly spaced, that is:
+
+\begin{equation}\label{evenlyspaced}
+q_{y,k}=q_{y,min}+(q_{y,max}-q_{y,min})k/N
+\end{equation}
+
+which makes the expression \ref{chirestricta} a geometric
+truncated series, which yields as an approximation:
+
+\begin{align}\label{aprox01}
+\tilde{\chi}(\mu_p)  & = 
+\frac{1}{N}\sum_{k=0}^{N-1} \exp(+\ihb \mu_p \cdot (q_{y,min}+(q_{y,max}-q_{y,min})k/N)) \\
+& = 
+\frac{ \exp(+\ihb \mu_p  q_{y,min})}{N}\sum_{k=0}^{N-1} 
+\exp\big(+\ihb \mu_p \cdot (q_{y,max}-q_{y,min})/N)\big)^k   \\
+& = \frac{\exp(+\ihb \mu_p  q_{y,min})}{N} 
+\frac{ 1 - \exp\big(-\ihb \mu_p (q_{y,max}- q_{y,min})\big)}
+{ 1 - \exp\big(+\ihb \mu_p (q_{y,max}- q_{y,min})/N\big)} \\
+& =\frac{\exp\big(+\ihb \mu_p q_{y,min}\big) - \exp\big(+\ihb \mu_p q_{y,max}\big)}
+{ N - N \exp\big(+\ihb \mu_p (q_{y,max}- q_{y,min})/N\big)} \\
+\end{align}
+
+Now, $N$ is really large, so we take the approximation for
+the denominator
+\begin{equation}
+\exp\big(+\ihb \mu_p (q_{y,max}- q_{y,min})/N\big) \approx
+1 + \ihb  (q_{y,max}- q_{y,min})/N,
+\end{equation}
+resulting in 
+\begin{equation}
+\tilde{\chi}(\mu_p)  = -i\hbar
+\frac{\exp\big(+\ihb \mu_p q_{y,max}\big) - \exp\big(+\ihb \mu_p q_{y,min}\big)}
+{\mu_p ( (q_{y,max}- q_{y,min})}.
+\end{equation}
+
+This is already a palatable expression that we can use to plot and compare with 
+the two numerical approach's. 
+
+The real and imaginary part are as follows:
+\begin{align}
+\Re \tilde{\chi} (\mu_p)  &= \hbar
+\frac{\sin(\mu_p q_{y,max} /\hbar)-\sin(\mu_p q_{y,min} /\hbar)}
+{\mu_p ( (q_{y,max}- q_{y,min})} \\
+\Im \tilde{\chi} (\mu_p)  &= -\hbar
+\frac{\cos(\mu_p q_{y,max} /\hbar)-\cos(\mu_p q_{y,min} /\hbar)}
+{\mu_p ( (q_{y,max}- q_{y,min})} 
+\end{align}
+
+To get some values of the $q_{y,min}$ and $q_{y,max}$ we only look
+at the pointillist approximation in the position space
+ or in the $\yfase$ d.o.f. projection, shown in figure \ref{poincentros}.
+$q_{y,min}=-1$ and $q_{y,max}=8$ seem to be good enough values.
+
+\begin{figure}[h]
+ \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=0.9\textwidth]{NubeDeltasQProjection01.png}
+                \caption{$q$-space projection.}
+                \label{NubeQ}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=0.9\textwidth]{NubeDeltasYProjection01.png}
+                \caption{$\yfase$-projection.}
+                \label{NubeY}
+  \end{subfigure}%
+\caption{The projections for the pointillist Wigner function approximation. }\label{poincentros}\label{nubes}
+\end{figure}
+
+The resulting comparison is plotted in the figure \ref{comparafab}. We shown the
+$\tilde{ \chi }$ approximation versus Fabricio's Quantum Chord function, both
+over this special one-dimensional section. The
+crossing points with the zero-axis look terribly wrong for my data,
+while the crude approximation seems to be very adequate. Fabricio's data
+shows very few points at this magnification, but that doesn't seem to be a
+problem. An interesting discrepancy between his data and the crude approximation
+is the mean spacing between peaks. Even though the firs zero is more or
+less adequately placed, the approximate function has a higher 
+``frequency'', probably due to over simplification. Both seem to have at
+this scale a Bessel-like behaviour.   
+
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering  
+    \includegraphics[width=0.99\textwidth]{ComparaAprroxyFab01.pdf}
+      \caption{Real Part}
+      \label{comparafabreal}
+  \end{subfigure}%
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering  
+    \includegraphics[width=0.99\textwidth]{ComparaAprroxyFab02.pdf}
+      \caption{Imaginary Part}
+      \label{comparafabimag}
+  \end{subfigure}%
+  \caption{Comparison for the first zeros along the $\mu_p$ axis. 
+}\label{comparafab}
+\end{figure}     
+
+
+We can also make the whole procedure along the $\mu_q$ axis, obtaining
+very similar expressions:
+
+\begin{align}
+\Re \tilde{\chi} (\mu_q)  &= \hbar
+\frac{\sin(\mu_1 p_{y,max} /\hbar)-\sin(\mu_q p_{y,min} /\hbar)}
+{\mu_p ( (q_{y,max}- q_{y,min})} \\
+\Im \tilde{\chi} (\mu_q)  &= -\hbar
+\frac{\cos(\mu_q p_{y,min} /\hbar)-\cos(\mu_1 p_{y,max} /\hbar)}
+{\mu_p ( (p_{y,max}- p_{y,min})} 
+\end{align}
+
+But now , due to the symmetry in the Hamiltonian function, we have
+$p_{y,min}=-p_{y,min}$, which results in
+
+
+\begin{align}\label{CrudeApprox2MuQ}
+\Re \tilde{\chi} (\mu_q)  &= \hbar
+\frac{\sin(\mu_1 p_{y,max} /\hbar)}
+{\mu_p q_{y,max}} \\
+\Im \tilde{\chi} (\mu_q)  &= 0
+\end{align}
+
+The last expression is comfortably reassuring. We make the plot of the real
+part against Fabricio's and Karel's numerical calculations in the figure
+\ref{comparatodas02}. The plots have been normalized so that the 
+crude $\tilde{\chi}$ approximation has a maximum of $1$. That means
+that I have to re-scale Fabricio's data by a factor $1/\pi^2$
+(somewhat curios) and my data by $\sqrt(\pi*\hbar)$. This makes all
+plots ``normal''.
+
+\begin{figure}[h]
+  \centering     
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.80\textwidth]{ComparaMuQAxis.pdf}
+   \end{subfigure}%
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.80\textwidth]{ComparaMuQAxisZoomout.pdf}
+    \end{subfigure}%
+  \caption{Comparison of the real part along the $\mu_q$ axis. Notice that
+the three functions plotted behave similarly, but Fabricio's and Karel's cross
+the zero axis much closer to each other than to the crude approximation. At right we
+see a wider interval, where Fabricio's and Karel's two or three peaks follow pace
+while the approximation falls behind faster. }
+  \label{comparatodas02}
+\end{figure}
+
+The Crude Approximation was obtained with the hypothesis of
+a more or less homogeneous distribution for the $q_y$ centres of the
+pointillist Wigner function. This is very far from the case, as can
+be seen from the histogram presented in the figure \ref{histoqy},
+or, for those with an intuitive grasps, from the projections themselves in
+the figure \ref{nubes}. The approximate distribution
+inferred from the histogram has absolutely nothing in common
+with an homogeneous distribution.  We should now compare this with the distribution
+obtained from Fabricio's data, and try why his distribution is more similar to
+the Crude Approximation.
+
+From Fabricio's Data, which shows a relative large area of
+the chord function in the $\xifase=0$ plane, I can perform an inverse
+SFT and obtain the traced over Wigner function on the $\yfase$ plane. This is
+one of the things that keeps me perplexed: the inverse transform from Fabricio's data
+doesn't look well centred, although, being a traced over quasi-distribution and not
+a section, Fabricio's expressed little concern for its looks. This result is shown
+in figure \ref{WignerFromFab}. I have expressed my astonishment on the displacement
+of the peaks from the origin, an apparent translation corresponding
+to a very precise value: $q_y \rightarrow q_y+4$. If we trace the $p_y$ coordinate
+out of this last data, we obtain a numerical approximation to the probability
+distribution function on the $q_y$ axis, using the properties of the
+Wigner function.
+
+\begin{equation}
+\int W(p,q) d p = \bra{q}\hat{\rho}\ket{q} = \| \psi (q) \|^2
+\end{equation}
+
+From this property we obtain the numerical probability density 
+seen in the figure \ref{FabProb}. This compared with the figure \ref{histoqy}
+is quite annoying. It shows that the distribution is concentrated around this
+mysterious $q_y=4$, instead of the origin. We see that both of them have a peak around
+one unit right from their centre of distribution, and both decay abruptly after it.
+Also, they show almost no significant values in places more left than 
+one unit of their centre. This of course is expected from the shape of the
+Energy Surface, hinted by the cloud of deltas in figure \ref{nubes}, or
+by classically checking the value of the permissible values for this coordinate
+directly from the Hamiltonian ($q_{y,min}=\sqrt{E}=0.9021$). 
+
+A comparison which gives trust to the reasoning this far is
+the distribution of the $\yfase_p$ values. The histogram obtained
+from the pointillists Wigner function appears very homogeneous, so
+that the Crude Approximation in eq. \ref{CrudeApprox2MuQ} is adequate
+and hits very near in the three calculations.
+
+\begin{figure}[h]
+  \centering     
+    \includegraphics[width=0.80\textwidth]{DistribucionNormalizada_y_q_ExactNCentros.pdf}
+  \caption{An empirical histogram showing the appearance of various $q_y$ values
+for the pointillist Wigner function. It can be seen that it roughly corresponds
+to the sizes of the $y$-horns of the energy surface.}
+  \label{histoqy}
+\end{figure}
+
+
+\begin{figure}[h]
+  \centering     
+    \includegraphics[width=0.80\textwidth]{WignerDirectFromFabChords01.png}
+  \caption{The Traced over Wigner function obtained by performing the inverse
+SFT on Fabricio's quantum data for his $\xifase=0$ section of the chord function.
+The data is not normalized, and the colour scale is only chosen on contrast grounds.
+The black curve is the zero contour level line. }
+  \label{WignerFromFab}
+\end{figure}
+
+
+\begin{figure}[h]
+  \centering     
+    \includegraphics[width=0.80\textwidth]{PsiTrazedOverXSquaredFromFabricio01.pdf}
+    \caption{After performing an inverse SFT over the Quantum section for the chord function,
+and tracing over the $p_y$ coordinate, we obtain this approximate p.d.f for the $q_y$
+value.}
+    \label{FabProb}
+\end{figure}
+
+
+We shall investigate what can probably lead to these very different
+distributions for the $q_y$ value. Fabricio obtained the cords function
+directly from the density matrix for a pure state in the position representation:
+
+\begin{equation}\label{fabchidef}
+\chi(\xifase)=\int \bra{q+\xi_q/2}\hat{\rho}\ket{q-\xi_q/2}\exp (+\ihb q \xi_p) d q
+\end{equation}
+
+I also obtained the ``Berry'' cumulants for the pointillist centre function, which
+must be very close to the classical expected values for the $p^m q^k$  type of
+functions. In principle, from the expression \ref{fabchidef}, it would be possible
+to obtain the same information deriving the chord function. Numerically, this would
+need very high precision around the origin, which we do not have. We can see
+that the density of data for the quantum result is to low in figure \ref{comparafab},
+although we may try to make a wild guess for the second derivatives
+on the real part. The third derivative would be more difficult to obtain.
+From the following polynomial expansion we can produce a good conjecture
+about the correct placement of the first nodal lines.
+
+\begin{equation} \label{expansionpot}.
+\chi(\xifase)=1-\ihb \Prom{\xfase}{E}\wedge\xifase
+-\frac{1}{2 \hbar^2}\Prom{\xfase\wedge\xifase}{E}^2
++\frac{i}{6 \hbar^3 }\Prom{\xfase\wedge\xifase}{E}^3+\ldots
+\end{equation} 
+
+I want to point out a strange feature on the two plots of figure \ref{comparafab}.
+The pointillist approximation shows a not so smooth kink before the $\pm 0.05$ values
+of $\mu_p$. It is after this change of curvature that my chord function
+begins to spread out, making the zeros so far away from the origin. Let us check again
+the zeros obtained directly from the cumulants in the expansion \ref{expansionpot}.
+We should notice that the scale in which things seem to fail is the scale of $\hbar$,
+although this could be a misleading clue. We have to see how the
+3rd order approximation fits the different data then.
+
+
+\begin{figure}[h]
+  \centering     
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.80\textwidth]{Compara3ordenRealMuP.pdf}
+    \caption{Real part along $\mu_p$}
+   \end{subfigure}%
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.80\textwidth]{Compara3ordenImagMuP.pdf}
+    \caption{Imaginary part along $\mu_p$}
+  \end{subfigure}\\
+   \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.80\textwidth]{Compara3ordenRealMuQ.pdf}
+    \caption{Real part along $\mu_q$}
+    \label{real3ordenmuq}
+   \end{subfigure}%
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.80\textwidth]{Compara3ordenImagMuQ.pdf}
+    \caption{Imaginary part along $\mu_q$}
+    \label{imag3ordenmuq}
+  \end{subfigure}
+  \caption{Comparison of the pointillist, quantum and truncated to third order
+chord functions along the axis of the $\xifase=0$ plane. }
+  \label{compara3orden}
+\end{figure}
+
+In the figure \ref{compara3orden} we can appreciate that close to the origin the
+three functions really look similar, but the third order approximations lacks
+this change of curvature and therefore, crosses the abscissa much nearer
+to the place that Fabricio's Data does. In the sub-figure \ref{real3ordenmuq},
+where in principle there is nothing wrong with the scales, we observe that
+this parabolic approximation falls to close to the origin, as it does not
+change direction of curvature. This makes me think that such an approximation
+should be taken with a grain of salt at those scales. Nevertheless, it is very
+comforting to see how it fits the curvature and tilt near the origin. 
+In the sub-figure \ref{imag3ordenmuq} Fabricio's Data shows a slight deviation
+from the theoretical value $0$, due that his data doesn't fall exactly over the
+$\mu_p=0$ axis, but is a slightly off ($\mu_p =0.002802$).  
+
+I think both tests point to errors in the $\Prom{q_y}{E}$ value for the state.
+The mistake seems to lie here, although I still do not understand why the inverse
+transform of Fabricio's data seems to be so far from the classical 
+average values for $\Prom{q_y}{E}$, and why this displacement is
+a so neat whole number. This displacement seems to \emph{neat}. Observing Fabricio's
+first figure in the document \verb|chord-fun-niv294.pdf| produces
+the impression that the peak of the distribution for $q_y$ must be just slightly above
+the origin (attention to the two almost black peaks). 
+
+The relevant piece of FORTRAN code that I am using for obtaining the inverse transform 
+(which produces a traced over $\xfase$ Wigner function!) is as follows. Notice that
+I zealously calculate a ``imaginary part'' for the Wigner function, which
+gives me a very adequate result of $0.0000$:
+
+\begin{verbatim}
+  do k=1,muestreo
+     do l=1,muestreo
+
+        centerp=-maxcp+float(l)/float(muestreo)*2.0*maxcp
+        centerq=mincq+float(k)/float(muestreo)*(maxcq-mincq)
+        wignerreal=0.d0
+        wignerimag=0.d0
+
+!! Esta parte corresponde al muestreo en el programa de ida
+        do i=1,N1
+           do j=1,N2
+           !! Tienes que tener cuidado de usar la convencion opuesta!
+              !! a la que tienes en el programa NelsonPlano y derivados
+              !! Recuerda: x^xhi= x.p*xhi.q-x.q*chi.p
+              !! asi las cosas, aqui la transformada es 
+              !!Wigner(center)=(Xi(chord)*exp(center^chord/hb)
+
+              argument=(centerp*chordq(i,j)-centerq*chordp(i,j))/hb 
+                           
+              wignerreal=wignerreal  &
+                   +cos(argument)*weylreal(i,j) &
+                   -sin(argument)*weylimag(i,j)
+              
+               wignerimag=wignerimag  &
+                   +cos(argument)*weylimag(i,j) &
+                   +sin(argument)*weylreal(i,j)
+
+              
+           end do
+           
+1        end do
+        
+
+        !! Obvio que en la integral de Riemann va la long del intervalo
+        wignerreal=wignerreal*intervaloq*intervalop/pi
+        wignerimag=wignerimag*intervaloq*intervalop/pi
+ 
+        write(30, '(4F20.12)') centerq,centerp,wignerreal,wignerimag
+        
+     end do
+     
+     print*, "Vamos en el Bloque ", k
+     write(30, *) ""
+
+  end do
+
+\end{verbatim}
+  
+\end{document}
+

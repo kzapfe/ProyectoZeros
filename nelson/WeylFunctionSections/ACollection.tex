@@ -1,0 +1,210 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+\usepackage{float}
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ A Collection of Chord Functions}
+\author{\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+Here I present a collection of sections of the Chord Function for
+the Nelson Potential in various sections. It can be seen that
+inexactitude in the estimation of the energy shell causes appreciable
+modification in the geometry of the nodal lines of the real and
+imaginary part of the Chord Functions.
+
+\end{abstract}
+
+In the figure \ref{LD} we present the Weyl Function for
+a sampling of 49000 Dirac Deltas between the energy surfaces corresponding
+to $E=300$ and $E=300.05$.
+ This presented two problems. This value of the energy is very
+high, taking into account that the smallest estimate scale 
+for the energy quanta is $\hbar\omega_1=0.05$.  The energy volume
+trapped between the two mentioned surfaces thus has two very long and 
+thin horns, which are difficult to fill evenly with pseudo random
+points. The lack of points in the distal region for these horns produces
+a curious effect on the Chord function. The pattern becomes less
+round and has clear preference towards the horizontal and vertical
+region, near the origin it appears as a chess board. The nodal
+line in the imaginary part is still clearly visible along the
+$\mu_p=0$ axis.
+The section selected for that plot was $\xifase=(0,0)$.
+
+
+\begin{figure}[H]
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.4\textwidth]{49000_300_Real.png}
+\label{W49r}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.4\textwidth]{49000_300_Imag.png}
+\label{W49i}
+}
+\caption{Weyl or Chord function components, $E=300$, size of
+sample $N=49000$. Only the $\xifase_1=(0,0)$ plane is shown.}
+\label{LD}
+\end{center}
+\end{figure}
+
+ 
+In the following pictures, fig. \ref{HD00}, fig. \ref{HD50}, 
+and fig. \ref{HD05}, a 
+much lower value of the energy was chosen, namely $E=60$. 
+This doesn't result in the exaggeratedly long thin horns
+for the equipotential curves, 
+but is still a very
+large value for the energy considered the estimated
+energy quantum, $\hbar\omega_1=0.05$.
+The resulting projection is depicted on the
+figure \ref{Equipot}. We also have taken a much larger
+sampling number for the centers, namely $5\cdot 10^5$.
+This value blurs inhomogeneities in the nodal lines,
+although a price is paid in time in a standard 
+desktop computer.
+The first nodal lines seem to run more or less where it is expected
+in the $\xifase=(0,0)$ plane. We have a roughly elliptical
+area in the real part where the Chord function is positive, and
+an outer ring where it is negative.  The Imaginary part shows
+the expected change of sign along the abscissa, and the
+elliptical shape is oblate in the horizontal direction, instead
+of the vertical. A curious feature is that both parts
+show pikes protruding along the horizontal axis. My guess is that
+this may be caused by inaccuracy in the process of  filling the horns in
+the equipotential curve.  
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.45\textwidth]{DiracDeltaDistribution.png}
+\caption{The centers fill the area inside the equipotential
+curve $V(q_1, q_2)=E+\hbar\omega_1=60.05$ in this
+position projection. }\label{Equipot}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.45\textwidth]{500000_60_NelsonW0-0-Real.png}
+\label{W556r0}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.45\textwidth]{500000_60_NelsonW0-0-Imag.png}
+\label{W556i0}
+}
+\caption{Weyl or Chord function components, $E=60$, size of
+sample $N=500000$. The $\xifase_1=(0,0)$ plane is shown.}
+\label{HD00}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.4\textwidth]{500000_60_NelsonW0-05-Real.png}
+\label{W556r1}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.4\textwidth]{500000_60_NelsonW0-05-Imag.png}
+\label{W556i1}
+}
+\caption{Weyl or Chord function components, $E=60$, size of
+sample $N=500000$. The $\xifase_1=(0.5,0)$ plane is shown.}
+\label{HD50}
+\end{center}
+\end{figure}
+
+
+
+
+
+
+\begin{figure}
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.4\textwidth]{500000_60_NelsonW05-0-Real.png}
+\label{W556r4}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.4\textwidth]{500000_60_NelsonW05-0-Imag.png}
+\label{W556i4}
+}
+\caption{Weyl or Chord function components, $E=60$, size of
+sample $N=500000$. The $\xifase_1=(0,0.5)$ plane is shown.}
+\label{HD05}
+\end{center}
+\end{figure}
+
+
+Finally, we tested the method for an even lower energy value, namely
+$E=10$. The function looks very similar in the low resolution sample
+in fig. \ref{lower}, but the first nodal ellipsoid is bigger in the
+real and imaginary parts. 
+
+
+\begin{figure}
+\begin{center}
+\subfigure[Chord Function, Real part]{
+\includegraphics[width=0.4\textwidth]{500000_10_NelsonW0-0-Real.png}
+\label{Wlow2}
+}
+\subfigure[Chord Function, Imaginary part]{
+\includegraphics[width=0.4\textwidth]{500000_10_NelsonW0-0-Imag.png}
+\label{Wlow2}
+}
+\caption{Weyl or Chord function components, $E=10$, size of
+sample $N=500000$. The $\xifase_1=(0,0)$ plane is shown.
+Notice the change of scale in the $\mufase$ plane.}
+\label{lower}
+\end{center}
+\end{figure}
+
+
+
+
+\end{document}

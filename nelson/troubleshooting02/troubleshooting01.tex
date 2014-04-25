@@ -1,0 +1,497 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+%\usepackage{subfigure}
+\usepackage[spanish]{babel}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+\usepackage{float}
+
+%Este paquete le pone una barrera a los floats
+% al final de cada seccion
+\usepackage[section]{placeins}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ Weyl Functions for the Nelson Potential:\\ some puzzling comparisions}
+\author{\\CBPF}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Continuing the ``Puzzled01'' document, here I present the various 
+related calculations to the Weyl, Wigner, and Husimi function.
+An unexpected phase appeared on F. Toscano data.
+\end{abstract}
+
+
+
+
+\section{Be sure we all speak the same language}
+
+First things first, is to make sure we are speaking of the same
+problem before we compare results. I shall use the notations that
+I have been using in previous reports. The name of the coordinates
+in ``normal space'' as well as ``center space'' coincide, and 
+are given in the following expression for the Hamiltonian function:
+
+
+\begin{equation}
+H(\xfase,\yfase)=(p_x^2+p_y^2)/2+\omega_1 q_x^2/2+
+\omega_2(q_y-q_x^2/2)^2.
+\end{equation}
+
+The classical parameters are as follows:
+\begin{itemize}
+\item  $\omega_1=0.1$ 
+\item $\omega_2=1$,
+\item and the value for the energy, $E=0.81384007$
+\end{itemize}
+
+The quantum quantity is the value of Planck's Constant, $\hbar$ is
+$0.05$ in Fabricio's and Karel's work (I check that at least once per day).
+Our symplectic Fourier transform (SFT) follows this
+convention:
+
+\begin{equation}
+F(\xifase, \mufase)=\int d\xfase d \yfase
+f(\xfase,\yfase)\exp \big(-\ihb (\xfase\wedge \xifase+\yfase\wedge \mufase) \big).
+\end{equation}
+
+That is, $\xifase$ is the chord for the center $\xfase$ as
+$\mufase$ is for the $\yfase$.
+Is good to notice that the convention for the symplectic product is
+the one of Alfredo:
+
+\begin{equation}
+\xfase\wedge\xifase=p_x\xi_q - q_x \xi_p.
+\end{equation}
+
+In this convention, the SFT is a ``forward'' transform
+in the $p$ variables leading to chord $q$ variables, and a 
+``backward'' transform of the $q$ variables to chord $p$.
+This will be important later. 
+
+
+\section{Inverting Fabricio's Result}
+
+
+To compare the point-like Wigner function approximation with
+Fabricio's exact Wigner function I performed a partial 
+inverse transform for his data. This gives me the 
+``traced over $\xfase$'' Wigner function, as follows.
+Let $f$ denote a function in center space and $F$ its SFT in chord
+space. We have the data corresponding to the $\xifase=0$ section.
+
+\begin{multline}
+F(0,\mu):=\int d\xfase d\yfase f(\xfase,\yfase) 
+\exp \big( -\ihb (\xfase\wedge 0 + \yfase \wedge \mufase) \big) \\
+=\int \int f(\xfase,\yfase)d\xfase \exp \big( -\ihb  \yfase \wedge \mufase \big) 
+d \yfase
+\end{multline}
+
+After performing the partial  inverse transform, we obtain the projection
+of the Wigner quasi distribution on the $\yfase$ plane:
+
+\begin{multline}\label{halfinverse}
+\tilde{f} (\yfase):=\int d\xfase  f(\xfase,\yfase) \\
+=\int d\mufase  F(0,\mufase)  \exp \big(+\ihb  \yfase \wedge \mufase \big) 
+d \yfase.
+\end{multline}
+
+Here comes the first thing a bit off. In Fabricio's document, ``chord-fun-niv294.pdf'',
+the Quantum Wigner function appears with the peak at the origin of coordinates, 
+but performing the above transform (eq. \ref{halfinverse} 
+on his data I obtain the following picture (fig. \ref{KfromF01-Wigner}):
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]
+                  {WignerfromWeyl02.png} %
+\caption{The traced over Wigner function obtained
+after performing a partial backwards SFT over Fabricio's chord function data. }
+\label{KfromF01-Wigner}
+\end{center}
+\end{figure}
+
+As can be seen, the peak of the function is displaced exactly four 
+units on the $y_q$ axis. Fabricio's data is ordered in an array indexed
+by integers, so, in order to check if I am using the right interpretation
+for his indexes, I plot the chord function and see if it coincides with
+the images on his document. The clearest way to show this is to reproduce
+the plots for the chord function from Fabricio's data and compare them
+to his plots. 
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{CompFabrZerosReal.png}
+                \caption{Real part}
+                \label{realFchord}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{CompFabrZerosImag.png}
+                \caption{Imaginary part}
+                \label{imagFchord}
+  \end{subfigure}%
+\caption{The real and Imaginary parts of Fabricio's data for the chord
+function. I present the same scale that he uses, but the color range is
+shortened for higher contrast. Notice that his normalization is different.  
+The gray line is the nodal set. }\label{Fabchords}
+\end{figure}
+
+The plots shown in the above figure, \ref{Fabchords}, coincide very well
+with those on the document ``chord-fun-niv294.pdf''. Notice that his
+normalization is different to mine. His real part covers the interval
+$(-6.9195,9.6144)$ and the imaginary the interval
+$(-6.5239,6.5239)$. So I discard the problem of the interpretation of
+his data. Then again, the backward transformation of that data
+produces a Wigner quasi distribution on the $\yfase$ plane which is
+4 units away from the origin. Remembering the property of
+the Fourier Transform for translations;
+
+\begin{equation}
+FT[f(x-x_c)](k)= FT[f(x)](k) \exp(-ix_ck).
+\end{equation}
+
+Then, I suppose that Fabricio's data has a phase that goes as
+$-i4\mu_p/\hbar$ which I do not have. I take that into account in the
+backwards transformation, and I get the following picture for
+the traced-over-$\xfase$ Wigner function: 
+
+
+henceforth called the Dirac-Wigner semi-classical function, or DWf, to the exact
+Wigner function for the 294th level of the Nelson Potential. We have
+in our hands the data for its Weyl or chord transform in the section
+$\xifase=0$. We remember that we use the symbol $\xifase$ for the
+chord transformation of the center $\xfase$ and the symbol $\mufase$
+for the one corresponding to $\yfase$. 
+
+The backward transformation is only a partial transform, as we use
+the data restricted to the section in question. 
+
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]
+                  {WignerfromWeyl04.png} %
+\caption{The traced over Wigner function obtained
+after performing a partial SFT over Fabricio's chord function data.
+An extra phase of $+i8\mu_p/hbar$ has been added to the kernel of the transform. }
+\label{KfromF02-Wigner}
+\end{center}
+\end{figure}
+
+Lo and behold! The function appears centered on the origin, as it should. 
+So we have this difference in phase in our data, an $4\mu_p/\hbar$.
+
+\section{Taking an extra phase}
+
+The next step is to see if that extra phase would account for the
+differences in our chord functions. I will put this extra phase
+in the calculation of the chord function for the point-Dirac Wigner
+function and compare this with Fabricio's chord function. I
+already pointed out that there appeared to be a factor of $8$ units
+missing in the $\mu_p$ axis. It seems to be related to this.
+
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{FabricioWeyl02-ZerosContour.pdf}
+                \caption{Fabricio}
+                \label{WeylFabNodal}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{KWeylTroubleshot02-ZerosContour.pdf}
+                \caption{Karel}
+                \label{WeylKarNodal}
+  \end{subfigure}%
+\caption{The Nodal lines for the chord function according to Fabricio and myself. 
+This time, an extra phase of $-i4\mu_p/\hbar$ has been added to my SFT. }
+\label{FabKarelchords}
+\end{figure}
+
+Examining the previous figures and comparing it to the figures of the 
+last report, we can see that at least the scales for the nodal lines fit now. 
+Now I shall present other test. To see how different the nodal lines are, I will
+compare real and imaginary parts separately. 
+
+
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{ComparaZerosReal.pdf}
+          \caption{Real part}
+                \label{WeylRealNodal}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{ComparaZerosImag.pdf}
+                \caption{Imaginary part}
+                \label{WeylImagNodal}
+  \end{subfigure}%
+\caption{The Nodal lines for the chord function according to Fabricio and myself, separated in
+real and imaginary parts. Black lines are Fabricio's, red ones are mine. }
+\label{FabKarelNodal}
+\end{figure}
+
+As we can see in the figure \ref{FabKarelNodal}, starting from the origin, the first
+three nodal lines are not so different. In the fourth nodal lines my nodal set presents 
+some weird features, as circular nodal lines break otherwise more or less leveled sets.
+Still, the difference is big enough to cause different sets of blind spots. In the figure
+\ref{FabKarelchords} can be seen that the first nodal lines produce six blind spots in Fabricio's
+figure, but only 2 in mine, only because the imaginary oval encircles the real one. I will recall a 
+figure from the previous report, where I show the nodal lines obtained solely by the calculation
+of the first three cumulants of the Wigner dotted distribution. 
+
+
+
+\begin{figure}[H]
+\begin{center}
+ \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]
+                    {ExactoN_0821_WeylAprox3grado-0-0-ZerosContour.pdf} %
+                    \caption{Truncated up to third order }
+                    \label{CumulantsK}
+ \end{subfigure}%
+ \begin{subfigure}[b]{0.45\textwidth}
+   \centering
+   \includegraphics[width=\textwidth]{ExactNCompleto.pdf}
+   \caption{Complete SFT of the dotted Dirac Wigner distribution.}
+   \label{CompleteK}
+ \end{subfigure}%
+\caption{Karel's version of the chord nodal lines without the extra phase.}
+\label{Karelsinfase}
+\end{center}
+\end{figure}
+
+Conspicuously enough, that last figure also shows six blind spots, although the
+two nodal lines almost overlap. 
+
+With this not very firm observations, I will make my guess about what is wrong now.
+ There is something in Fabricio's SFT that produces an extra phase of the
+form $ - i 4 \mu_p/hbar$.  
+To test my conjecture I will proceed as follows.  First, I will obtain a very high
+resolution chord function from Fabricio's Wigner function, in order to locate very
+precisely the first nodal lines in a ball of radius $0.2$ around the origin.
+That number is a bit less than $\sqrt{\hbar}$, which is the scale that interests
+us.  Then I will produce again this plot  but adding the mysterious phase to 
+the SFT. I will compare both plots to my own using also the SFT with and without
+that extra phase. I will concentrate my attention on a square of side $0.4$
+centered on the origin, and I will make a very dense SFT of Fabricio's data
+for the Wigner Quantum function for the energy level 294. In the next figure 
+I compare what happens when I make the transform with and without the
+$-4 \mu_p /\hbar $. 
+
+
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{HighResWignerFabsinfase-ZerosContour.pdf}
+          \caption{Without the phase.}
+                \label{WeylFabsinfase}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{ZoomHighResWeylFabconfase4-ZerosContour.pdf}
+                \caption{With the phase}
+                \label{WeylFabconfase}
+  \end{subfigure}%
+\caption{The Nodal lines for the chord function obtained after a high density SFT of Fabricio's
+Wigner function.}
+\label{FabNodalfases}
+\end{figure}
+
+
+If we compare the figure \ref{WeylFabconfase} with the figures \ref{WeylFabNodal}
+and \ref{WeylKarNodal}, we can perceive a set of convenient similarities.  For
+starters, the closest lines to the origin share the same scale, so this extra phase
+was present in Fabricio's chord function for sure, confirming the translation
+of the backwards obtained Wigner function seen in the figure \ref{KfromF01-Wigner}. 
+Second, and most important: it shows that the topological differences
+in the first blind spots is due to operating the zero-searching algorithm over
+insufficient points. Fabricio's data has  a grid of 1000 by 1000 in a square of
+size 4.4 by 5.6. I have used his Wigner function and obtained a 600 by 600 grid
+in a square of side 0.4 for the chord function, and the zero-searching algorithm
+produces better located nodal lines. A relieving characteristics is that both the figure
+\ref{WeylFabconfase} and \ref{KfromF01-Wigner} have only two blind spots for the nodal
+lines closest to the origin, and topologically, they are equivalently located. 
+Another thing which is still puzzling is that, although figures \ref{WeylFabsinfase}
+and \ref{CompleteK} share the same scale, they are topologically very different,
+specially in imaginary nodal manifold. Equally intriguing is the fact that 
+the figure \ref{CumulantsK}, even when it corresponds to a truncated 
+expansion without the extra phase, resembles more
+the figures with the extra phase.
+
+I would conclude then that Fabricio's routine for the SFT is producing this
+extra phase, and for that I would like to ask him to produce a finer version of
+his chord function in the $0.4$ sided square around the origin, a 600 by 600
+grid data would be fine. If things as I say, the nodal lines should
+be like that in \ref{WeylFabconfase}. 
+
+
+
+\section{The huwi and huwe functions}
+
+As an extra test for correctness of the SFT, we will check the huwi functions
+of both sets of data and their SFT, which shall be labeled huwe (Husimi-Weyl) 
+functions. Due to the convolution property for  Fourier Transforms, the
+huwe function is just the chord function multiplied by a coherent Gaussian function.
+This has to preserve the position of the nodal surfaces, if everything in the code is
+right.
+
+As the Husimi transform of a Wigner function can be seen as a loss-less coarsening
+of the Wigner Function, I will use uppercase letters for its domain. The Husimi 
+transform of a two degree of freedom Wigner function $W(\xfase,\yfase)$
+shall be thus:
+
+
+\begin{equation}
+Q(X,Y)=\int W(\xfase,\yfase) \exp \big( (-\|\xfase-X\|^2-\|\yfase-Y\|^2)/\hbar \big)
+d\xfase d\yfase
+\end{equation}
+
+A partially traced over Husimi function would be obtained by integrating over the
+$\xfase$ variables and then making the Husimi transform over the $\yfase$ symplectic
+pair. This is not equal to the Husimi function in the $X=0$ plane. 
+ As the data that I have from Fabricio corresponds to the traced over
+Wigner function, that shall be the function presented in the next figure, followed by 
+that done using my dotted Wigner function.
+
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]
+                  {HusimiFabricio01.png} %
+\caption{The traced over $\xfase$ Husimi function from Fabricio's data,
+subtracting the extra phase. We see that it is positive and
+bounded.}
+\label{HusimiFab}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{center}
+  \includegraphics[width=0.8\textwidth]
+                  {HusimiKarel02.png} %
+\caption{The traced over $\xfase$ Husimi function from Karel's data,
+subtracting the extra phase. We see that it is quite similar to the previous
+figure, although lacks some of the valleys. Also the scale is lower, as if 
+the function 
+had been smeared to fill the lower regions.}
+\label{HusimiKar}
+\end{center}
+\end{figure}
+
+
+Now we shall investigate its SFT, which we could call (a bit erroneously) a
+huwe function:
+
+\begin{equation}
+\begin{split}
+huwe(\mufase)=\int W(\xfase,\yfase) d\xfase \exp\big(-\|\yfase-Y\|^2/\hbar \big)
+d \yfase \exp (-\ihb(Y\wedge \mufase)) d Y \\
+=\chi(0,\mufase)\exp(-\|\mufase\|^2/\hbar)
+\end{split}
+\end{equation}
+
+The next pair of double figures show the huwe functions for Fabricio's data and my own, 
+that is, for the exact quantum Wigner function of the 294 level and for the
+doted Dirac Wigner semi-classical approximation for an energy shell around the same energy. 
+The huwe function has been calculated with and without the extra phase of $-4i\mu_p /\hbar$.
+
+
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{ZoomHighReshuweFabsinfase-ZerosContour.pdf}
+          \caption{Fabricio}
+                \label{huweFabsinfase}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{ZoomHighReshuweKarelsinfase-ZerosContour.pdf}
+                \caption{Karel}
+                \label{huweKarelsinfase}
+  \end{subfigure}%
+\caption{The Nodal lines for the huwe function, discarding the $-i4\mu_p/hbar$ phase that
+seems to appear in Fabricio's SFT. Note the usual augment in the scale of the $\mu_p$ direction.  }
+\label{huwesinfase}
+\end{figure}
+
+
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{ZoomHighReshuweFabconfase-ZerosContour.pdf}
+          \caption{Fabricio}
+                \label{huweFabconfase}
+  \end{subfigure}%
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+          \includegraphics[width=\textwidth]{ZoomHighReshuweKarelconfase-ZerosContour.pdf}
+                \caption{Karel}
+                \label{huweKarelconfase}
+  \end{subfigure}%
+\caption{The Nodal lines for the huwe function, using the $-i4\mu_p/hbar$ phase that
+seems to appear in Fabricio's SFT. The similitude with previous figures is clear, \ref{WeylFabconfase} and
+\ref{WeylKarNodal}.  The smoothing out due to the Gaussian factor could be responsible for mistakes
+in the zero searching algorithm, which produces the closed lines in the second figure. A finer SFT could
+solve that.}
+\label{huweconfase}
+\end{figure}11
+
+
+\end{document}
+
+
