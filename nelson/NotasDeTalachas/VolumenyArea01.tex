@@ -1,0 +1,125 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+%\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+\usepackage{float}
+
+%Este paquete le pone una barrera a los floats
+% al final de cada seccion
+\usepackage[section]{placeins}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+\newcommand{\dif}{\, \mathrm{d}}
+\newcommand{\indicator}[1]{\mathbf{1}_{ \{   #1 \} } } 
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ Boring but necesary Apendix A: detailed obtantion of the
+Volume inside the Energy Shell for the Nelson Potential}
+\author{Karel}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We need the detailed calculus for the volume and area of
+the Energy Shell in the Nelson Potential. We put everything here.
+\end{abstract}
+
+
+\section{The Nelson Potential}
+
+The Nelson Potential has in ``natural'' coordinates ($m=1$) the form:
+
+\begin{equation}\label{classicalhamiltonian}
+H(\xfase)=(p_{x1}^2+p_{x2}^2)/2+\omega_1 q_{x1}^2/2+
+\omega_2(q_{x2}-q_{x1}^2/2)^2.
+\end{equation}
+
+The classical parameters are as follows:
+\begin{itemize}
+\item  $\omega_1=0.1$ 
+\item $\omega_2=1$,
+\item and the value for the energy, $E=0.81384007$.
+\end{itemize}
+
+Plank's constant shall have the value  $\hbar=0.05$.
+
+The Volume is the value of the indicator function for
+the set where $H(\xfase)<E$. 
+
+In the following calculations I shall write $x:=x_1, and y:=x_2$
+to avoid unnecesary clutering of indexes. I shall also use
+$\omega=\omega_1$ and omite writting explicitly  $\omega_2=1$.
+
+\section{Analytic Calculation}
+
+\begin{equation}
+\int \dif\xfase \indicator{H(\xfase)<E}
+\end{equation}
+
+Detailing, we can simply interpret the indicator as limits of integration.
+In the momentum part, the maximum avaible momentum is given by:
+
+\begin{equation}
+|p_{max}|=\sqrt{2 E- 2 V(q_x, q_y)}
+\end{equation}
+
+So the integral over the momentum variables can be done
+in polar coordinates, giving us simply:
+
+\begin{equation}
+V= 2 \pi \iint \dif q_x \dif q_y E-V(q_x, q_y)
+\end{equation}
+
+Now the limits of integration are the turning points of the
+trayectories, that is, the caustic of the manifold proyected
+in configuration space. It is simpler to put this in
+terms of $q_x^2$:
+
+\begin {align }
+E=V(q_x, q_y) & = &\frac{\omega q_x^2}{2}+(q_y - \frac{q_x^2}{2})^2 \\
+0 &= &\frac{\omega q_x^2}{2}+(q_y - \frac{q_x^2}{2})^2 \\
+0 &= &\frac{\omega q_x^2}{2}+ q_y^2 - q_yq_x^2 +`\frac{q_x^4}{4}
+\end{align}
+
+\begin{equation}
+ads
+\end{equation}
+
+
+\end{document}
