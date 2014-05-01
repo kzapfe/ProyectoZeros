@@ -89,7 +89,7 @@ $\omega=\omega_1$ and omite writting explicitly  $\omega_2=1$.
 \section{Analytic Calculation}
 
 \begin{equation}
-\int \dif\xfase \indicator{H(\xfase)<E}
+Vol=\int \dif\xfase \indicator{H(\xfase)<E}
 \end{equation}
 
 Detailing, we can simply interpret the indicator as limits of integration.
@@ -102,8 +102,8 @@ In the momentum part, the maximum avaible momentum is given by:
 So the integral over the momentum variables can be done
 in polar coordinates, giving us simply:
 
-\begin{equation}
-V= 2 \pi \iint \dif q_x \dif q_y E-V(q_x, q_y)
+\begin{equation} 
+Vol= 2 \pi \iint \dif q_x \dif q_y E-V(q_x, q_y)
 \end{equation}
 
 Now the limits of integration are the turning points of the
@@ -111,15 +111,41 @@ trayectories, that is, the caustic of the manifold proyected
 in configuration space. It is simpler to put this in
 terms of $q_x^2$:
 
-\begin {align }
-E=V(q_x, q_y) & = &\frac{\omega q_x^2}{2}+(q_y - \frac{q_x^2}{2})^2 \\
-0 &= &\frac{\omega q_x^2}{2}+(q_y - \frac{q_x^2}{2})^2 \\
-0 &= &\frac{\omega q_x^2}{2}+ q_y^2 - q_yq_x^2 +`\frac{q_x^4}{4}
+\begin{align}
+E=V(q_x, q_y) & =  \frac{\omega q_x^2}{2}+(q_y - \frac{q_x^2}{2})^2 \\
+0 &=  \frac{\omega q_x^2}{2}+(q_y - \frac{q_x^2}{2})^2  -E \\
+0 &=  \frac{\omega q_x^2}{2}+ q_y^2 - q_yq_x^2 +`\frac{q_x^4}{4} -E
 \end{align}
 
-\begin{equation}
-ads
-\end{equation}
+\begin{align}
+q_{y,max} &= \frac{q_x^2 + \sqrt{4E-2\omega q_x^2}}{2} \\
+q_{y,min} &=\frac{q_x^2 - \sqrt{4E-2\omega q_x^2}}{2}
+\end{align}
 
+Then, performing the integration over the $q_y$
+\begin{align}
+\frac{Vol}{2\pi} & = \int \dif q_x \bigr[
+(E  - \omega q_x^2/2 -x^4/4) q_y + q_x^2 q_y^2/2-q_y^3/3  
+\bigl]_{q_{y,min}}^  {q_{y,max}}\\
+& = \int \dif q_x
+(E  - \omega q_x^2/2 -q_x^4/4) \sqrt{4E-2\omega q_x} 
++q_x^2/2 (q_x^2  \sqrt{4E-2\omega q_x} ) \\
+&-  1/3 ( 3/4 q_x^4 \sqrt{4E-2 \omega q_x^2} 
++ 1/4(4E-2 \omega q_x^2)\sqrt{4E-2 \omega q_x^2} ) \\
+& = \int \dif q_x 
+\sqrt{4E-2 \omega q_x^2} \bigl(
+E-\omega q_x^2/2 -q_x^4/4 +q_x^4/2 - q_x^4 /4 -1/3(E- \omega q_x^2/2) \bigr) \\
+& = \int \dif q_x \frac{2}{3}(E- \omega q_x^2/2)\sqrt{4E-2 \omega q_x^2}  \\
+& = \int \dif q_x \frac{2}{3\cdot4}(4E- 2\omega q_x^2)\sqrt{4E-2 \omega q_x^2}
+\end{align}
+Now, this last expresion should be valued from the minimal and maximal
+values posibles for $q_x$, these are the points in which 
+$q_{y,min}$ and $q_{y,max}$ coincide, which give $q_x=\pm \sqrt{ 2 E /\omega}$ 
+Turning this into a very common kind of integral this gives us finaly the
+expression for the Volume in terms of $E, \omega$,
+
+\begin{equation}
+Vol=\frac{\pi^2 E^2}{ 2 \sqrt{2 \omega}}. 
+\end{equation}
 
 \end{document}
