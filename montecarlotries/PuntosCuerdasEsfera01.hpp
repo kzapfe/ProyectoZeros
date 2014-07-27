@@ -94,7 +94,7 @@ void CalculaWeyl(int muestreo, int nivel ){
   //tiene al menos dos grados de libertad
   simplectic * x;
   simplectic * y;
-  
+0  
 
   
   x=new simplectic[muestreo];

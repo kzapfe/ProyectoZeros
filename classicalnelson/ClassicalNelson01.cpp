@@ -2,8 +2,8 @@
   periodo usando dinamica clasica */
 
 #include <armadillo>
-#include "../nelson/simplectic01.hpp"
-#include "../nelson/ParametrosGlobales.hpp"
+#include "simplectic01.hpp"
+#include "ParametrosGlobales.hpp"
 #include "RutinasAuxiliares01.hpp" 
 #include "DerivadasHamilton01.hpp" 
 
@@ -17,14 +17,14 @@ using namespace std;
 int main(){
   
   simplectic x,y;
-  double energia=0.821;
+  double energia=0.3138;
   double epsilon=0.0001;
-  int Time=5000000;
-  int kmax=2;
+  int Time=500000;
+  int kmax=10;
 
   ofstream Poincare;
   ofstream Orbits;
-  int numerodeorbitas=40000;
+  int numerodeorbitas=40;
   mat condini=zeros<mat>(numerodeorbitas,4);
 
   streamsize prec=Poincare.precision(12);
@@ -69,7 +69,7 @@ int main(){
       x.p-=epsilon*dH_dxq(x,y);
       y.p-=epsilon*dH_dyq(x,y);
       
-      if((t%1000==0)&&(i%40==0)){
+      if((t%1000==0)){
 	Orbits<<x.q<<"\t"<<x.p<<"\t"
 	      <<y.q<<"\t"<<y.p<<"\t"
 	      <<t*epsilon<<"\t"<<i<<endl;

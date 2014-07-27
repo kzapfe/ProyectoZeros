@@ -145,7 +145,6 @@ mat PopulateNelson(double nivel=0, int muestreo=1){
     //First Coin Toss: lugar en el gordito entre nivel y  nivel+1 
     Energia=nivel+as_scalar(randu(1))*hbarra*0.01;
     
-
     //la distribucion estaba fea
     //probemos lo siguiente: q_1 va a estar aleatoreamente
     //entre las posiciones maximas permitidas.
@@ -174,7 +173,6 @@ mat PopulateNelson(double nivel=0, int muestreo=1){
     auxiliar(2)=as_scalar(randu(1))*(q2max-q2min)+q2min;
     //cout<< "q2 es= "<<auxiliar(2)<<endl;
 
-
     //Ver cuanta energia nos queda libre
     Potencial=auxiliar(0)*auxiliar(0)/20.0+
       (auxiliar(2)-auxiliar(0)*auxiliar(0)/2.0)*
@@ -183,7 +181,6 @@ mat PopulateNelson(double nivel=0, int muestreo=1){
     //cout<< "Potencial es= "<<Potencial<<endl;
 
     Kinetica=Energia-Potencial;
-
 
     //cuarto Coin Toss: direccion del momento
     theta=2.00*pi*as_scalar(randu(1));

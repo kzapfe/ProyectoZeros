@@ -1,0 +1,405 @@
+\documentclass{beamer}
+
+%\usepackage[portuguese]{babel}
+%\usepackage[utf8]{inputenc}
+
+
+\usepackage[brazilian]{babel}
+\usepackage[T1]{fontenc} 
+\usepackage{ae} 
+\usepackage[utf8]{inputenc} 
+
+\usepackage{amsmath}
+\usetheme{Copenhagen}
+\usecolortheme{beaver}
+
+%\useinnertheme{umbcboxes}
+%\setbeamercolor{umbcboxes}{bg=violet!12,fg=black}
+
+\usepackage{rotating} % for defining \schwa
+\newcommand{\schwa}{\raisebox{1ex}{\begin{turn}{180}e\end{turn}}}
+
+\newcommand{\arcsinh}{\mathop\mathrm{arcsinh}\nolimits}
+\newcommand{\arccosh}{\mathop\mathrm{arccosh}\nolimits}
+\newcommand{\codim}{\mathop\mathrm{codim}\nolimits}
+
+\newcommand{\Pu}{P_{\mathrm{amb}}}
+
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+
+
+\title{Espalhamento caotico em três graus de liberdade}
+
+\author[W.P.K. Zapfe]{W. P. Karel Zapfe Zaldivar}
+\institute[CBPF]{
+  Centro Brasileiro de Pesquisas Físicas \\
+  Rua Dr. Xavier Sigaud, 150 \\
+  Urca, Rio de Janeiro,  RJ,  Brasil. \\ 
+  CEP: 22290-180
+  Rio de Janeiro, RJ. Brasil \\
+}
+
+
+\date{Julho, 2012}
+
+
+
+%ppppppppppppppppppppppppppppppppp
+\begin{document}
+
+%----------- titlepage ----------------------------------------------%
+\begin{frame}
+
+  \titlepage
+  
+\end{frame}
+
+
+%----------- slide --------------------------------------------------%
+\begin{frame}
+  \frametitle{Obrigado}
+  
+  Leaonardo C.\\
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{OrderChaos.jpg}
+    \small{Peter Crawley}
+  \end{center}   
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Uma particula em movimiento}  
+ \begin{center}
+ \includegraphics[width=0.8\textwidth]{EspacioFase6Dim01.pdf}
+ \end{center} 
+ \begin{equation}
+   H(\qfase,\pfase)=E
+ \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Uma Simetria contínua}  
+ \begin{center}
+ \includegraphics[width=0.5\textwidth]{PotencialCuadrado02.pdf}
+ \begin{equation}
+ \begin{split}
+   R_\theta(H)&=H, \\
+   p_i&=cte, \\
+   q_i(t)& =q_i(0)+tp_i 
+ \end{split}
+ \end{equation}
+ \end{center} 
+\end{frame}
+
+\begin{frame}
+  \frametitle{A seção de Poincaré}
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{mapsandflow.png}
+    \begin{equation}
+      f(\qfase,\pfase)=cte.
+    \end{equation}
+  \end{center} 
+\end{frame}    
+
+
+\begin{frame}
+  \frametitle{A maranha hetereo/homoclínica.}
+  Tem essencialmente a dinámica de uma ferradura de Smale.
+ \begin{center}
+ \includegraphics[width=0.8\textwidth]{1001_dinamica.png}
+ \end{center} 
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{A desenvolvimento das ferraduras, $E$ fixos.}
+  Variando $p_i$.
+  \begin{center}
+    \begin{tabular}{cc}
+      \includegraphics[width=0.4\textwidth]{1000_dinamica.png}&
+      \includegraphics[width=0.4\textwidth]{1003_dinamica.png}\\
+      \includegraphics[width=0.4\textwidth]{1006_dinamica.png}&
+      \includegraphics[width=0.4\textwidth]{1009_dinamica.png}
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{As funções de espalhamento}.
+\begin{center}
+ \includegraphics[width=0.8\textwidth]{1000_funcion.png}
+ \end{center} 
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{O momento de espalhamento reflete
+    as propriedades das ferraduras}.
+  \begin{center}
+    \begin{tabular}{cc}
+      \includegraphics[width=0.4\textwidth]{1000_funcion.png}&
+      \includegraphics[width=0.4\textwidth]{1003_funcion.png}\\
+      \includegraphics[width=0.4\textwidth]{1006_funcion.png}&
+      \includegraphics[width=0.4\textwidth]{1009_funcion.png}
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Contudo\ldots}
+  Estamos trapasando...\\
+  Não é fácil medir a funcão  de espalhamiento no laboratório!
+  O que é medido é a seção de choque.
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{explicasecaodechoque.pdf}
+  \end{center}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{As singularidades arcoiris}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{explicaarcoiris.pdf}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Um exemplo}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{SeccionSymetrica.png}
+  \end{center}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Intersecção transversal}
+  O parámetro $L$ controlava o desenvolvimiento das ferraduras.
+  Consideremos, então, a união de todas as folhas dinamicamente
+  independentes.
+\begin{center}
+  \includegraphics[width=0.8\textwidth]{Union.pdf}
+\end{center}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Uma estrutura conhecida aparece}
+  \begin{center}
+    \includegraphics[width=1.0\textwidth]{1004_seccion_.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ao isolar as singularidades}
+  \begin{center}
+    \includegraphics[width=1.0\textwidth]{1004_arcoiris-parapresentacion.png}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Um único dominio de continuidade}
+  \begin{center}
+    \includegraphics[width=1.0\textwidth]{1005_singlerainbow.png}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Cáusticas do tipo umbílico hiperbólico}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth, angle=90]{CausticGlassBerry.png}
+  \end{center}
+\end{frame}  
+
+
+
+\begin{frame}[allowframebreaks]{Referências} 
+
+\begin{thebibliography}{9}
+
+\bibitem[Ber76]{Berry76}
+M.~V. Berry.
+\newblock Waves and Thom's theorem.
+\newblock {\em Advances in Physics}, 25(1):1--26, 1976.
+
+\bibitem[dA88]{OdeA88}
+A.M.~Ozorio de~Almeida.
+\newblock {\em Hamiltonian Systems: Chaos and Quantization}.
+\newblock Oxford Univerity Press, 1988.
+
+
+\bibitem[JORLA08]{JungLuna}
+C.~Jung, G.~Orellana-Rivadeynera, and G.~Luna-Acosta.
+\newblock Reconstruction of the chaotic set from cross section data.
+\newblock {\em J. Phys. A: Math. Gen.}, 38:567, 2008.
+
+\bibitem[Jun90]{Jung90}
+C.~Jung.
+\newblock Fractal properties in the semiclassical scattering cross section of a
+  classically chaotic system.
+\newblock {\em J. Phys. A: Math. Gen.}, 23:1217, 1990.
+
+\bibitem[JMSZ10]{yo2010}
+C.~Jung, 0.~Merlo, T.H. Seligman, and W.P.K. Zapfe.
+\newblock The chaotic set and the cross section for chaotic scattering with
+  three degrees of freedom.
+\newblock {\em NJP}, 12:103021, 2010.
+
+\bibitem[LitJohn]{LitJohn}
+  R.G.~Littlejohn.
+ \newblock Semmiclassical structure of trace formulas.
+ \newblock {\em J. Math. Phys.} 31:2952, 1990 
+
+\end{thebibliography}
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Assimetria}
+  Uma vez quebrada a simetria ($A\neq 0$) \ldots
+    \begin{center}
+  \includegraphics[width=0.8\textwidth]{1000_funcion_pm3d.png}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Para economizar tiempo \ldots}
+  \ldots uma transformação simpletica gerada pela função:
+  
+  \begin{equation}
+    G(q,\tilde{p},\theta,\tilde{L})=
+    q\tilde{p}+\theta\tilde{L}+(L_{max}-L)(1+A \cos\theta)(-\exp(-q^2)),
+  \end{equation}  
+    e um vôo livre:
+\begin{align}
+ \tilde{q} &= q + p \\
+ \tilde{\theta} &= \theta + L \\
+ \tilde{p} &= p \\
+ \tilde{L} &=  L.
+\end{align}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{A seção de choque clássica}
+  \begin{equation}
+    g(p_{out})=
+   \displaystyle\sum_k \bigg| \frac{d p_{out}}{d q_{in,k}} \bigg|^{-1}
+  \end{equation}
+Isto é simplesmente a medida induzida na superficie
+Lagrangiana especificada pela ação das trajectorias selecionadas.
+\begin{equation}
+  \sigma(p_{out})=\lambda(q)\bigg|\frac{ \partial q}{\partial p_{out}}\bigg|
+\end{equation}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{A seção de choque novamente}
+
+  Com dois \emph{observáveis}:
+  \begin{equation}
+    \mathbf{I}_{out}(q_{in},\theta_{in})=
+      (p_{out}(q_{in},\theta_{in}),\Delta L (q_{in},\theta_{in})).
+\end{equation}
+ \begin{equation}
+    g(\mathbf{I}_{out})=
+    \displaystyle\sum_k \bigg| \frac{\partial (p_{out},\Delta L)}
+                     {\partial (q_{in,k},theta_{in,k}}) \bigg|^{-1}
+  \end{equation}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Localmente}
+  \begin{center}
+  \includegraphics[width=0.8\textwidth]{localmente.pdf}
+  \end{center}
+
+  \begin{equation}
+  \codim W_1 + \codim W_2 = \codim(W_1 \cap W_2)  
+  \end{equation}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Cáusticas do tipo umbílico hiperbólico 2}
+  \begin{align}
+    p_{out} &=p_0 -l(q_0-q_{in})+b \cos \theta, \\
+    \Delta L &=\frac{a \sin\theta}{1-c(q_0-q_{in})}
+   \end{align}
+  
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{Gelatina.jpg}
+\end{center}
+\end{frame}  
+
+
+
+
+\begin{frame}
+  \frametitle{A amplitude de espalhamiento semiclássica}
+  
+  \begin{equation}
+    f(\mathbf{I}_{out})=
+    \displaystyle\sum_k \bigg| \frac{(\partial p_{out}, \Delta L)}
+                    {\partial (q_{in,k}, \theta_{in,k})} \bigg|^{-1/2}
+                    \exp(\frac{i}{\hbar}S_k (\mathbf{I}_{out})-\mu_j\pi/2)
+  \end{equation}
+  \begin{equation}
+    g(\mathbf{I}_{out})=|f(\mathbf{I}_{out})|^2
+   \end{equation}
+
+Miller:
+\begin{equation}
+\braket{\mathbf{x}_{in}}{\mathbf{I}_{out}}=\frac{1}{(2i \pi \hbar)^{n/2}}
+  \displaystyle\sum_{k}
+  \bigg| \frac{\partial^2 S}
+                    {\partial\mathbf{I}_{out}\partial\mathbf{x}_{in}} \bigg|^{1/2}
+                    \exp(\frac{i}{\hbar}S_k (\mathbf{x}_{in})-\mu_j\pi/2)
+\end{equation}
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ação final}
+  \begin{center}
+    \includegraphics[width=1.0\textwidth]{1000_acaofinal.png}
+  \end{center}
+\end{frame}  
+
+
+
+
+\end{document}
