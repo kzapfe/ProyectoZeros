@@ -11,8 +11,8 @@
 %Este paquete al parecer usa mejor los nombres de graphicas
 \usepackage{grffile}
 \usepackage{amsmath}
-\usetheme{Copenhagen}
-\usecolortheme{beaver}
+\usetheme{Boadilla}
+%\usecolortheme{beaver}
 \usefonttheme{serif}
 
 %\useinnertheme{umbcboxes}
@@ -98,7 +98,7 @@ Our work uses the NELSON potential,
 \begin{frame}
   \frametitle{Quantum Stationary States}
   In the Quantum framework, our ``Energy surfaces'' are
-  states labeled by Energy. 
+  states labelled by Energy. 
   \begin{tabular}{ccc}
     \includegraphics[width=0.30\textwidth]{EigenEstadosNelson-0.1875-1003.png} &
     \includegraphics[width=0.30\textwidth]{EigenEstadosNelson-0.1875-1024.png} &
@@ -349,7 +349,7 @@ Exact, 500, 5000, 50'000 points.
       \includegraphics[width=0.5\textwidth]{FabricioWeyl02-ZerosContour.pdf} &
       \includegraphics[width=0.5\textwidth]{KarelWeyl-ZerosContour.pdf}
     \end{tabular}
-    And we fail misserably.
+    And we fail miserably.
 \end{frame}
 
 
@@ -380,7 +380,6 @@ Exact, 500, 5000, 50'000 points.
 \end{frame}
 
 
-
 \begin{frame}
   \frametitle{Axis by Axis II}
   \begin{tabular}{cc}
@@ -389,7 +388,55 @@ Exact, 500, 5000, 50'000 points.
     \includegraphics[width=0.50\textwidth]{Compara3ordenRealMuQ.pdf} &
     \includegraphics[width=0.50\textwidth]{Compara3ordenImagMuQ.pdf}
  \end{tabular}    
- 
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{An extraneous phase?}
+  \centering     
+    \includegraphics[width=0.80\textwidth]{WignerDirectFromFabChords01.png}\\
+    The Traced over Wigner function obtained by performing the inverse
+    SFT on Fabricio's quantum data for his $\xifase=0$ section of the chord function.
+    The data is not normalised, and the colour scale is only chosen on contrast grounds.
+    The black curve is the zero contour level line.  \\
+    It seems to have a $-4\xi_{yp} i/\hbar$ extra phase.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{An extraneous phase? II}
+  \begin{tabular}{cc}
+    \includegraphics[width=0.5\textwidth]{FabricioWeyl02-ZerosContour.pdf} &
+    \includegraphics[width=0.5\textwidth]{KWeylTroubleshot02-ZerosContour.pdf}
+  \end{tabular}
+\end{frame}
+
+\begin{frame}
+  \frametitle{We are still stuck}
+  But there is a lesson here. 
+  \begin{itemize}
+  \item Do not loose your code. 
+  \item Make it available.
+  \item Ask for help.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{About the Weak Ergodic Hypothesis \ldots}
+  We still do not know what to do. For another more theoretical
+  take on the problem, read:
+  \emph{Negativity witness for the quantum ergodic conjecture}
+  Alfredo M. Ozorio de Almeida, 
+  \url{http://arxiv.org/abs/1403.2261}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Thank you.}
+  Suggestions and criticism are more than welcome.\\
+  And Happy Birthday for Thomas!
 \end{frame}
 
 

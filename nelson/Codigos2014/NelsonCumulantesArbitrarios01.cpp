@@ -7,12 +7,12 @@ en Cumulantes.
 #include <vector>
 #include "simplectic01.hpp"
 #include "ParametrosGlobales.hpp"
-#include "RutinasNelson02.hpp"
+
 #include "BinomialCoefficient01.hpp"
 #include <gsl/gsl_sf_gamma.h>
 
 using namespace std;
-
+using namespace arma;
 //Esto es pleonasmo, pero para que te acuerdes.
 
 int main(){
@@ -20,7 +20,7 @@ int main(){
   //inicializar el semillador
   srand(12389);
 
-  const int talgrado=23;
+  const int talgrado=50;
 
   //Parametros Globales
  
@@ -31,7 +31,7 @@ int main(){
    
   std::ostringstream escupefuncion;
   std::string haz;
-  escupefuncion<<"Nelson"<<"_"<<talgrado<<"grado"<<
+  escupefuncion<<"Nelson"<<"_"<<talgrado<<"_grado"<<
     "_Weyl.dat"<<std::ends;
   haz=escupefuncion.str();
   const char *nombrefuncion=haz.c_str();
@@ -41,6 +41,7 @@ int main(){
  
   mat DiracDeltas;
   DiracDeltas.load("CentrosWigner.dat");
+  int numdata=DiracDeltas.n_rows;
   
     
   /*No pretendamos hacerlo tan general. Empecemos por el corte
@@ -69,6 +70,7 @@ int main(){
 
   factor.zeros(talgrado+1, talgrado+1);
   cumulant.zeros(talgrado+1, talgrado+1);
+  cout<<"Ahi te van los cumulantes"<<endl;
 
   for(int n=0; n<=talgrado; n++){
     //cout<<"vamos bien "<< j <<endl;
@@ -79,7 +81,7 @@ int main(){
       factor(n,k)=ComputeBinomialCoefficient(n,k)*pow(-1,k);
 	
       //cout<<factor(j,k)<<"\t";
-      cumulant(n,k)=as_scalar(dot(pow(auxq, n-k),pow(auxp,k)))/(double)muestreo;
+      cumulant(n,k)=as_scalar(dot(pow(auxq, n-k),pow(auxp,k)))/(double)numdata;
       cout<<cumulant(n,k)<<"\t";
 
     }

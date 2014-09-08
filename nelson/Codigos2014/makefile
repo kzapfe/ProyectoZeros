@@ -8,7 +8,7 @@ FuentesCom=ParametrosGlobales.hpp RutinasNelson02.hpp simplectic01.hpp
 
 NelCumulantes01.x: NelsonCumulantesArbitrarios01.cpp \
 	$(FuentesCom) ChordAprox01.hpp BinomialCoefficient01.hpp \
-	CentrosWigner.dat  #(Todos los programas usan los mismos Centros!)
+	 #(Todos los programas usan los mismos Centros!)
 	g++ $(libs) $< -o $@
 
 
@@ -18,6 +18,8 @@ CentrosWigner.dat: JustPopulate01.x
 JustPopulate01.x: PoblarNelson01.cpp $(FuentesCom)
 	g++ $(libs) $< -o $@
 
+JustPopulateRight01.x: LlenarNelsonMonteCarlo02.cpp
+	g++ $(libs) $< -o $@	
 
 
 

@@ -112,7 +112,37 @@ mat Populate4BallShell(double nivel=0, int muestreo=1){
 };
 
 
-mat PopulateNelson(double nivel=0, int muestreo=1){
+mat PopulateNelson(double energia=0, int muestreo=1){
+  //Este va a ser mucho mas lento, pero va a ser ESTRICTAMENTE CORRECTO.
+  // en el sentido de que vamos a hacer un try and fail hasta que se 
+  // pueble la capa de energia.
+  //primero definimos una caja Cuadrada que sea el casi soporte
+  // de una distribucion de Raleigh o Maxwell centrada en Energia approx 0.81
+  const double q1lim=5.0; 
+  const double q2min=-1.5, q2max=9;
+  const double prhomax=1.7;
+  mat result;
+
+  /* Podriamos hacerlo mejor, usando las relacione exactas:
+    q1max(energia)=sqrt(2*energia/omegax) 
+    q2max=q2+(q1max,energia)=energia/omegax
+    q2min=q2-(0,energia)=-sqrt(energia)
+    sqrt(
+  */
+
+  double cointoss=1.5;
+  int cuantas=0;
+  /*
+  while(cuantas<muestreo){
+  }
+  */
+  //Una lista vacia de puntos
+  result=zeros<mat>(muestreo, 4);
+
+
+}
+
+mat WronglyPopulateNelson(double nivel=0, int muestreo=1){
   //Usa la cabezota, guey
   //para cada valor de E, q2 y |p| pueden ser exactamente determinados.
   //entonces realmente lo unico que necesitamos

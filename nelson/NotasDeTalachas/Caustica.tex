@@ -1,0 +1,100 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+%\usepackage{subfigure}
+%\usepackage[spanish]{babel}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage[cm]{fullpage}
+\usepackage[light]{antpolt}
+\usepackage[T1]{fontenc}
+
+\usepackage{float}
+
+%Este paquete le pone una barrera a los floats
+% al final de cada seccion
+\usepackage[section]{placeins}
+
+
+\bibliographystyle{alpha}
+
+\newcommand{\ihb}{\frac{i}{\hbar}}
+\newcommand{\xfase}{\mathbf{x}}
+\newcommand{\yfase}{\mathbf{y}}
+\newcommand{\qfase}{\mathbf{q}}
+\newcommand{\pfase}{\mathbf{p}}
+\newcommand{\xifase}{ {\boldsymbol{\xi}} }
+\newcommand{\mufase}{ {\boldsymbol{\mu}} }
+\newcommand{\Ifase}{\mathbf{I}}
+\newcommand{\Pfase}{\mathbf{P}}
+\newcommand{\Scat}{\mathbf{S}}
+\newcommand{\Jsimp}{\mathbf{J}}
+\newcommand{\Dom}{\mathbb{D}}
+\newcommand{\Var}{\mathbb{M}}
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Prom}[2]{\langle #1\rangle_{#2}}
+\newcommand{\dif}{\, \mathrm{d}}
+\newcommand{\indicator}[1]{\mathbf{1}_{ \{   #1 \} } } 
+
+\DeclareMathOperator*{\cod}{cod}
+\DeclareMathOperator*{\traza}{traza}
+
+
+\title{ Boring but necesary Apendix B: Formula for the
+Caustic in q-space for the Nelson Potential.}
+\author{Karel}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We obtain exact analytical calculation for the Caustic 
+Curves in q-space given the Nelson Potential.
+\end{abstract}
+
+
+\section{The Nelson Potential}
+
+The Nelson Potential has in ``natural'' coordinates ($m=1$) the form:
+
+\begin{equation}\label{classicalhamiltonian}
+H(\xfase)=(p_{x1}^2+p_{x2}^2)/2+\omega_1 q_{x1}^2/2+
+\omega_2(q_{x2}-q_{x1}^2/2)^2.
+\end{equation}
+
+The classical parameters are as follows:
+\begin{itemize}
+\item  $\omega_1=0.1$ 
+\item $\omega_2=1$,
+\item and the value for the energy, $E$.
+\end{itemize}
+
+
+In the following calculations I shall write $x:=x_1, and y:=x_2$
+to avoid unnecesary clutering of indexes. I shall also use
+$\omega=\omega_1$ and omite writting explicitly  $\omega_2=1$.
+Now, the caustic is when the kinetk energy is zero, that means:
+
+\begin{align}
+E=V(q_x, q_y) & =  \frac{\omega q_x^2}{2}+(q_y - \frac{q_x^2}{2})^2 \\
+0 &=  \frac{\omega q_x^2}{2}+(q_y - \frac{q_x^2}{2})^2  -E \\
+0 &=  \frac{\omega q_x^2}{2}+ q_y^2 - q_yq_x^2 +\frac{q_x^4}{4} -E
+\end{align}
+
+This gives us the following expression for the two curves, after
+aplication of ``La Chicharronera''.
+\begin{equation}
+y_{\pm}(x)=\frac{1}{2}\sqrt{4E-2\omega x^2}.
+\end{equation}
+The domain is the set between the two anhilation points of the 
+discriminant, $x\in [-\sqrt{2E/\omega},+\sqrt{2E/\omega} ]$
+
+\end{document}
