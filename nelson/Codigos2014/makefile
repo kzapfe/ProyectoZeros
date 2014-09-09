@@ -3,7 +3,7 @@
 
 libs= -larmadillo  -lgsl
 incluir= -I /usr/include/gsl
-FuentesCom=ParametrosGlobales.hpp RutinasNelson02.hpp simplectic01.hpp
+FuentesCom=ParametrosGlobales.hpp simplectic01.hpp
 
 
 NelCumulantes01.x: NelsonCumulantesArbitrarios01.cpp \
@@ -21,9 +21,10 @@ JustPopulate01.x: PoblarNelson01.cpp $(FuentesCom)
 JustPopulateRight01.x: LlenarNelsonMonteCarlo02.cpp
 	g++ $(libs) $< -o $@	
 
+PopulateWithEnergy01.x: PopulateArgument01.cpp
+	g++ $(libs) $< -o $@	
 
 
-
-
-
+JustCuerdas01.x: CuerdasFromExteriorFile01.cpp $(FuentesCom)
+	g++ $(libs) $< -o $@	
 

@@ -7,16 +7,14 @@ double const hbarra=0.05000;
 // no deberia de haber mas de 20 mil puntos
 // de volumen hbarra cuadrado cada uno
 //en la camada de energia con el valor de Fabricio Toscano*/
-
-int muestreo=116920;
-double nivel=0.813840071;
+//double nivel=0.813840071;
 /*Valores de Fabricio
 hbarra=0.05
 Nivel=0.821
  */
 
-int resolucion=300;
-double extrem=0.20;
+int resolucion=200;
+double extrem=0.40;
   
 const int divisiones=3;
 const int maxprof=5;
